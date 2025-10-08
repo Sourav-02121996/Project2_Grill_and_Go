@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Checkout - GrillAndGo</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/checkout.css">
+</head>
+<body>
+	<nav class="navbar">
+		<a href="index.html" class="brand">
+			<img src="images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
+		</a>
+		<ol class="navlist">
+			<li class="navitem"><a href="index.html#Menu" class="navlink">Menu</a></li>
+			<li class="navitem"><a href="customize.html" class="navlink">Customize</a></li>
+			<li class="navitem"><a href="ReadyToOrder.html" class="navlink">Ready To Order</a></li>
+			<li class="navitem"><a href="promotions.html" class="navlink">Promotions</a></li>
+			<li class="navitem"><a href="checkout.html" class="navlink">Checkout</a></li> 
+		</ol>
+		<div class="signin-container">
+			<a href="login.html" class="signin-btn">Sign In</a>
+		</div>
+	</nav>
+
+	<main class="container">
+		<h1>Checkout</h1>
+
+		<div class="two-col-grid">
+			<!-- Left Column: Customer Info & Delivery -->
+			<div>
+				<section class="section">
+					<h2>Contact Information</h2>
+					<form>
+						<div class="form-group">
+							<label for="email" class="form-label">Email</label>
+							<input type="email" id="email" name="email" required class="form-input">
+						</div>
+						<div class="form-group">
+							<label for="phone" class="form-label">Phone Number</label>
+							<input type="tel" id="phone" name="phone" required class="form-input">
+						</div>
+					</form>
+				</section>
+
+				<section class="section">
+					<h2>Delivery Information</h2>
+					<form>
+						<div class="form-group">
+							<label for="fullname" class="form-label">Full Name</label>
+							<input type="text" id="fullname" name="fullname" required class="form-input">
+						</div>
+						<div class="form-group">
+							<label for="address" class="form-label">Street Address</label>
+							<input type="text" id="address" name="address" required class="form-input">
+						</div>
+						<div class="city-state-grid">
+							<div>
+								<label for="city" class="form-label">City</label>
+								<input type="text" id="city" name="city" required class="form-input">
+							</div>
+							<div>
+								<label for="state" class="form-label">State</label>
+								<input type="text" id="state" name="state" required class="form-input">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="zipcode" class="form-label">ZIP Code</label>
+							<input type="text" id="zipcode" name="zipcode" required class="form-input">
+						</div>
+					</form>
+				</section>
+
+				<section class="section">
+					<h2>Special Instructions</h2>
+					<textarea placeholder="Any special requests or delivery instructions?" class="form-textarea"></textarea>
+				</section>
+			</div>
+
+			<!-- Right Column: Order Summary & Payment -->
+			<div>
+				<section class="section">
+					<h2>Order Summary</h2>
+					<div class="checkout-summary-box">
+						<div class="order-item">
+							<div>
+								<strong>Custom Sandwich</strong>
+								<p class="item-description">Italian Herb, Turkey, Lettuce, Tomato, Mayo</p>
+							</div>
+							<span class="item-price">$9.99</span>
+						</div>
+						
+						<div class="price-breakdown">
+							<div class="price-row">
+								<span>Subtotal</span>
+								<span>$9.99</span>
+							</div>
+							<div class="price-row">
+								<span>Delivery Fee</span>
+								<span>$2.99</span>
+							</div>
+							<div class="price-row">
+								<span>Tax</span>
+								<span>$1.04</span>
+							</div>
+							<div class="total-checkout">
+								<span>Total</span>
+								<span class="total-price">$14.02</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<h2>Payment Method</h2>
+					<div class="payment-box">
+						<div class="payment-option">
+							<label class="payment-label">
+								<input type="radio" name="payment" value="card" checked>
+								<span class="payment-option-text">Credit/Debit Card</span>
+							</label>
+						</div>
+						<div class="payment-option">
+							<label class="payment-label">
+								<input type="radio" name="payment" value="paypal">
+								<span class="payment-option-text">PayPal</span>
+							</label>
+						</div>
+						
+						<!-- Placeholder for PayPal Button -->
+						<div id="paypal-button-container">
+							<p class="paypal-placeholder">PayPal Integration Coming Soon</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<button type="submit" class="btn-submit">
+						Place Order
+					</button>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<p class="footer">
+			2025 GrillAndGo website. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
