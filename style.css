@@ -1,11 +1,15 @@
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: #222;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {
@@ -61,6 +65,7 @@ body {
   padding: 1.25rem 1rem 2.5rem;
   max-width: 960px;
   margin: 0 auto;
+  flex: 1;
 }
 h1 {
   margin-top: 0.5rem;
@@ -79,11 +84,16 @@ h2 {
 }
 
 /* Footer */
+footer {
+  margin-top: auto;
+}
+
 .footer {
   text-align: center;
   background: #333;
   color: #fff;
   padding: 1rem;
+  margin: 0;
 }
 
 
