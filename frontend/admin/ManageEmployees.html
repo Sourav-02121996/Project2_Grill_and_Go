@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Manage Employees - GrillAndGo Admin</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/admin.css">
+	<link rel="stylesheet" type="text/css" href="../css/employees.css">
+</head>
+<body>
+	<nav class="navbar">
+		<a href="../index.html" class="brand">
+			<img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
+		</a>
+		<ol class="navlist">
+			<li class="navitem"><a href="AdminDashboard.html" class="navlink">Dashboard</a></li>
+			<li class="navitem"><a href="ManageEmployees.html" class="navlink">Employees</a></li>
+		</ol>
+		<div class="signin-container">
+			<a href="../login.html" class="signin-btn">Sign In</a>
+		</div>
+	</nav>
+
+	<main class="container">
+		<div class="page-header">
+			<h1>Manage Employees</h1>
+			<div class="header-actions">
+				<button class="btn-add-employee" onclick="showAddEmployeeModal()">+ Add New Employee</button>
+				<a href="AdminDashboard.html" class="btn-back">← Back to Dashboard</a>
+			</div>
+		</div>
+
+		<!-- Employee Stats -->
+		<div class="employee-stats">
+			<div class="stat-card">
+				<span class="stat-number">15</span>
+				<span class="stat-label">Total Employees</span>
+			</div>
+			<div class="stat-card">
+				<span class="stat-number">3</span>
+				<span class="stat-label">Admins</span>
+			</div>
+			<div class="stat-card">
+				<span class="stat-number">12</span>
+				<span class="stat-label">Staff</span>
+			</div>
+			<div class="stat-card">
+				<span class="stat-number">8</span>
+				<span class="stat-label">On Duty</span>
+			</div>
+		</div>
+
+		<!-- Employee List -->
+		<div class="employee-list">
+			<h2>Employee Directory</h2>
+			
+			<!-- Employee Card 1 - Admin -->
+			<div class="employee-card">
+				<div class="employee-avatar">👨‍💼</div>
+				<div class="employee-info">
+					<h3>John Smith</h3>
+					<p class="employee-role admin-role">Admin</p>
+					<p class="employee-details">
+						<strong>Email:</strong> john.smith@grillandgo.com<br>
+						<strong>Phone:</strong> (555) 123-4567<br>
+						<strong>Joined:</strong> Jan 15, 2024
+					</p>
+				</div>
+				<div class="employee-actions">
+					<button class="btn-toggle-admin active" onclick="toggleAdmin(this)">Remove Admin</button>
+					<button class="btn-delete" onclick="deleteEmployee('John Smith')">Delete</button>
+				</div>
+			</div>
+
+			<!-- Employee Card 2 - Staff -->
+			<div class="employee-card">
+				<div class="employee-avatar">👩</div>
+				<div class="employee-info">
+					<h3>Sarah Johnson</h3>
+					<p class="employee-role staff-role">Staff</p>
+					<p class="employee-details">
+						<strong>Email:</strong> sarah.j@grillandgo.com<br>
+						<strong>Phone:</strong> (555) 234-5678<br>
+						<strong>Joined:</strong> Feb 20, 2024
+					</p>
+				</div>
+				<div class="employee-actions">
+					<button class="btn-toggle-admin" onclick="toggleAdmin(this)">Make Admin</button>
+					<button class="btn-delete" onclick="deleteEmployee('Sarah Johnson')">Delete</button>
+				</div>
+			</div>
+
+			<!-- Employee Card 3 - Staff -->
+			<div class="employee-card">
+				<div class="employee-avatar">👨</div>
+				<div class="employee-info">
+					<h3>Mike Davis</h3>
+					<p class="employee-role staff-role">Staff</p>
+					<p class="employee-details">
+						<strong>Email:</strong> mike.d@grillandgo.com<br>
+						<strong>Phone:</strong> (555) 345-6789<br>
+						<strong>Joined:</strong> Mar 10, 2024
+					</p>
+				</div>
+				<div class="employee-actions">
+					<button class="btn-toggle-admin" onclick="toggleAdmin(this)">Make Admin</button>
+					<button class="btn-delete" onclick="deleteEmployee('Mike Davis')">Delete</button>
+				</div>
+			</div>
+
+			<!-- Employee Card 4 - Admin -->
+			<div class="employee-card">
+				<div class="employee-avatar">👩‍💼</div>
+				<div class="employee-info">
+					<h3>Emily Wilson</h3>
+					<p class="employee-role admin-role">Admin</p>
+					<p class="employee-details">
+						<strong>Email:</strong> emily.w@grillandgo.com<br>
+						<strong>Phone:</strong> (555) 456-7890<br>
+						<strong>Joined:</strong> Jan 25, 2024
+					</p>
+				</div>
+				<div class="employee-actions">
+					<button class="btn-toggle-admin active" onclick="toggleAdmin(this)">Remove Admin</button>
+					<button class="btn-delete" onclick="deleteEmployee('Emily Wilson')">Delete</button>
+				</div>
+			</div>
+
+			<!-- Employee Card 5 - Staff -->
+			<div class="employee-card">
+				<div class="employee-avatar">👨</div>
+				<div class="employee-info">
+					<h3>Robert Brown</h3>
+					<p class="employee-role staff-role">Staff</p>
+					<p class="employee-details">
+						<strong>Email:</strong> robert.b@grillandgo.com<br>
+						<strong>Phone:</strong> (555) 567-8901<br>
+						<strong>Joined:</strong> Apr 5, 2024
+					</p>
+				</div>
+				<div class="employee-actions">
+					<button class="btn-toggle-admin" onclick="toggleAdmin(this)">Make Admin</button>
+					<button class="btn-delete" onclick="deleteEmployee('Robert Brown')">Delete</button>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Add Employee Modal -->
+	<div id="addEmployeeModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Add New Employee</h2>
+				<span class="close-modal" onclick="closeAddEmployeeModal()">&times;</span>
+			</div>
+			<form class="employee-form">
+				<div class="form-group">
+					<label for="emp-name" class="form-label">Full Name</label>
+					<input type="text" id="emp-name" class="form-input" placeholder="John Doe" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="emp-email" class="form-label">Email</label>
+					<input type="email" id="emp-email" class="form-input" placeholder="john.doe@grillandgo.com" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="emp-phone" class="form-label">Phone Number</label>
+					<input type="tel" id="emp-phone" class="form-input" placeholder="(555) 123-4567" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="emp-role" class="form-label">Role</label>
+					<select id="emp-role" class="form-input">
+						<option value="staff">Staff</option>
+						<option value="admin">Admin</option>
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<label for="emp-password" class="form-label">Temporary Password</label>
+					<input type="password" id="emp-password" class="form-input" placeholder="Set initial password" required>
+				</div>
+				
+				<div class="modal-actions">
+					<button type="button" class="btn-cancel" onclick="closeAddEmployeeModal()">Cancel</button>
+					<button type="submit" class="btn-submit">Add Employee</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		function showAddEmployeeModal() {
+			document.getElementById('addEmployeeModal').style.display = 'flex';
+		}
+
+		function closeAddEmployeeModal() {
+			document.getElementById('addEmployeeModal').style.display = 'none';
+		}
+
+		function toggleAdmin(button) {
+			const card = button.closest('.employee-card');
+			const roleLabel = card.querySelector('.employee-role');
+			
+			if (button.classList.contains('active')) {
+				// Remove admin
+				button.classList.remove('active');
+				button.textContent = 'Make Admin';
+				roleLabel.textContent = 'Staff';
+				roleLabel.classList.remove('admin-role');
+				roleLabel.classList.add('staff-role');
+				alert('Admin privileges removed');
+			} else {
+				// Make admin
+				button.classList.add('active');
+				button.textContent = 'Remove Admin';
+				roleLabel.textContent = 'Admin';
+				roleLabel.classList.remove('staff-role');
+				roleLabel.classList.add('admin-role');
+				alert('Employee promoted to Admin');
+			}
+		}
+
+		function deleteEmployee(name) {
+			if (confirm(`Are you sure you want to delete ${name}?`)) {
+				alert(`${name} has been removed from the system`);
+				// In production, this would delete from database
+			}
+		}
+
+		// Close modal when clicking outside
+		window.onclick = function(event) {
+			const modal = document.getElementById('addEmployeeModal');
+			if (event.target == modal) {
+				closeAddEmployeeModal();
+			}
+		}
+	</script>
+
+	<footer>
+		<p class="footer">
+			2025 GrillAndGo website. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
