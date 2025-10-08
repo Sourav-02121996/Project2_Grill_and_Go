@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Customer Login - GrillAndGo</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+	<nav class="navbar">
+		<a href="index.html" class="brand">
+			<img src="images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
+		</a>
+		<ol class="navlist">
+			<li class="navitem"><a href="index.html#Menu" class="navlink">Menu</a></li>
+			<li class="navitem"><a href="customize.html" class="navlink">Customize</a></li>
+			<li class="navitem"><a href="ReadyToOrder.html" class="navlink">Ready To Order</a></li>
+			<li class="navitem"><a href="promotions.html" class="navlink">Promotions</a></li> 
+		</ol>
+		<div class="signin-container">
+			<a href="login.html" class="signin-btn">Sign In</a>
+		</div>
+	</nav>
+
+	<main class="container">
+		<div class="auth-container">
+			<div class="auth-tabs">
+				<button class="auth-tab active" onclick="showLogin()">Login</button>
+				<button class="auth-tab" onclick="showSignup()">Create Account</button>
+			</div>
+
+			<!-- Login Form -->
+			<div id="loginForm" class="auth-form">
+				<h2>Welcome Back!</h2>
+				<p class="auth-subtitle">Login to your account</p>
+				
+				<form>
+					<div class="form-group">
+						<label for="login-email" class="form-label">Email Address</label>
+						<input type="email" id="login-email" name="email" required class="form-input" placeholder="you@example.com">
+					</div>
+					
+					<div class="form-group">
+						<label for="login-password" class="form-label">Password</label>
+						<input type="password" id="login-password" name="password" required class="form-input" placeholder="Enter your password">
+					</div>
+					
+					<div class="form-group">
+						<label class="checkbox-label">
+							<input type="checkbox" name="remember"> Remember me
+						</label>
+					</div>
+					
+					<button type="submit" class="btn-auth">Login</button>
+					
+					<p class="auth-footer">
+						<a href="#" class="auth-link">Forgot Password?</a>
+					</p>
+				</form>
+			</div>
+
+			<!-- Signup Form -->
+			<div id="signupForm" class="auth-form" style="display: none;">
+				<h2>Create Account</h2>
+				<p class="auth-subtitle">Join Grill & Go today!</p>
+				
+				<form>
+					<div class="form-group">
+						<label for="signup-name" class="form-label">Full Name</label>
+						<input type="text" id="signup-name" name="name" required class="form-input" placeholder="John Doe">
+					</div>
+					
+					<div class="form-group">
+						<label for="signup-email" class="form-label">Email Address</label>
+						<input type="email" id="signup-email" name="email" required class="form-input" placeholder="you@example.com">
+					</div>
+					
+					<div class="form-group">
+						<label for="signup-phone" class="form-label">Phone Number</label>
+						<input type="tel" id="signup-phone" name="phone" required class="form-input" placeholder="(555) 123-4567">
+					</div>
+					
+					<div class="form-group">
+						<label for="signup-password" class="form-label">Password</label>
+						<input type="password" id="signup-password" name="password" required class="form-input" placeholder="Create a password">
+					</div>
+					
+					<div class="form-group">
+						<label for="signup-confirm-password" class="form-label">Confirm Password</label>
+						<input type="password" id="signup-confirm-password" name="confirm-password" required class="form-input" placeholder="Confirm your password">
+					</div>
+					
+					<div class="form-group">
+						<label class="checkbox-label">
+							<input type="checkbox" name="terms" required> I agree to the Terms & Conditions
+						</label>
+					</div>
+					
+					<button type="submit" class="btn-auth">Create Account</button>
+				</form>
+			</div>
+		</div>
+	</main>
+
+	<script>
+		function showLogin() {
+			document.getElementById('loginForm').style.display = 'block';
+			document.getElementById('signupForm').style.display = 'none';
+			
+			// Update active tab
+			const tabs = document.querySelectorAll('.auth-tab');
+			tabs[0].classList.add('active');
+			tabs[1].classList.remove('active');
+		}
+
+		function showSignup() {
+			document.getElementById('loginForm').style.display = 'none';
+			document.getElementById('signupForm').style.display = 'block';
+			
+			// Update active tab
+			const tabs = document.querySelectorAll('.auth-tab');
+			tabs[0].classList.remove('active');
+			tabs[1].classList.add('active');
+		}
+	</script>
+
+	<footer>
+		<p class="footer">
+			2025 GrillAndGo website. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+

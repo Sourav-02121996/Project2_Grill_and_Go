@@ -1,13 +1,20 @@
 {
-  "name": "project2",
+  "name": "project2_grill_and_go",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
+  "main": "server-dev.js",
   "scripts": {
+    "start": "node server-dev.js",
+    "dev": "nodemon server-dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Sourav Das",
   "license": "MIT",
-  "description": ""
+  "description": "Grill & Go - Food Ordering Website",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }

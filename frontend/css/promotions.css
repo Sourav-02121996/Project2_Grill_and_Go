@@ -1,0 +1,38 @@
+/* Promotions Page Specific Styles */
+
+.promo-cards-container {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.promo-card {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+.promo-card-image-placeholder {
+  background: #e0e0e0;
+  height: 200px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.promo-card h3 {
+  margin: 0.5rem 0;
+}
+
+.promo-card p {
+  color: #666;
+}
+
