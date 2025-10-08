@@ -4,15 +4,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Customize Your Order - GrillAndGo</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<nav class="navbar">
+		<a href="index.html" class="brand">
+			<img src="images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
+		</a>
 		<ol class="navlist">
 			<li class="navitem"><a href="index.html#Menu" class="navlink">Menu</a></li>
 			<li class="navitem"><a href="customize.html" class="navlink">Customize</a></li>
-			<li class="navitem"><a href="index.html#Promotions" class="navlink">Promotions</a></li>
-			<li class="navitem"><a href="index.html#Order" class="navlink">Ready To Order</a></li> 
+			<li class="navitem"><a href="ReadyToOrder.html" class="navlink">Ready To Order</a></li>
+			<li class="navitem"><a href="promotions.html" class="navlink">Promotions</a></li> 
 		</ol>
 	</nav>
 
@@ -20,7 +23,7 @@
 		<h1>Customize Your Order</h1>
 		<p>Build your perfect sandwich, your way. Choose from our fresh ingredients below.</p>
 
-		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+		<div class="two-col-grid">
 			<!-- Left Column: Customization Options -->
 			<div>
 				<section class="section">
@@ -73,36 +76,27 @@
 
 			<!-- Right Column: Price Summary -->
 			<div>
-				<section class="section" style="position: sticky; top: 80px;">
+				<section class="section order-summary-sticky">
 					<h2>Your Order</h2>
-					<div style="background: #f9f9f9; padding: 1.5rem; border-radius: 6px; margin-top: 1rem;">
-						<div id="selected-items" style="min-height: 100px; margin-bottom: 1rem;">
-							<p style="color: #999; text-align: center;">Select items to build your sandwich</p>
+					<div class="summary-box">
+						<div id="selected-items" class="selected-items">
+							<p class="empty-message">Select items to build your sandwich</p>
 						</div>
 						
-						<div style="border-top: 2px solid #333; padding-top: 1rem; margin-top: 1rem;">
-							<div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">
+						<div class="summary-divider">
+							<div class="total-row">
 								<span>Total</span>
-								<span id="total-price" style="color: orangered;">$0.00</span>
+								<span id="total-price" class="total-price">$0.00</span>
 							</div>
 							
-						<button onclick="proceedToCheckout()" style="width: 100%; background: orangered; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem;">
-							Proceed to Checkout
-						</button>
+							<button onclick="proceedToCheckout()" class="btn-primary">
+								Proceed to Checkout
+							</button>
 						</div>
 					</div>
 				</section>
 			</div>
 		</div>
-
-		<!-- Mobile responsive -->
-		<style>
-			@media (max-width: 768px) {
-				.container > div {
-					grid-template-columns: 1fr !important;
-				}
-			}
-		</style>
 
 		<script>
 			function updateSummary() {
@@ -124,11 +118,11 @@
 				
 				// Update selected items display
 				if (items.length === 0) {
-					selectedItemsDiv.innerHTML = '<p style="color: #999; text-align: center; margin: 0;">Select items to build your sandwich</p>';
+					selectedItemsDiv.innerHTML = '<p class="empty-message">Select items to build your sandwich</p>';
 				} else {
 					let html = '';
 					items.forEach(item => {
-						html += `<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #ddd;">
+						html += `<div class="order-item-row">
 							<span>${item.label}</span>
 							<span>$${item.price.toFixed(2)}</span>
 						</div>`;
@@ -140,16 +134,16 @@
 				totalPriceSpan.textContent = `$${total.toFixed(2)}`;
 			}
 			
-		function proceedToCheckout() {
-			const total = document.getElementById('total-price').textContent;
-			if (total === '$0.00') {
-				alert('Please select at least one item to add to your order.');
-			} else {
-				// In the future, you would save the order data to localStorage or send to backend
-				// For now, just redirect to checkout page
-				window.location.href = 'checkout.html';
+			function proceedToCheckout() {
+				const total = document.getElementById('total-price').textContent;
+				if (total === '$0.00') {
+					alert('Please select at least one item to add to your order.');
+				} else {
+					// In the future, you would save the order data to localStorage or send to backend
+					// For now, just redirect to checkout page
+					window.location.href = 'checkout.html';
+				}
 			}
-		}
 		</script>
 	</main>
 
