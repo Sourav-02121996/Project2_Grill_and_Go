@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>View Roster - GrillAndGo Admin</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/admin.css">
+	<link rel="stylesheet" type="text/css" href="../css/roster.css">
+</head>
+<body>
+	<nav class="navbar">
+		<a href="../index.html" class="brand">
+			<img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
+		</a>
+		<ol class="navlist">
+			<li class="navitem"><a href="AdminDashboard.html" class="navlink">Dashboard</a></li>
+			<li class="navitem"><a href="ViewRoster.html" class="navlink">View Roster</a></li>
+		</ol>
+		<div class="signin-container">
+			<a href="../login.html" class="signin-btn">Sign In</a>
+		</div>
+	</nav>
+
+	<main class="container">
+		<div class="page-header">
+			<h1>Weekly Roster</h1>
+			<div class="header-actions">
+				<a href="CreateRoster.html" class="btn-add-employee">+ Create New Roster</a>
+				<a href="AdminDashboard.html" class="btn-back">← Back to Dashboard</a>
+			</div>
+		</div>
+
+		<!-- Roster Info -->
+		<div class="roster-info-bar">
+			<div class="info-item">
+				<strong>Week Starting:</strong> <span id="week-date">Not Set</span>
+			</div>
+			<div class="info-item">
+				<strong>Employees Scheduled:</strong> <span id="emp-count">0</span>
+			</div>
+			<div class="info-item">
+				<strong>Total Hours:</strong> <span id="total-hours">0</span>
+			</div>
+		</div>
+
+		<!-- Current Roster -->
+		<div id="roster-display" class="roster-section">
+			<h2>Current Schedule</h2>
+			
+			<div id="no-roster" class="no-roster-message">
+				<div class="empty-state">
+					<div class="empty-icon">📅</div>
+					<h3>No Roster Available</h3>
+					<p>Create a new roster to get started</p>
+					<a href="CreateRoster.html"><button class="btn-create-first">Create Your First Roster</button></a>
+				</div>
+			</div>
+
+			<div id="roster-content" style="display: none;">
+				<div class="roster-table-container">
+					<table class="roster-table">
+						<thead>
+							<tr>
+								<th>Employee</th>
+								<th>Monday</th>
+								<th>Tuesday</th>
+								<th>Wednesday</th>
+								<th>Thursday</th>
+								<th>Friday</th>
+								<th>Saturday</th>
+								<th>Sunday</th>
+								<th>Total Hours</th>
+							</tr>
+						</thead>
+						<tbody id="saved-roster-body">
+							<!-- Saved roster data will appear here -->
+						</tbody>
+					</table>
+				</div>
+
+				<div class="roster-legend">
+					<h3>Legend:</h3>
+					<div class="legend-items">
+						<span class="legend-item"><span class="legend-color work-day"></span> Work Day</span>
+						<span class="legend-item"><span class="legend-color day-off"></span> Day Off</span>
+					</div>
+				</div>
+
+				<div class="roster-actions">
+					<button class="btn-print" onclick="window.print()">🖨️ Print Roster</button>
+					<button class="btn-delete-roster" onclick="deleteRoster()">Delete Roster</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Employee Summary Cards -->
+		<div id="employee-summary" class="employee-summary-section" style="display: none;">
+			<h2>Employee Summaries</h2>
+			<div id="summary-cards" class="summary-cards-grid">
+				<!-- Employee summary cards will be generated here -->
+			</div>
+		</div>
+	</main>
+
+	<script>
+		function loadRoster() {
+			const savedRoster = localStorage.getItem('weeklyRoster');
+			const weekStart = localStorage.getItem('weekStartDate');
+
+			if (!savedRoster || !weekStart) {
+				document.getElementById('no-roster').style.display = 'block';
+				document.getElementById('roster-content').style.display = 'none';
+				document.getElementById('employee-summary').style.display = 'none';
+				return;
+			}
+
+			const rosterData = JSON.parse(savedRoster);
+			
+			// Hide empty state, show roster
+			document.getElementById('no-roster').style.display = 'none';
+			document.getElementById('roster-content').style.display = 'block';
+			document.getElementById('employee-summary').style.display = 'block';
+
+			// Update info bar
+			document.getElementById('week-date').textContent = formatDate(weekStart);
+			document.getElementById('emp-count').textContent = rosterData.length;
+			
+			let grandTotal = 0;
+			rosterData.forEach(emp => grandTotal += emp.totalHours);
+			document.getElementById('total-hours').textContent = grandTotal + 'h';
+
+			// Display roster table
+			const tbody = document.getElementById('saved-roster-body');
+			tbody.innerHTML = '';
+
+			rosterData.forEach(emp => {
+				const row = document.createElement('tr');
+				row.innerHTML = `
+					<td class="employee-name-cell">${emp.name}</td>
+					${emp.dailySchedule.map(day => {
+						if (day.hours === 0) {
+							return '<td class="day-off">OFF</td>';
+						}
+						return `<td class="shift-cell">${day.shift}<br><small>${day.hours}h</small></td>`;
+					}).join('')}
+					<td class="total-hours-cell">${emp.totalHours}h</td>
+				`;
+				tbody.appendChild(row);
+			});
+
+			// Generate employee summary cards
+			generateEmployeeSummaries(rosterData);
+		}
+
+		function generateEmployeeSummaries(rosterData) {
+			const summaryCards = document.getElementById('summary-cards');
+			summaryCards.innerHTML = '';
+
+			rosterData.forEach(emp => {
+				const workDays = emp.dailySchedule.filter(d => d.hours > 0).length;
+				const offDays = 7 - workDays;
+
+				const card = document.createElement('div');
+				card.className = 'summary-card';
+				card.innerHTML = `
+					<h4>${emp.name}</h4>
+					<div class="summary-stats">
+						<div class="summary-stat">
+							<span class="summary-label">Total Hours</span>
+							<span class="summary-value">${emp.totalHours}h</span>
+						</div>
+						<div class="summary-stat">
+							<span class="summary-label">Work Days</span>
+							<span class="summary-value">${workDays}</span>
+						</div>
+						<div class="summary-stat">
+							<span class="summary-label">Days Off</span>
+							<span class="summary-value">${offDays}</span>
+						</div>
+					</div>
+				`;
+				summaryCards.appendChild(card);
+			});
+		}
+
+		function formatDate(dateString) {
+			const date = new Date(dateString);
+			const options = { year: 'numeric', month: 'long', day: 'numeric' };
+			return date.toLocaleDateString('en-US', options);
+		}
+
+		function deleteRoster() {
+			if (confirm('Are you sure you want to delete this roster? This action cannot be undone.')) {
+				localStorage.removeItem('weeklyRoster');
+				localStorage.removeItem('weekStartDate');
+				alert('Roster has been deleted');
+				location.reload();
+			}
+		}
+
+		// Load roster on page load
+		window.onload = loadRoster;
+	</script>
+
+	<footer>
+		<p class="footer">
+			2025 GrillAndGo website. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
