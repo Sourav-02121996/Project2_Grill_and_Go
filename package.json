@@ -2,6 +2,7 @@
   "name": "project2_grill_and_go",
   "version": "1.0.0",
   "main": "server-dev.js",
+  "type": "module",
   "scripts": {
     "start": "node server-dev.js",
     "dev": "nodemon server-dev.js",
@@ -16,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sourav-02121996/Project2_Grill_and_Go.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sourav-02121996/Project2_Grill_and_Go/issues"
+  },
+  "homepage": "https://github.com/Sourav-02121996/Project2_Grill_and_Go#readme"
 }
