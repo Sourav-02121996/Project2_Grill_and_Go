@@ -1,0 +1,79 @@
+{
+  "signatureSandwiches": [
+    {
+      "id": "sandwich001",
+      "name": "Classic Turkey Club",
+      "description": "Fresh turkey, crispy bacon, lettuce, tomato, and mayo on toasted wheat bread",
+      "price": 8.99,
+      "category": "signature",
+      "image": "placeholder"
+    },
+    {
+      "id": "sandwich002",
+      "name": "Italian Supreme",
+      "description": "Salami, prosciutto, fresh mozzarella, basil, and balsamic glaze on Italian herb bread",
+      "price": 9.99,
+      "category": "signature",
+      "image": "placeholder"
+    },
+    {
+      "id": "sandwich003",
+      "name": "BBQ Chicken Delight",
+      "description": "Grilled chicken, BBQ sauce, cheddar cheese, red onions, and coleslaw on sourdough",
+      "price": 9.49,
+      "category": "signature",
+      "image": "placeholder"
+    },
+    {
+      "id": "sandwich004",
+      "name": "Veggie Supreme",
+      "description": "Grilled vegetables, hummus, avocado, sprouts, and balsamic on multigrain bread",
+      "price": 7.99,
+      "category": "signature",
+      "image": "placeholder"
+    },
+    {
+      "id": "sandwich005",
+      "name": "The Philly Special",
+      "description": "Sliced steak, sautéed peppers and onions, provolone cheese on a hoagie roll",
+      "price": 10.99,
+      "category": "signature",
+      "image": "placeholder"
+    },
+    {
+      "id": "sandwich006",
+      "name": "Classic BLT",
+      "description": "Crispy bacon, fresh lettuce, ripe tomatoes, and mayo on toasted white bread",
+      "price": 7.49,
+      "category": "signature",
+      "image": "placeholder"
+    }
+  ],
+  "combos": [
+    {
+      "id": "combo001",
+      "name": "Classic Combo",
+      "description": "Any signature sandwich + chips + drink",
+      "price": 11.99,
+      "category": "combo",
+      "image": "placeholder"
+    },
+    {
+      "id": "combo002",
+      "name": "Deluxe Combo",
+      "description": "Any signature sandwich + side salad + premium drink",
+      "price": 13.99,
+      "category": "combo",
+      "image": "placeholder"
+    },
+    {
+      "id": "combo003",
+      "name": "Family Pack",
+      "description": "4 sandwiches + 4 drinks + family size chips",
+      "price": 39.99,
+      "category": "combo",
+      "image": "placeholder"
+    }
+  ]
+}
+

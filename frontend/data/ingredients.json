@@ -1,0 +1,34 @@
+{
+  "bread": [
+    { "id": "bread001", "name": "White Bread", "price": 0 },
+    { "id": "bread002", "name": "Wheat Bread", "price": 0 },
+    { "id": "bread003", "name": "Italian Herb", "price": 0.50 },
+    { "id": "bread004", "name": "Sourdough", "price": 0.50 }
+  ],
+  "proteins": [
+    { "id": "protein001", "name": "Turkey", "price": 3.00 },
+    { "id": "protein002", "name": "Chicken", "price": 3.00 },
+    { "id": "protein003", "name": "Salami", "price": 3.50 },
+    { "id": "protein004", "name": "Bacon", "price": 2.50 },
+    { "id": "protein005", "name": "Prosciutto", "price": 4.00 },
+    { "id": "protein006", "name": "Pastrami", "price": 3.50 },
+    { "id": "protein007", "name": "Roasted Beef", "price": 4.00 },
+    { "id": "protein008", "name": "Honey Ham", "price": 3.00 }
+  ],
+  "veggies": [
+    { "id": "veggie001", "name": "Lettuce", "price": 0 },
+    { "id": "veggie002", "name": "Tomato", "price": 0 },
+    { "id": "veggie003", "name": "Onion", "price": 0 },
+    { "id": "veggie004", "name": "Pickles", "price": 0 },
+    { "id": "veggie005", "name": "Peppers", "price": 0.50 },
+    { "id": "veggie006", "name": "Olives", "price": 0.50 }
+  ],
+  "sauces": [
+    { "id": "sauce001", "name": "Mayo", "price": 0 },
+    { "id": "sauce002", "name": "Mustard", "price": 0 },
+    { "id": "sauce003", "name": "Ranch", "price": 0.25 },
+    { "id": "sauce004", "name": "Hot Sauce", "price": 0 },
+    { "id": "sauce005", "name": "BBQ Sauce", "price": 0.25 }
+  ]
+}
+
