@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Dashboard - GrillAndGo</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="../js/auth.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="../css/admin.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="../index.html" class="brand">
+      <img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
+    </a>
+    <ol class="navlist">
+      <li class="navitem"><a href="/staff/dashboard" class="navlink">Home</a></li>
+      <li class="navitem"><a href="../ReadyToOrder.html" class="navlink">Ready To Order</a></li>
+      <li class="navitem"><a href="../promotions.html" class="navlink">Promotions</a></li>
+    </ol>
+    <div class="signin-container">
+      <a href="/login" class="signin-btn">Sign In</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="admin-header">
+      <h1>Staff Dashboard</h1>
+      <p class="admin-welcome">Welcome! Review your shifts and announcements below.</p>
+    </header>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="card-icon">🗓️</div>
+        <h3>Upcoming Shifts</h3>
+        <p>Your next scheduled shifts for the week.</p>
+        <ul class="card-list">
+          <li>Monday - 10:00 AM to 4:00 PM</li>
+          <li>Wednesday - 12:00 PM to 8:00 PM</li>
+          <li>Friday - 9:00 AM to 3:00 PM</li>
+        </ul>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">📢</div>
+        <h3>Announcements</h3>
+        <p>Stay informed with the latest store updates.</p>
+        <ul class="card-list">
+          <li>Team meeting Tuesday at 9:30 AM.</li>
+          <li>Remember to log inventory before closing.</li>
+          <li>New seasonal menu items launch next week.</li>
+        </ul>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">🎓</div>
+        <h3>Training Resources</h3>
+        <p>Brush up on skills with quick refreshers.</p>
+        <ul class="card-list">
+          <li><a href="#">Food safety checklist</a></li>
+          <li><a href="#">Customer service tips</a></li>
+          <li><a href="#">POS quick start guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer">2025 GrillAndGo website. All rights reserved.</p>
+  </footer>
+</body>
+</html>

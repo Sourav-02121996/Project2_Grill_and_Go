@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Customer Login - GrillAndGo</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/auth.js" defer></script>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
 			<li class="navitem"><a href="promotions.html" class="navlink">Promotions</a></li> 
 		</ol>
 		<div class="signin-container">
-			<a href="login.html" class="signin-btn">Sign In</a>
+			<a href="/login" class="signin-btn">Sign In</a>
 		</div>
 	</nav>
 
@@ -144,8 +145,11 @@
 
 		const params = new URLSearchParams(window.location.search);
 		const error = params.get('error');
+		const status = params.get('status');
 
-		if (error === 'missing') {
+		if (status === 'loggedout') {
+			showError('You have been logged out.');
+		} else if (error === 'missing') {
 			showError('Please enter both email and password.');
 		} else if (error === 'invalid') {
 			showError('Email or password is invalid.');

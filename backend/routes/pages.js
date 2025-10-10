@@ -5,11 +5,57 @@ import { getDb } from '../db/mongoClient.js';
 
 const normalizeEmail = (email) => email.trim().toLowerCase();
 
+const AUTH_STORAGE_KEY = 'grillandgo.auth';
+
 const createPagesRouter = (frontendDir) => {
   const router = express.Router();
 
   const sendFrontendFile = (res, relativePath) => {
     res.sendFile(path.join(frontendDir, relativePath));
+  };
+
+  const sendAuthScriptResponse = (res, payload, redirectPath) => {
+    res.type('html').send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting…</title>
+</head>
+<body>
+  <script>
+    (function () {
+      try {
+        localStorage.setItem(${JSON.stringify(AUTH_STORAGE_KEY)}, ${JSON.stringify(JSON.stringify(payload))});
+      } catch (error) {
+        console.error('Failed to persist auth info', error);
+      }
+      window.location.replace(${JSON.stringify(redirectPath)});
+    })();
+  </script>
+</body>
+</html>`);
+  };
+
+  const sendLogoutScriptResponse = (res) => {
+    res.type('html').send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logging out…</title>
+</head>
+<body>
+  <script>
+    (function () {
+      try {
+        localStorage.removeItem(${JSON.stringify(AUTH_STORAGE_KEY)});
+      } catch (error) {
+        console.error('Failed to clear auth info', error);
+      }
+      window.location.replace('/login?status=loggedout');
+    })();
+  </script>
+</body>
+</html>`);
   };
 
   router.get('/', (_req, res) => {
@@ -48,16 +94,22 @@ const createPagesRouter = (frontendDir) => {
       }
 
       const role = (employee.role ?? '').toLowerCase();
+      const redirectPath = role === 'admin' ? '/admin/dashboard' : '/staff/dashboard';
 
-      if (role === 'admin') {
-        res.redirect('/admin/dashboard');
-        return;
-      }
+      const payload = {
+        email: normalizedEmail,
+        role,
+        name: employee.name ?? [employee.firstName, employee.lastName].filter(Boolean).join(' '),
+      };
 
-      res.redirect('/staff/dashboard');
+      sendAuthScriptResponse(res, payload, redirectPath);
     } catch (error) {
       next(error);
     }
+  });
+
+  router.get('/auth/logout', (_req, res) => {
+    sendLogoutScriptResponse(res);
   });
 
   router.get('/admin/dashboard', (_req, res) => {
