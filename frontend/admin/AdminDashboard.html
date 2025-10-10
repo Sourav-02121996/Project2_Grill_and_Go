@@ -1,153 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin Dashboard - GrillAndGo</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../css/admin.css">
-</head>
-<body>
-	<nav class="navbar">
-		<a href="../index.html" class="brand">
-			<img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-		</a>
-		<ol class="navlist">
-			<li class="navitem"><a href="../index.html#Menu" class="navlink">Home</a></li>
-			<li class="navitem"><a href="../ReadyToOrder.html" class="navlink">Sandwiches</a></li>
-			<li class="navitem"><a href="../beverages.html" class="navlink">Beverages</a></li>
-			<li class="navitem"><a href="../promotions.html" class="navlink">Promotions</a></li> 
-		</ol>
-		<div class="signin-container">
-			<a href="../login.html" class="signin-btn">Sign In</a>
-		</div>
-	</nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard - GrillAndGo</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html" class="brand">
+        <img
+          src="../images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="../index.html#Menu" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="../ReadyToOrder.html" class="navlink">Sandwiches</a>
+        </li>
+        <li class="navitem">
+          <a href="../beverages.html" class="navlink">Beverages</a>
+        </li>
+      </ol>
+      <div class="nav-actions">
+        <a href="../cart.html" class="cart-btn">
+          🛒 Your Cart <span id="cart-count" class="cart-count">0</span>
+        </a>
+        <a href="../login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
+    <script src="../js/cart.js"></script>
 
-	<main class="container">
-		<div class="admin-header">
-			<h1>Admin Dashboard</h1>
-			<p class="admin-welcome">Welcome back, Admin! Manage your restaurant operations below.</p>
-		</div>
+    <main class="container">
+      <div class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <p class="admin-welcome">
+          Welcome back, Admin! Manage your restaurant operations below.
+        </p>
+      </div>
 
-		<div class="dashboard-grid">
-			<!-- Card 1: Order List -->
-			<div class="dashboard-card">
-				<div class="card-icon">📋</div>
-				<h3>Order List</h3>
-				<p>View and manage current orders</p>
-				<div class="card-stats">
-					<span class="stat-number">12</span>
-					<span class="stat-label">Active Orders</span>
-				</div>
-				<a href="OrderList.html"><button class="card-btn">View Orders</button></a>
-			</div>
+      <div class="dashboard-grid">
+        <!-- Card 1: Order List -->
+        <div class="dashboard-card">
+          <div class="card-icon">📋</div>
+          <h3>Order List</h3>
+          <p>View and manage current orders</p>
+          <div class="card-stats">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Active Orders</span>
+          </div>
+          <a href="OrderList.html"
+            ><button class="card-btn">View Orders</button></a
+          >
+        </div>
 
-			<!-- Card 2: Roster Summary -->
-			<div class="dashboard-card">
-				<div class="card-icon">👥</div>
-				<h3>Roster Summary</h3>
-				<p>Overview of employee schedules</p>
-				<div class="card-stats">
-					<span class="stat-number">8</span>
-					<span class="stat-label">Staff On Duty</span>
-				</div>
-				<a href="ViewRoster.html"><button class="card-btn">View Roster</button></a>
-			</div>
+        <!-- Card 2: Roster Summary -->
+        <div class="dashboard-card">
+          <div class="card-icon">👥</div>
+          <h3>Roster Summary</h3>
+          <p>Overview of employee schedules</p>
+          <div class="card-stats">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Staff On Duty</span>
+          </div>
+          <a href="ViewRoster.html"
+            ><button class="card-btn">View Roster</button></a
+          >
+        </div>
 
-			<!-- Card 3: Staff Announcements -->
-			<div class="dashboard-card">
-				<div class="card-icon">📢</div>
-				<h3>Announcements</h3>
-				<p>Post updates for your staff</p>
-				<div class="card-stats">
-					<span class="stat-number">3</span>
-					<span class="stat-label">Active Announcements</span>
-				</div>
-				<button class="card-btn">Manage Announcements</button>
-			</div>
+        <!-- Card 3: Staff Announcements -->
+        <div class="dashboard-card">
+          <div class="card-icon">📢</div>
+          <h3>Announcements</h3>
+          <p>Post updates for your staff</p>
+          <div class="card-stats">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Active Announcements</span>
+          </div>
+          <button class="card-btn">Manage Announcements</button>
+        </div>
 
-			<!-- Card 4: Create Roster -->
-			<div class="dashboard-card">
-				<div class="card-icon">📅</div>
-				<h3>Create Roster</h3>
-				<p>Assign shifts to employees</p>
-				<div class="card-stats">
-					<span class="stat-number">5</span>
-					<span class="stat-label">Shifts This Week</span>
-				</div>
-				<a href="CreateRoster.html"><button class="card-btn">Create Schedule</button></a>
-			</div>
+        <!-- Card 4: Create Roster -->
+        <div class="dashboard-card">
+          <div class="card-icon">📅</div>
+          <h3>Create Roster</h3>
+          <p>Assign shifts to employees</p>
+          <div class="card-stats">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Shifts This Week</span>
+          </div>
+          <a href="CreateRoster.html"
+            ><button class="card-btn">Create Schedule</button></a
+          >
+        </div>
 
-			<!-- Card 5: Manage Employees -->
-			<div class="dashboard-card">
-				<div class="card-icon">👤</div>
-				<h3>Manage Employees</h3>
-				<p>Add or remove staff members</p>
-				<div class="card-stats">
-					<span class="stat-number">15</span>
-					<span class="stat-label">Total Employees</span>
-				</div>
-				<a href="ManageEmployees.html"><button class="card-btn">Manage Staff</button></a>
-			</div>
-		</div>
+        <!-- Card 5: Manage Employees -->
+        <div class="dashboard-card">
+          <div class="card-icon">👤</div>
+          <h3>Manage Employees</h3>
+          <p>Add or remove staff members</p>
+          <div class="card-stats">
+            <span class="stat-number">15</span>
+            <span class="stat-label">Total Employees</span>
+          </div>
+          <a href="ManageEmployees.html"
+            ><button class="card-btn">Manage Staff</button></a
+          >
+        </div>
+      </div>
 
-		<!-- Quick Stats Section -->
-		<div class="quick-stats">
-			<h2>Quick Stats</h2>
-			<div class="stats-row">
-				<div class="stat-box">
-					<span class="stat-title">Today's Revenue</span>
-					<span class="stat-value">$1,247</span>
-				</div>
-				<div class="stat-box">
-					<span class="stat-title">Orders Completed</span>
-					<span class="stat-value">48</span>
-				</div>
-				<div class="stat-box">
-					<span class="stat-title">Pending Orders</span>
-					<span class="stat-value">12</span>
-				</div>
-				<div class="stat-box">
-					<span class="stat-title">Staff Present</span>
-					<span class="stat-value">8/15</span>
-				</div>
-			</div>
-		</div>
-	</main>
+      <!-- Quick Stats Section -->
+      <div class="quick-stats">
+        <h2>Quick Stats</h2>
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-title">Today's Revenue</span>
+            <span class="stat-value">$1,247</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-title">Orders Completed</span>
+            <span class="stat-value">48</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-title">Pending Orders</span>
+            <span class="stat-value">12</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-title">Staff Present</span>
+            <span class="stat-value">8/15</span>
+          </div>
+        </div>
+      </div>
+    </main>
 
-	<footer>
-		<div class="footer-content">
-			<div class="footer-section">
-				<h3 class="footer-logo">Grill & Go</h3>
-				<p class="footer-description">Fresh, delicious sandwiches and beverages made just for you.</p>
-			</div>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
 
-			<div class="footer-section">
-				<h3>Quick Links</h3>
-				<a href="../ReadyToOrder.html">Sandwiches</a>
-				<a href="../beverages.html">Beverages</a>
-				<a href="../promotions.html">Promotions</a>
-				<a href="../login.html">Sign In</a>
-			</div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="../ReadyToOrder.html">Sandwiches</a>
+          <a href="../beverages.html">Beverages</a>
+          <a href="../login.html">Sign In</a>
+        </div>
 
-			<div class="footer-section">
-				<h3>Contact</h3>
-				<p>📞 (555) 474-5546</p>
-				<p>📍 123 Main Street<br>New York, NY 10001</p>
-				<p>✉️ info@grillandgo.com</p>
-			</div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
 
-			<div class="footer-section">
-				<h3>Hours</h3>
-				<p>Monday - Saturday<br>9:00 AM - 9:00 PM</p>
-				<p>Sunday<br>10:00 AM - 8:00 PM</p>
-			</div>
-		</div>
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
 
-		<div class="footer-bottom">
-			<p>© 2025 GrillAndGo. All rights reserved.</p>
-		</div>
-	</footer>
-</body>
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
-

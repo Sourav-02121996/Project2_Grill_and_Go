@@ -1,261 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Order List - GrillAndGo Admin</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../css/orderlist.css">
-</head>
-<body>
-	<nav class="navbar">
-		<a href="../index.html" class="brand">
-			<img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-		</a>
-		<ol class="navlist">
-			<li class="navitem"><a href="../index.html" class="navlink">Home</a></li>
-			<li class="navitem"><a href="AdminDashboard.html" class="navlink">Dashboard</a></li>
-			<li class="navitem"><a href="OrderList.html" class="navlink">Orders</a></li>
-		</ol>
-		<div class="signin-container">
-			<a href="../login.html" class="signin-btn">Sign In</a>
-		</div>
-	</nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order List - GrillAndGo Admin</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/orderlist.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html" class="brand">
+        <img
+          src="../images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="../index.html" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="AdminDashboard.html" class="navlink">Dashboard</a>
+        </li>
+        <li class="navitem">
+          <a href="OrderList.html" class="navlink">Orders</a>
+        </li>
+      </ol>
+      <div class="signin-container">
+        <a href="../login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
 
-	<main class="container">
-		<div class="page-header">
-			<h1>Order Management</h1>
-			<div class="header-actions">
-				<a href="AdminDashboard.html" class="btn-back">← Back to Dashboard</a>
-			</div>
-		</div>
+    <main class="container">
+      <div class="page-header">
+        <h1>Order Management</h1>
+        <div class="header-actions">
+          <a href="AdminDashboard.html" class="btn-back">← Back to Dashboard</a>
+        </div>
+      </div>
 
-		<!-- Order Tabs -->
-		<div class="order-tabs">
-			<button class="order-tab active" onclick="showOrders('active')">Active Orders (12)</button>
-			<button class="order-tab" onclick="showOrders('completed')">Completed Orders (48)</button>
-		</div>
+      <!-- Order Tabs -->
+      <div class="order-tabs">
+        <button class="order-tab active" onclick="showOrders('active')">
+          Active Orders (12)
+        </button>
+        <button class="order-tab" onclick="showOrders('completed')">
+          Completed Orders (48)
+        </button>
+      </div>
 
-		<!-- Active Orders Section -->
-		<div id="active-orders" class="orders-section">
-			<h2>Active Orders</h2>
-			
-			<!-- Order Card 1 -->
-			<div class="order-card active-order">
-				<div class="order-header">
-					<div class="order-info">
-						<span class="order-id">#ORD-1234</span>
-						<span class="order-time">10 mins ago</span>
-					</div>
-					<span class="order-status status-pending">Pending</span>
-				</div>
-				<div class="order-body">
-					<div class="customer-info">
-						<strong>Customer:</strong> John Doe<br>
-						<strong>Phone:</strong> (555) 123-4567
-					</div>
-					<div class="order-items">
-						<div class="item">1x Classic Turkey Club - $8.99</div>
-						<div class="item">1x BBQ Chicken Delight - $9.49</div>
-						<div class="item">1x Chips - $2.99</div>
-					</div>
-					<div class="order-total">
-						<strong>Total: $21.47</strong>
-					</div>
-				</div>
-				<div class="order-actions">
-					<button class="btn-action btn-confirm">Mark as Complete</button>
-					<button class="btn-action btn-cancel">Cancel Order</button>
-				</div>
-			</div>
+      <!-- Active Orders Section -->
+      <div id="active-orders" class="orders-section">
+        <h2>Active Orders</h2>
 
-			<!-- Order Card 2 -->
-			<div class="order-card active-order">
-				<div class="order-header">
-					<div class="order-info">
-						<span class="order-id">#ORD-1235</span>
-						<span class="order-time">15 mins ago</span>
-					</div>
-					<span class="order-status status-preparing">Preparing</span>
-				</div>
-				<div class="order-body">
-					<div class="customer-info">
-						<strong>Customer:</strong> Sarah Smith<br>
-						<strong>Phone:</strong> (555) 987-6543
-					</div>
-					<div class="order-items">
-						<div class="item">2x Italian Supreme - $19.98</div>
-						<div class="item">1x Veggie Supreme - $7.99</div>
-					</div>
-					<div class="order-total">
-						<strong>Total: $27.97</strong>
-					</div>
-				</div>
-				<div class="order-actions">
-					<button class="btn-action btn-confirm">Mark as Complete</button>
-					<button class="btn-action btn-cancel">Cancel Order</button>
-				</div>
-			</div>
+        <!-- Order Card 1 -->
+        <div class="order-card active-order">
+          <div class="order-header">
+            <div class="order-info">
+              <span class="order-id">#ORD-1234</span>
+              <span class="order-time">10 mins ago</span>
+            </div>
+            <span class="order-status status-pending">Pending</span>
+          </div>
+          <div class="order-body">
+            <div class="customer-info">
+              <strong>Customer:</strong> John Doe<br />
+              <strong>Phone:</strong> (555) 123-4567
+            </div>
+            <div class="order-items">
+              <div class="item">1x Classic Turkey Club - $8.99</div>
+              <div class="item">1x BBQ Chicken Delight - $9.49</div>
+              <div class="item">1x Chips - $2.99</div>
+            </div>
+            <div class="order-total">
+              <strong>Total: $21.47</strong>
+            </div>
+          </div>
+          <div class="order-actions">
+            <button class="btn-action btn-confirm">Mark as Complete</button>
+            <button class="btn-action btn-cancel">Cancel Order</button>
+          </div>
+        </div>
 
-			<!-- Order Card 3 -->
-			<div class="order-card active-order">
-				<div class="order-header">
-					<div class="order-info">
-						<span class="order-id">#ORD-1236</span>
-						<span class="order-time">22 mins ago</span>
-					</div>
-					<span class="order-status status-ready">Ready for Pickup</span>
-				</div>
-				<div class="order-body">
-					<div class="customer-info">
-						<strong>Customer:</strong> Mike Johnson<br>
-						<strong>Phone:</strong> (555) 456-7890
-					</div>
-					<div class="order-items">
-						<div class="item">1x The Philly Special - $10.99</div>
-						<div class="item">1x Classic BLT - $7.49</div>
-					</div>
-					<div class="order-total">
-						<strong>Total: $18.48</strong>
-					</div>
-				</div>
-				<div class="order-actions">
-					<button class="btn-action btn-confirm">Mark as Complete</button>
-					<button class="btn-action btn-cancel">Cancel Order</button>
-				</div>
-			</div>
-		</div>
+        <!-- Order Card 2 -->
+        <div class="order-card active-order">
+          <div class="order-header">
+            <div class="order-info">
+              <span class="order-id">#ORD-1235</span>
+              <span class="order-time">15 mins ago</span>
+            </div>
+            <span class="order-status status-preparing">Preparing</span>
+          </div>
+          <div class="order-body">
+            <div class="customer-info">
+              <strong>Customer:</strong> Sarah Smith<br />
+              <strong>Phone:</strong> (555) 987-6543
+            </div>
+            <div class="order-items">
+              <div class="item">2x Italian Supreme - $19.98</div>
+              <div class="item">1x Veggie Supreme - $7.99</div>
+            </div>
+            <div class="order-total">
+              <strong>Total: $27.97</strong>
+            </div>
+          </div>
+          <div class="order-actions">
+            <button class="btn-action btn-confirm">Mark as Complete</button>
+            <button class="btn-action btn-cancel">Cancel Order</button>
+          </div>
+        </div>
 
-		<!-- Completed Orders Section -->
-		<div id="completed-orders" class="orders-section" style="display: none;">
-			<h2>Completed Orders</h2>
-			
-			<!-- Completed Order 1 -->
-			<div class="order-card completed-order">
-				<div class="order-header">
-					<div class="order-info">
-						<span class="order-id">#ORD-1200</span>
-						<span class="order-time">2 hours ago</span>
-					</div>
-					<span class="order-status status-completed">Completed</span>
-				</div>
-				<div class="order-body">
-					<div class="customer-info">
-						<strong>Customer:</strong> Emily Davis<br>
-						<strong>Phone:</strong> (555) 222-3333
-					</div>
-					<div class="order-items">
-						<div class="item">1x Classic Turkey Club - $8.99</div>
-						<div class="item">1x Chips - $2.99</div>
-					</div>
-					<div class="order-total">
-						<strong>Total: $11.98</strong>
-					</div>
-				</div>
-			</div>
+        <!-- Order Card 3 -->
+        <div class="order-card active-order">
+          <div class="order-header">
+            <div class="order-info">
+              <span class="order-id">#ORD-1236</span>
+              <span class="order-time">22 mins ago</span>
+            </div>
+            <span class="order-status status-ready">Ready for Pickup</span>
+          </div>
+          <div class="order-body">
+            <div class="customer-info">
+              <strong>Customer:</strong> Mike Johnson<br />
+              <strong>Phone:</strong> (555) 456-7890
+            </div>
+            <div class="order-items">
+              <div class="item">1x The Philly Special - $10.99</div>
+              <div class="item">1x Classic BLT - $7.49</div>
+            </div>
+            <div class="order-total">
+              <strong>Total: $18.48</strong>
+            </div>
+          </div>
+          <div class="order-actions">
+            <button class="btn-action btn-confirm">Mark as Complete</button>
+            <button class="btn-action btn-cancel">Cancel Order</button>
+          </div>
+        </div>
+      </div>
 
-			<!-- Completed Order 2 -->
-			<div class="order-card completed-order">
-				<div class="order-header">
-					<div class="order-info">
-						<span class="order-id">#ORD-1199</span>
-						<span class="order-time">3 hours ago</span>
-					</div>
-					<span class="order-status status-completed">Completed</span>
-				</div>
-				<div class="order-body">
-					<div class="customer-info">
-						<strong>Customer:</strong> Robert Brown<br>
-						<strong>Phone:</strong> (555) 444-5555
-					</div>
-					<div class="order-items">
-						<div class="item">3x BBQ Chicken Delight - $28.47</div>
-						<div class="item">2x Veggie Supreme - $15.98</div>
-					</div>
-					<div class="order-total">
-						<strong>Total: $44.45</strong>
-					</div>
-				</div>
-			</div>
+      <!-- Completed Orders Section -->
+      <div id="completed-orders" class="orders-section" style="display: none">
+        <h2>Completed Orders</h2>
 
-			<!-- Completed Order 3 -->
-			<div class="order-card completed-order">
-				<div class="order-header">
-					<div class="order-info">
-						<span class="order-id">#ORD-1198</span>
-						<span class="order-time">4 hours ago</span>
-					</div>
-					<span class="order-status status-completed">Completed</span>
-				</div>
-				<div class="order-body">
-					<div class="customer-info">
-						<strong>Customer:</strong> Lisa Wilson<br>
-						<strong>Phone:</strong> (555) 666-7777
-					</div>
-					<div class="order-items">
-						<div class="item">1x Italian Supreme - $9.99</div>
-					</div>
-					<div class="order-total">
-						<strong>Total: $9.99</strong>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+        <!-- Completed Order 1 -->
+        <div class="order-card completed-order">
+          <div class="order-header">
+            <div class="order-info">
+              <span class="order-id">#ORD-1200</span>
+              <span class="order-time">2 hours ago</span>
+            </div>
+            <span class="order-status status-completed">Completed</span>
+          </div>
+          <div class="order-body">
+            <div class="customer-info">
+              <strong>Customer:</strong> Emily Davis<br />
+              <strong>Phone:</strong> (555) 222-3333
+            </div>
+            <div class="order-items">
+              <div class="item">1x Classic Turkey Club - $8.99</div>
+              <div class="item">1x Chips - $2.99</div>
+            </div>
+            <div class="order-total">
+              <strong>Total: $11.98</strong>
+            </div>
+          </div>
+        </div>
 
-	<script>
-		function showOrders(type) {
-			const activeSection = document.getElementById('active-orders');
-			const completedSection = document.getElementById('completed-orders');
-			const tabs = document.querySelectorAll('.order-tab');
+        <!-- Completed Order 2 -->
+        <div class="order-card completed-order">
+          <div class="order-header">
+            <div class="order-info">
+              <span class="order-id">#ORD-1199</span>
+              <span class="order-time">3 hours ago</span>
+            </div>
+            <span class="order-status status-completed">Completed</span>
+          </div>
+          <div class="order-body">
+            <div class="customer-info">
+              <strong>Customer:</strong> Robert Brown<br />
+              <strong>Phone:</strong> (555) 444-5555
+            </div>
+            <div class="order-items">
+              <div class="item">3x BBQ Chicken Delight - $28.47</div>
+              <div class="item">2x Veggie Supreme - $15.98</div>
+            </div>
+            <div class="order-total">
+              <strong>Total: $44.45</strong>
+            </div>
+          </div>
+        </div>
 
-			if (type === 'active') {
-				activeSection.style.display = 'block';
-				completedSection.style.display = 'none';
-				tabs[0].classList.add('active');
-				tabs[1].classList.remove('active');
-			} else {
-				activeSection.style.display = 'none';
-				completedSection.style.display = 'block';
-				tabs[0].classList.remove('active');
-				tabs[1].classList.add('active');
-			}
-		}
-	</script>
+        <!-- Completed Order 3 -->
+        <div class="order-card completed-order">
+          <div class="order-header">
+            <div class="order-info">
+              <span class="order-id">#ORD-1198</span>
+              <span class="order-time">4 hours ago</span>
+            </div>
+            <span class="order-status status-completed">Completed</span>
+          </div>
+          <div class="order-body">
+            <div class="customer-info">
+              <strong>Customer:</strong> Lisa Wilson<br />
+              <strong>Phone:</strong> (555) 666-7777
+            </div>
+            <div class="order-items">
+              <div class="item">1x Italian Supreme - $9.99</div>
+            </div>
+            <div class="order-total">
+              <strong>Total: $9.99</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
-	<footer>
-		<div class="footer-content">
-			<div class="footer-section">
-				<h3 class="footer-logo">Grill & Go</h3>
-				<p class="footer-description">Fresh, delicious sandwiches and beverages made just for you.</p>
-			</div>
+    <script src="../js/admin/orderList.js"></script>
 
-			<div class="footer-section">
-				<h3>Quick Links</h3>
-				<a href="../ReadyToOrder.html">Sandwiches</a>
-				<a href="../beverages.html">Beverages</a>
-				<a href="../promotions.html">Promotions</a>
-				<a href="../login.html">Sign In</a>
-			</div>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
 
-			<div class="footer-section">
-				<h3>Contact</h3>
-				<p>📞 (555) 474-5546</p>
-				<p>📍 123 Main Street<br>New York, NY 10001</p>
-				<p>✉️ info@grillandgo.com</p>
-			</div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="../ReadyToOrder.html">Sandwiches</a>
+          <a href="../beverages.html">Beverages</a>
+          <a href="../login.html">Sign In</a>
+        </div>
 
-			<div class="footer-section">
-				<h3>Hours</h3>
-				<p>Monday - Saturday<br>9:00 AM - 9:00 PM</p>
-				<p>Sunday<br>10:00 AM - 8:00 PM</p>
-			</div>
-		</div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
 
-		<div class="footer-bottom">
-			<p>© 2025 GrillAndGo. All rights reserved.</p>
-		</div>
-	</footer>
-</body>
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
-

@@ -5,16 +5,16 @@
  */
 
 // Base path for data files
-const DATA_PATH = '../data/';
+const DATA_PATH = "../data/";
 
 // Load employees data
 async function loadEmployees() {
   try {
-    const response = await fetch(DATA_PATH + 'employees.json');
+    const response = await fetch(DATA_PATH + "employees.json");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error loading employees:', error);
+    console.error("Error loading employees:", error);
     return [];
   }
 }
@@ -22,11 +22,11 @@ async function loadEmployees() {
 // Load orders data
 async function loadOrders() {
   try {
-    const response = await fetch(DATA_PATH + 'orders.json');
+    const response = await fetch(DATA_PATH + "orders.json");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error loading orders:', error);
+    console.error("Error loading orders:", error);
     return { activeOrders: [], completedOrders: [] };
   }
 }
@@ -34,11 +34,11 @@ async function loadOrders() {
 // Load menu items
 async function loadMenuItems() {
   try {
-    const response = await fetch(DATA_PATH + 'menu-items.json');
+    const response = await fetch(DATA_PATH + "menu-items.json");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error loading menu items:', error);
+    console.error("Error loading menu items:", error);
     return { signatureSandwiches: [], combos: [] };
   }
 }
@@ -46,11 +46,11 @@ async function loadMenuItems() {
 // Load ingredients for customization
 async function loadIngredients() {
   try {
-    const response = await fetch(DATA_PATH + 'ingredients.json');
+    const response = await fetch(DATA_PATH + "ingredients.json");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error loading ingredients:', error);
+    console.error("Error loading ingredients:", error);
     return { bread: [], proteins: [], veggies: [], sauces: [] };
   }
 }
@@ -58,11 +58,11 @@ async function loadIngredients() {
 // Load dashboard statistics
 async function loadDashboardStats() {
   try {
-    const response = await fetch(DATA_PATH + 'dashboard-stats.json');
+    const response = await fetch(DATA_PATH + "dashboard-stats.json");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error loading dashboard stats:', error);
+    console.error("Error loading dashboard stats:", error);
     return {};
   }
 }
@@ -70,11 +70,11 @@ async function loadDashboardStats() {
 // Load promotions
 async function loadPromotions() {
   try {
-    const response = await fetch(DATA_PATH + 'promotions.json');
+    const response = await fetch(DATA_PATH + "promotions.json");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error loading promotions:', error);
+    console.error("Error loading promotions:", error);
     return { todayOnly: [], studentOffers: [] };
   }
 }
@@ -85,4 +85,3 @@ async function loadPromotions() {
 //   const response = await fetch('/api/employees');
 //   return await response.json();
 // }
-
