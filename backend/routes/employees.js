@@ -22,7 +22,7 @@ const formatEmployee = (doc) => {
 router.get('/', async (_req, res, next) => {
   try {
     const db = await getDb();
-    const employees = await db.collection('Employees').find({}).toArray();
+    const employees = await db.collection('employees').find({}).toArray();
     res.json({ success: true, employees: employees.map(formatEmployee) });
   } catch (error) {
     next(error);
@@ -41,7 +41,7 @@ router.get('/:employeeId', async (req, res, next) => {
       query = { id: employeeId };
     }
 
-    const employee = await db.collection('Employees').findOne(query);
+    const employee = await db.collection('employees').findOne(query);
     if (!employee) {
       res.status(404).json({ success: false, message: 'Employee not found.' });
       return;
