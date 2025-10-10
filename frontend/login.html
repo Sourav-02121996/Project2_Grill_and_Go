@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Customer Login - GrillAndGo</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/auth.js" defer></script>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
 			<li class="navitem"><a href="promotions.html" class="navlink">Promotions</a></li> 
 		</ol>
 		<div class="signin-container">
-			<a href="login.html" class="signin-btn">Sign In</a>
+			<a href="/login" class="signin-btn">Sign In</a>
 		</div>
 	</nav>
 
@@ -35,7 +36,7 @@
 				<h2>Welcome Back!</h2>
 				<p class="auth-subtitle">Login to your account</p>
 				
-				<form>
+				<form action="/login" method="post" id="login-form">
 					<div class="form-group">
 						<label for="login-email" class="form-label">Email Address</label>
 						<input type="email" id="login-email" name="email" required class="form-input" placeholder="you@example.com">
@@ -51,6 +52,8 @@
 							<input type="checkbox" name="remember"> Remember me
 						</label>
 					</div>
+					
+					<p id="login-error" class="error-message" style="display: none;"></p>
 					
 					<button type="submit" class="btn-auth">Login</button>
 					
@@ -123,6 +126,43 @@
 			tabs[0].classList.remove('active');
 			tabs[1].classList.add('active');
 		}
+
+		const loginForm = document.getElementById('login-form');
+		const loginEmail = document.getElementById('login-email');
+		const loginPassword = document.getElementById('login-password');
+		const loginError = document.getElementById('login-error');
+
+		const showError = (message) => {
+			if (!loginError) return;
+			if (message) {
+				loginError.textContent = message;
+				loginError.style.display = 'block';
+			} else {
+				loginError.textContent = '';
+				loginError.style.display = 'none';
+			}
+		};
+
+		const params = new URLSearchParams(window.location.search);
+		const error = params.get('error');
+		const status = params.get('status');
+
+		if (status === 'loggedout') {
+			showError('You have been logged out.');
+		} else if (error === 'missing') {
+			showError('Please enter both email and password.');
+		} else if (error === 'invalid') {
+			showError('Email or password is invalid.');
+		}
+
+		loginForm?.addEventListener('submit', (event) => {
+			if (!loginEmail.value.trim() || !loginPassword.value.trim()) {
+				event.preventDefault();
+				showError('Please enter both email and password.');
+			} else {
+				showError('');
+			}
+		});
 	</script>
 
 	<footer>
@@ -160,4 +200,3 @@
 	</footer>
 </body>
 </html>
-

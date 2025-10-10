@@ -172,6 +172,12 @@
   text-decoration: underline;
 }
 
+.error-message {
+  color: #b00020;
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .auth-container {
@@ -191,4 +197,3 @@
     max-width: 100%;
   }
 }
-
