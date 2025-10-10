@@ -1,0 +1,91 @@
+{
+  "activeOrders": [
+    {
+      "id": "ORD-1234",
+      "customer": {
+        "name": "John Doe",
+        "phone": "(555) 123-4567"
+      },
+      "items": [
+        { "name": "Classic Turkey Club", "quantity": 1, "price": 8.99 },
+        { "name": "BBQ Chicken Delight", "quantity": 1, "price": 9.49 },
+        { "name": "Chips", "quantity": 1, "price": 2.99 }
+      ],
+      "total": 21.47,
+      "status": "pending",
+      "time": "10 mins ago"
+    },
+    {
+      "id": "ORD-1235",
+      "customer": {
+        "name": "Sarah Smith",
+        "phone": "(555) 987-6543"
+      },
+      "items": [
+        { "name": "Italian Supreme", "quantity": 2, "price": 19.98 },
+        { "name": "Veggie Supreme", "quantity": 1, "price": 7.99 }
+      ],
+      "total": 27.97,
+      "status": "preparing",
+      "time": "15 mins ago"
+    },
+    {
+      "id": "ORD-1236",
+      "customer": {
+        "name": "Mike Johnson",
+        "phone": "(555) 456-7890"
+      },
+      "items": [
+        { "name": "The Philly Special", "quantity": 1, "price": 10.99 },
+        { "name": "Classic BLT", "quantity": 1, "price": 7.49 }
+      ],
+      "total": 18.48,
+      "status": "ready",
+      "time": "22 mins ago"
+    }
+  ],
+  "completedOrders": [
+    {
+      "id": "ORD-1200",
+      "customer": {
+        "name": "Emily Davis",
+        "phone": "(555) 222-3333"
+      },
+      "items": [
+        { "name": "Classic Turkey Club", "quantity": 1, "price": 8.99 },
+        { "name": "Chips", "quantity": 1, "price": 2.99 }
+      ],
+      "total": 11.98,
+      "status": "completed",
+      "time": "2 hours ago"
+    },
+    {
+      "id": "ORD-1199",
+      "customer": {
+        "name": "Robert Brown",
+        "phone": "(555) 444-5555"
+      },
+      "items": [
+        { "name": "BBQ Chicken Delight", "quantity": 3, "price": 28.47 },
+        { "name": "Veggie Supreme", "quantity": 2, "price": 15.98 }
+      ],
+      "total": 44.45,
+      "status": "completed",
+      "time": "3 hours ago"
+    },
+    {
+      "id": "ORD-1198",
+      "customer": {
+        "name": "Lisa Wilson",
+        "phone": "(555) 666-7777"
+      },
+      "items": [
+        { "name": "Italian Supreme", "quantity": 1, "price": 9.99 }
+      ],
+      "total": 9.99,
+      "status": "completed",
+      "time": "4 hours ago"
+    }
+  ]
+}
+

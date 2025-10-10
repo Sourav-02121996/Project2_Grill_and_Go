@@ -1,0 +1,57 @@
+[
+  {
+    "id": "emp001",
+    "name": "John Smith",
+    "email": "john.smith@grillandgo.com",
+    "phone": "(555) 123-4567",
+    "role": "admin",
+    "avatar": "👨‍💼",
+    "joinedDate": "2024-01-15"
+  },
+  {
+    "id": "emp002",
+    "name": "Sarah Johnson",
+    "email": "sarah.j@grillandgo.com",
+    "phone": "(555) 234-5678",
+    "role": "staff",
+    "avatar": "👩",
+    "joinedDate": "2024-02-20"
+  },
+  {
+    "id": "emp003",
+    "name": "Mike Davis",
+    "email": "mike.d@grillandgo.com",
+    "phone": "(555) 345-6789",
+    "role": "staff",
+    "avatar": "👨",
+    "joinedDate": "2024-03-10"
+  },
+  {
+    "id": "emp004",
+    "name": "Emily Wilson",
+    "email": "emily.w@grillandgo.com",
+    "phone": "(555) 456-7890",
+    "role": "admin",
+    "avatar": "👩‍💼",
+    "joinedDate": "2024-01-25"
+  },
+  {
+    "id": "emp005",
+    "name": "Robert Brown",
+    "email": "robert.b@grillandgo.com",
+    "phone": "(555) 567-8901",
+    "role": "staff",
+    "avatar": "👨",
+    "joinedDate": "2024-04-05"
+  },
+  {
+    "id": "emp006",
+    "name": "Lisa Anderson",
+    "email": "lisa.a@grillandgo.com",
+    "phone": "(555) 678-9012",
+    "role": "staff",
+    "avatar": "👩",
+    "joinedDate": "2024-04-15"
+  }
+]
+

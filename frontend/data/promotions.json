@@ -1,0 +1,49 @@
+{
+  "todayOnly": [
+    {
+      "id": "promo001",
+      "title": "Deal Title",
+      "description": "Deal description goes here",
+      "category": "today-only",
+      "image": "placeholder"
+    },
+    {
+      "id": "promo002",
+      "title": "Deal Title",
+      "description": "Deal description goes here",
+      "category": "today-only",
+      "image": "placeholder"
+    },
+    {
+      "id": "promo003",
+      "title": "Deal Title",
+      "description": "Deal description goes here",
+      "category": "today-only",
+      "image": "placeholder"
+    }
+  ],
+  "studentOffers": [
+    {
+      "id": "student001",
+      "title": "Student Deal Title",
+      "description": "Student deal description goes here",
+      "category": "student-offers",
+      "image": "placeholder"
+    },
+    {
+      "id": "student002",
+      "title": "Student Deal Title",
+      "description": "Student deal description goes here",
+      "category": "student-offers",
+      "image": "placeholder"
+    },
+    {
+      "id": "student003",
+      "title": "Student Deal Title",
+      "description": "Student deal description goes here",
+      "category": "student-offers",
+      "image": "placeholder"
+    }
+  ]
+}
+

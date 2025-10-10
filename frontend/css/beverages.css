@@ -1,0 +1,29 @@
+/* Beverages Page Specific Styles */
+
+.beverages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Image styling for beverage cards */
+.menu-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .beverages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .beverages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
