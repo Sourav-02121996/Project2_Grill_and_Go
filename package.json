@@ -16,13 +16,14 @@
   "description": "Grill & Go - Food Ordering Website",
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "mongodb": "^6.20",
-    "express": "^4.21.2",
-    "dotenv": "^16.3.1",
-    "cors": "^2.8.5",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
-    "express-validator": "^7.0.1"
+    "mongodb": "^6.20",
+    "stripe": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",

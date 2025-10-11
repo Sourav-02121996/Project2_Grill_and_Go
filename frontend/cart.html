@@ -6,6 +6,8 @@
     <title>Your Cart - GrillAndGo</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/cart.css" />
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -84,27 +86,20 @@
             </div>
 
             <div class="payment-section">
-              <h3>Payment Method</h3>
-              <div class="payment-options">
-                <label class="payment-option">
-                  <input type="radio" name="payment" value="card" checked />
-                  <div class="payment-option-content">
-                    <span class="payment-icon">💳</span>
-                    <span>Credit/Debit Card</span>
-                  </div>
-                </label>
-                <label class="payment-option">
-                  <input type="radio" name="payment" value="paypal" />
-                  <div class="payment-option-content">
-                    <span class="payment-icon">🅿️</span>
-                    <span>PayPal</span>
-                  </div>
-                </label>
+              <h3>Secure Payment</h3>
+              <div class="payment-info">
+                <span class="payment-icon">🔒</span>
+                <span
+                  >Powered by Stripe - Your payment information is secure</span
+                >
               </div>
             </div>
 
             <button id="checkout-btn" class="btn-checkout" disabled>
-              Proceed to Checkout
+              <span id="checkout-btn-text">Proceed to Payment</span>
+              <span id="checkout-spinner" style="display: none"
+                >Processing...</span
+              >
             </button>
             <a href="ReadyToOrder.html" class="btn-continue-shopping"
               >Continue Shopping</a

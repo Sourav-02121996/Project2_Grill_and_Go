@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment Successful - GrillAndGo</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+      .success-container {
+        max-width: 600px;
+        margin: 4rem auto;
+        padding: 3rem;
+        text-align: center;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .success-icon {
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+        animation: scaleIn 0.5s ease-out;
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .success-container h1 {
+        color: #2ecc71;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+      }
+
+      .success-container p {
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .success-details {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: left;
+      }
+
+      .success-details p {
+        margin: 0.5rem 0;
+        color: #333;
+      }
+
+      .success-details strong {
+        color: #000;
+      }
+
+      .success-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: orangered;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #e64a19;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: orangered;
+        border: 2px solid orangered;
+      }
+
+      .btn-secondary:hover {
+        background: orangered;
+        color: white;
+      }
+
+      @media (max-width: 640px) {
+        .success-container {
+          margin: 2rem 1rem;
+          padding: 2rem 1rem;
+        }
+
+        .success-actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <img
+          src="images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="index.html#Menu" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="ReadyToOrder.html" class="navlink">Sandwiches</a>
+        </li>
+        <li class="navitem">
+          <a href="beverages.html" class="navlink">Beverages</a>
+        </li>
+      </ol>
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn">
+          🛒 Your Cart <span id="cart-count" class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="success-container">
+        <div class="success-icon">✅</div>
+        <h1>Payment Successful!</h1>
+        <p>
+          Thank you for your order! Your payment has been processed
+          successfully.
+        </p>
+
+        <div class="success-details">
+          <p><strong>What's next?</strong></p>
+          <p>
+            • We'll send you a confirmation email shortly<br />
+            • Your order is being prepared<br />
+            • Estimated delivery time: 30-45 minutes<br />
+            • You can track your order status in your account
+          </p>
+        </div>
+
+        <p style="color: #2ecc71; font-weight: 600">
+          🎉 Your delicious meal is on its way!
+        </p>
+
+        <div class="success-actions">
+          <a href="index.html" class="btn btn-primary">Back to Home</a>
+          <a href="ReadyToOrder.html" class="btn btn-secondary">Order Again</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="ReadyToOrder.html">Sandwiches</a>
+          <a href="beverages.html">Beverages</a>
+          <a href="login.html">Sign In</a>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+      // Clear cart after successful payment
+      localStorage.removeItem("cart");
+      updateCartCount();
+
+      // Get session ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const sessionId = urlParams.get("session_id");
+
+      if (sessionId) {
+        console.log("Payment session:", sessionId);
+        // You can verify the session with the backend if needed
+      }
+    </script>
+  </body>
+</html>

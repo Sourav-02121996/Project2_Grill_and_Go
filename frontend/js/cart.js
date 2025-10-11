@@ -193,21 +193,82 @@ function renderCart() {
   document.getElementById("total").textContent = `$${total.toFixed(2)}`;
 }
 
+// Initialize Stripe
+console.log("cart.js loaded!");
+const stripe = Stripe(
+  "pk_test_51SHBjYEQ3LHCYeiW3Da7yTdnJP38e06lBAcUUg2IIw8prV1n9qv3fmxtkHGYxnCSqbSPBfo2gBklqL9caWDKZOb100XxZxIGkw",
+);
+console.log("Stripe initialized:", stripe);
+
 // Handle checkout
-function handleCheckout() {
+async function handleCheckout() {
   const signedInCustomer = getSignedInCustomer();
   if (!signedInCustomer) {
     redirectToSignIn();
     return;
   }
 
-  const paymentMethod = document.querySelector(
-    'input[name="payment"]:checked',
-  ).value;
-  alert(
-    `Proceeding to checkout with ${paymentMethod}.\n\nPayment integration will be added in the backend!`,
-  );
-  // In future: Redirect to payment gateway
+  const cart = getCart();
+  if (!cart || cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  console.log("Starting checkout with cart:", cart);
+
+  // Show loading state
+  const checkoutBtn = document.getElementById("checkout-btn");
+  const btnText = document.getElementById("checkout-btn-text");
+  const spinner = document.getElementById("checkout-spinner");
+
+  checkoutBtn.disabled = true;
+  btnText.style.display = "none";
+  spinner.style.display = "inline";
+
+  try {
+    console.log("Fetching checkout session...");
+
+    // Create Stripe checkout session
+    const response = await fetch("/api/payment/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: cart,
+      }),
+    });
+
+    console.log("Response status:", response.status);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Server error:", errorData);
+      throw new Error(errorData.error || "Failed to create checkout session");
+    }
+
+    const session = await response.json();
+    console.log("Session created:", session);
+
+    // Redirect to Stripe Checkout
+    console.log("Redirecting to Stripe...");
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      console.error("Stripe redirect error:", result.error);
+      throw new Error(result.error.message);
+    }
+  } catch (error) {
+    console.error("Checkout error:", error);
+    alert("Payment failed: " + error.message);
+
+    // Reset button state
+    checkoutBtn.disabled = false;
+    btnText.style.display = "inline";
+    spinner.style.display = "none";
+  }
 }
 
 // Add CSS for notification animation
@@ -238,15 +299,19 @@ document.head.appendChild(style);
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOMContentLoaded fired!");
   updateCartCount();
 
   // If on cart page, render cart
   if (document.getElementById("cart-items")) {
+    console.log("On cart page, setting up...");
     renderCart();
 
     const checkoutBtn = document.getElementById("checkout-btn");
+    console.log("Checkout button:", checkoutBtn);
     if (checkoutBtn) {
       checkoutBtn.addEventListener("click", handleCheckout);
+      console.log("Click listener added to checkout button!");
     }
   }
 });
