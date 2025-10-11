@@ -109,6 +109,16 @@ body {
   width: 80%;
 }
 
+.navlink.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.navlink.active::after {
+  width: 80%;
+  background: orangered;
+}
+
 /* Nav Actions */
 .nav-actions {
   position: absolute;

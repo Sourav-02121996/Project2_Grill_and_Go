@@ -47,6 +47,14 @@ const syncSignInButtons = () => {
       button.addEventListener("click", handleLogoutClick);
     }
   });
+
+  // Show/hide admin-only nav items
+  const adminNavItems = document.querySelectorAll(".admin-only");
+  const isAdmin = auth && auth.type === "employee" && auth.role === "admin";
+
+  adminNavItems.forEach((item) => {
+    item.style.display = isAdmin ? "block" : "none";
+  });
 };
 
 const storeAuth = (payload) => {
@@ -134,7 +142,10 @@ const initLoginForm = () => {
 
       if (response.status === 401) {
         const data = await parseJsonSafely(response);
-        setMessage(loginErrorEl, data.message || "Incorrect password. Please try again.");
+        setMessage(
+          loginErrorEl,
+          data.message || "Incorrect password. Please try again.",
+        );
         return;
       }
 
@@ -223,7 +234,8 @@ const initSignupForm = () => {
 
       setMessage(
         signupErrorEl,
-        data.message || "Unable to create your account right now. Please try again.",
+        data.message ||
+          "Unable to create your account right now. Please try again.",
       );
     } catch (_error) {
       setMessage(

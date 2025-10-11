@@ -26,6 +26,9 @@
         <li class="navitem">
           <a href="beverages.html" class="navlink">Beverages</a>
         </li>
+        <li class="navitem admin-only" style="display: none">
+          <a href="admin/AdminDashboard.html" class="navlink">Dashboard</a>
+        </li>
       </ol>
       <div class="nav-actions">
         <a href="cart.html" class="cart-btn">
@@ -49,7 +52,12 @@
         <div id="loginForm" class="auth-form">
           <h2>Welcome Back!</h2>
           <p class="auth-subtitle">Login to your account</p>
-          <div id="login-error" class="auth-message" role="alert" aria-live="polite"></div>
+          <div
+            id="login-error"
+            class="auth-message"
+            role="alert"
+            aria-live="polite"
+          ></div>
           <form id="customer-login-form" action="/login" method="POST">
             <div class="form-group">
               <label for="login-email" class="form-label">Email Address</label>
@@ -93,8 +101,18 @@
         <div id="signupForm" class="auth-form" style="display: none">
           <h2>Create Account</h2>
           <p class="auth-subtitle">Join Grill & Go today!</p>
-          <div id="signup-success" class="auth-message auth-message--success" role="status" aria-live="polite"></div>
-          <div id="signup-error" class="auth-message" role="alert" aria-live="assertive"></div>
+          <div
+            id="signup-success"
+            class="auth-message auth-message--success"
+            role="status"
+            aria-live="polite"
+          ></div>
+          <div
+            id="signup-error"
+            class="auth-message"
+            role="alert"
+            aria-live="assertive"
+          ></div>
           <form id="customer-signup-form" method="POST" novalidate>
             <div class="form-group">
               <label for="signup-name" class="form-label">Full Name</label>
