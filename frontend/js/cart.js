@@ -6,6 +6,26 @@ function getCart() {
   return cart ? JSON.parse(cart) : [];
 }
 
+function getSignedInCustomer() {
+  const authApi = window.GrillAndGoAuth;
+  if (!authApi || typeof authApi.read !== "function") {
+    return null;
+  }
+
+  const currentAuth = authApi.read();
+  if (currentAuth && currentAuth.type === "customer") {
+    return currentAuth;
+  }
+
+  return null;
+}
+
+function redirectToSignIn() {
+  // Provide gentle feedback before redirecting
+  alert("Please sign in to your Grill & Go customer account to continue.");
+  window.location.href = "/login?intent=cart";
+}
+
 // Save cart to localStorage
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -14,6 +34,12 @@ function saveCart(cart) {
 
 // Add item to cart
 function addToCart(item) {
+  const signedInCustomer = getSignedInCustomer();
+  if (!signedInCustomer) {
+    redirectToSignIn();
+    return;
+  }
+
   const cart = getCart();
 
   // Check if item already exists
@@ -169,6 +195,12 @@ function renderCart() {
 
 // Handle checkout
 function handleCheckout() {
+  const signedInCustomer = getSignedInCustomer();
+  if (!signedInCustomer) {
+    redirectToSignIn();
+    return;
+  }
+
   const paymentMethod = document.querySelector(
     'input[name="payment"]:checked',
   ).value;
@@ -218,4 +250,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
-

@@ -100,6 +100,7 @@ const createPagesRouter = (frontendDir) => {
         email: normalizedEmail,
         role,
         name: employee.name ?? [employee.firstName, employee.lastName].filter(Boolean).join(' '),
+        type: 'employee',
       };
 
       sendAuthScriptResponse(res, payload, redirectPath);

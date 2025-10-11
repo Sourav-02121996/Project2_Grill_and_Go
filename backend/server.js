@@ -11,6 +11,7 @@ import menuRoutes from './routes/menu.js';
 import employeesRoutes from './routes/employees.js';
 import rosterRoutes from './routes/roster.js';
 import promotionRoutes from './routes/promotions.js';
+import customersRoutes from './routes/customers.js';
 import { closeDb } from './db/mongoClient.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -49,6 +50,7 @@ app.use('/api/menu', menuRoutes);
 app.use('/api/employees', employeesRoutes);
 app.use('/api/roster', rosterRoutes);
 app.use('/api/promotions', promotionRoutes);
+app.use('/api/customers', customersRoutes);
 
 // Fallback to index.html for any other route (after API/page routers)
 app.get('*', (_req, res) => {
