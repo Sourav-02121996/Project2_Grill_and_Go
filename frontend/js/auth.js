@@ -1,5 +1,5 @@
-const AUTH_STORAGE_KEY = 'grillandgo.auth';
-const LOGOUT_URL = '/auth/logout';
+const AUTH_STORAGE_KEY = "grillandgo.auth";
+const LOGOUT_URL = "/auth/logout";
 
 const readAuth = () => {
   try {
@@ -29,20 +29,20 @@ const handleLogoutClick = (event) => {
 
 const syncSignInButtons = () => {
   const auth = readAuth();
-  const buttons = document.querySelectorAll('.signin-btn');
+  const buttons = document.querySelectorAll(".signin-btn");
 
   buttons.forEach((button) => {
-    button.removeEventListener('click', handleLogoutClick);
+    button.removeEventListener("click", handleLogoutClick);
 
     if (!auth) {
-      button.textContent = 'Sign In';
-      button.setAttribute('href', '/login');
-      button.dataset.action = 'signin';
+      button.textContent = "Sign In";
+      button.setAttribute("href", "/login");
+      button.dataset.action = "signin";
     } else {
-      button.textContent = 'Logout';
-      button.setAttribute('href', LOGOUT_URL);
-      button.dataset.action = 'logout';
-      button.addEventListener('click', handleLogoutClick);
+      button.textContent = "Logout";
+      button.setAttribute("href", LOGOUT_URL);
+      button.dataset.action = "logout";
+      button.addEventListener("click", handleLogoutClick);
     }
   });
 };
@@ -52,7 +52,7 @@ const storeAuth = (payload) => {
   syncSignInButtons();
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   syncSignInButtons();
 });
 
@@ -64,3 +64,24 @@ window.GrillAndGoAuth = {
   },
   read: readAuth,
 };
+
+// Authentication page functionality (Login/Signup tabs)
+function showLogin() {
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("signupForm").style.display = "none";
+
+  // Update active tab
+  const tabs = document.querySelectorAll(".auth-tab");
+  tabs[0].classList.add("active");
+  tabs[1].classList.remove("active");
+}
+
+function showSignup() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("signupForm").style.display = "block";
+
+  // Update active tab
+  const tabs = document.querySelectorAll(".auth-tab");
+  tabs[0].classList.remove("active");
+  tabs[1].classList.add("active");
+}

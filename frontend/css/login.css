@@ -34,7 +34,7 @@
 }
 
 .auth-tab.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -184,15 +184,15 @@
     margin: 1.5rem 1rem;
     border-radius: 12px;
   }
-  
+
   .auth-form {
     padding: 2.5rem 2rem 2rem;
   }
-  
+
   .auth-form h2 {
     font-size: 1.75rem;
   }
-  
+
   .auth-form form {
     max-width: 100%;
   }

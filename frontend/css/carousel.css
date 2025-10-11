@@ -1,0 +1,257 @@
+/* Carousel Section Styles */
+
+.carousel-section {
+  margin: 4rem 0;
+  padding: 2rem 0;
+}
+
+.carousel-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.carousel-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.carousel-caption {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 0 0 20px 20px;
+  height: 220px;
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+.carousel-caption h3 {
+  font-size: 1.75rem;
+  color: #333;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  max-height: 4.5em;
+  overflow: hidden;
+}
+
+.carousel-price {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  background: orangered;
+  padding: 0.6rem 1.8rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(255, 69, 0, 0.3);
+}
+
+/* Navigation Arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+  left: 0;
+}
+
+.carousel-next {
+  right: 0;
+}
+
+.carousel-arrow span {
+  display: block;
+  line-height: 1;
+}
+
+/* Indicators */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator:hover {
+  background: #999;
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  background: orangered;
+  width: 40px;
+  border-radius: 6px;
+}
+
+/* View All Button */
+.carousel-action {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.btn-view-all {
+  display: inline-block;
+  background: #333;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-view-all:hover {
+  background: #555;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-container {
+    padding: 0 40px;
+  }
+
+  .carousel-wrapper {
+    height: 450px;
+  }
+
+  .carousel-slide img {
+    height: 300px;
+  }
+
+  .carousel-section h2 {
+    font-size: 2rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    padding: 0 30px;
+  }
+
+  .carousel-wrapper {
+    height: 400px;
+  }
+
+  .carousel-slide img {
+    height: 250px;
+  }
+
+  .carousel-caption {
+    padding: 1.5rem 1rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.25rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.85rem;
+  }
+
+  .carousel-price {
+    font-size: 1.25rem;
+    padding: 0.4rem 1.2rem;
+  }
+}

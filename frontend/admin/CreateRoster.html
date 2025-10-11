@@ -1,377 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Create Roster - GrillAndGo Admin</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<script src="../js/auth.js" defer></script>
-	<link rel="stylesheet" type="text/css" href="../css/admin.css">
-	<link rel="stylesheet" type="text/css" href="../css/roster.css">
-</head>
-<body>
-	<nav class="navbar">
-		<a href="../index.html" class="brand">
-			<img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-		</a>
-		<ol class="navlist">
-			<li class="navitem"><a href="../index.html" class="navlink">Home</a></li>
-			<li class="navitem"><a href="AdminDashboard.html" class="navlink">Dashboard</a></li>
-			<li class="navitem"><a href="CreateRoster.html" class="navlink">Create Roster</a></li>
-		</ol>
-	<div class="signin-container">
-		<a href="/login" class="signin-btn">Sign In</a>
-	</div>
-	</nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Roster - GrillAndGo Admin</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="../css/roster.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html" class="brand">
+        <img
+          src="../images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="../index.html" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="AdminDashboard.html" class="navlink">Dashboard</a>
+        </li>
+        <li class="navitem">
+          <a href="CreateRoster.html" class="navlink">Create Roster</a>
+        </li>
+      </ol>
+      <div class="signin-container">
+        <a href="../login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
 
-	<main class="container">
-		<div class="page-header">
-			<h1>Create Weekly Roster</h1>
-			<div class="header-actions">
-				<a href="AdminDashboard.html" class="btn-back">← Back to Dashboard</a>
-			</div>
-		</div>
+    <main class="container">
+      <div class="page-header">
+        <h1>Create Weekly Roster</h1>
+        <div class="header-actions">
+          <a href="AdminDashboard.html" class="btn-back">← Back to Dashboard</a>
+        </div>
+      </div>
 
-		<!-- Step 1: Select Week -->
-		<div class="roster-section">
-			<h2>Step 1: Select Week</h2>
-			<div class="week-selector">
-				<label for="week-start" class="form-label">Week Starting:</label>
-				<input type="date" id="week-start" class="form-input week-input">
-			</div>
-		</div>
+      <!-- Step 1: Select Week -->
+      <div class="roster-section">
+        <h2>Step 1: Select Week</h2>
+        <div class="week-selector">
+          <label for="week-start" class="form-label">Week Starting:</label>
+          <input type="date" id="week-start" class="form-input week-input" />
+        </div>
+      </div>
 
-		<!-- Step 2: Select Employees and Hours -->
-		<div class="roster-section">
-			<h2>Step 2: Select Employees & Set Hours</h2>
-			<p class="section-description">Select employees for this week and specify maximum hours each can work</p>
-			
-			<div class="employee-selection">
-				<!-- Employee 1 -->
-				<div class="employee-select-card">
-					<div class="employee-checkbox">
-						<input type="checkbox" id="emp1" value="John Smith" onchange="toggleEmployee(this)">
-						<label for="emp1">
-							<span class="emp-avatar">👨‍💼</span>
-							<div class="emp-info">
-								<strong>John Smith</strong>
-								<span class="emp-role admin-badge">Admin</span>
-							</div>
-						</label>
-					</div>
-					<div class="hours-input-container" style="display: none;">
-						<label>Max Hours:</label>
-						<input type="number" class="hours-input" min="1" max="40" value="20" placeholder="Hours">
-					</div>
-				</div>
+      <!-- Step 2: Select Employees and Hours -->
+      <div class="roster-section">
+        <h2>Step 2: Select Employees & Set Hours</h2>
+        <p class="section-description">
+          Select employees for this week and specify maximum hours each can work
+        </p>
 
-				<!-- Employee 2 -->
-				<div class="employee-select-card">
-					<div class="employee-checkbox">
-						<input type="checkbox" id="emp2" value="Sarah Johnson" onchange="toggleEmployee(this)">
-						<label for="emp2">
-							<span class="emp-avatar">👩</span>
-							<div class="emp-info">
-								<strong>Sarah Johnson</strong>
-								<span class="emp-role staff-badge">Staff</span>
-							</div>
-						</label>
-					</div>
-					<div class="hours-input-container" style="display: none;">
-						<label>Max Hours:</label>
-						<input type="number" class="hours-input" min="1" max="40" value="25" placeholder="Hours">
-					</div>
-				</div>
+        <div class="employee-selection">
+          <!-- Employee 1 -->
+          <div class="employee-select-card">
+            <div class="employee-checkbox">
+              <input
+                type="checkbox"
+                id="emp1"
+                value="John Smith"
+                onchange="toggleEmployee(this)"
+              />
+              <label for="emp1">
+                <span class="emp-avatar">👨‍💼</span>
+                <div class="emp-info">
+                  <strong>John Smith</strong>
+                  <span class="emp-role admin-badge">Admin</span>
+                </div>
+              </label>
+            </div>
+            <div class="hours-input-container" style="display: none">
+              <label>Max Hours:</label>
+              <input
+                type="number"
+                class="hours-input"
+                min="1"
+                max="40"
+                value="20"
+                placeholder="Hours"
+              />
+            </div>
+          </div>
 
-				<!-- Employee 3 -->
-				<div class="employee-select-card">
-					<div class="employee-checkbox">
-						<input type="checkbox" id="emp3" value="Mike Davis" onchange="toggleEmployee(this)">
-						<label for="emp3">
-							<span class="emp-avatar">👨</span>
-							<div class="emp-info">
-								<strong>Mike Davis</strong>
-								<span class="emp-role staff-badge">Staff</span>
-							</div>
-						</label>
-					</div>
-					<div class="hours-input-container" style="display: none;">
-						<label>Max Hours:</label>
-						<input type="number" class="hours-input" min="1" max="40" value="30" placeholder="Hours">
-					</div>
-				</div>
+          <!-- Employee 2 -->
+          <div class="employee-select-card">
+            <div class="employee-checkbox">
+              <input
+                type="checkbox"
+                id="emp2"
+                value="Sarah Johnson"
+                onchange="toggleEmployee(this)"
+              />
+              <label for="emp2">
+                <span class="emp-avatar">👩</span>
+                <div class="emp-info">
+                  <strong>Sarah Johnson</strong>
+                  <span class="emp-role staff-badge">Staff</span>
+                </div>
+              </label>
+            </div>
+            <div class="hours-input-container" style="display: none">
+              <label>Max Hours:</label>
+              <input
+                type="number"
+                class="hours-input"
+                min="1"
+                max="40"
+                value="25"
+                placeholder="Hours"
+              />
+            </div>
+          </div>
 
-				<!-- Employee 4 -->
-				<div class="employee-select-card">
-					<div class="employee-checkbox">
-						<input type="checkbox" id="emp4" value="Emily Wilson" onchange="toggleEmployee(this)">
-						<label for="emp4">
-							<span class="emp-avatar">👩‍💼</span>
-							<div class="emp-info">
-								<strong>Emily Wilson</strong>
-								<span class="emp-role admin-badge">Admin</span>
-							</div>
-						</label>
-					</div>
-					<div class="hours-input-container" style="display: none;">
-						<label>Max Hours:</label>
-						<input type="number" class="hours-input" min="1" max="40" value="20" placeholder="Hours">
-					</div>
-				</div>
+          <!-- Employee 3 -->
+          <div class="employee-select-card">
+            <div class="employee-checkbox">
+              <input
+                type="checkbox"
+                id="emp3"
+                value="Mike Davis"
+                onchange="toggleEmployee(this)"
+              />
+              <label for="emp3">
+                <span class="emp-avatar">👨</span>
+                <div class="emp-info">
+                  <strong>Mike Davis</strong>
+                  <span class="emp-role staff-badge">Staff</span>
+                </div>
+              </label>
+            </div>
+            <div class="hours-input-container" style="display: none">
+              <label>Max Hours:</label>
+              <input
+                type="number"
+                class="hours-input"
+                min="1"
+                max="40"
+                value="30"
+                placeholder="Hours"
+              />
+            </div>
+          </div>
 
-				<!-- Employee 5 -->
-				<div class="employee-select-card">
-					<div class="employee-checkbox">
-						<input type="checkbox" id="emp5" value="Robert Brown" onchange="toggleEmployee(this)">
-						<label for="emp5">
-							<span class="emp-avatar">👨</span>
-							<div class="emp-info">
-								<strong>Robert Brown</strong>
-								<span class="emp-role staff-badge">Staff</span>
-							</div>
-						</label>
-					</div>
-					<div class="hours-input-container" style="display: none;">
-						<label>Max Hours:</label>
-						<input type="number" class="hours-input" min="1" max="40" value="35" placeholder="Hours">
-					</div>
-				</div>
+          <!-- Employee 4 -->
+          <div class="employee-select-card">
+            <div class="employee-checkbox">
+              <input
+                type="checkbox"
+                id="emp4"
+                value="Emily Wilson"
+                onchange="toggleEmployee(this)"
+              />
+              <label for="emp4">
+                <span class="emp-avatar">👩‍💼</span>
+                <div class="emp-info">
+                  <strong>Emily Wilson</strong>
+                  <span class="emp-role admin-badge">Admin</span>
+                </div>
+              </label>
+            </div>
+            <div class="hours-input-container" style="display: none">
+              <label>Max Hours:</label>
+              <input
+                type="number"
+                class="hours-input"
+                min="1"
+                max="40"
+                value="20"
+                placeholder="Hours"
+              />
+            </div>
+          </div>
 
-				<!-- Employee 6 -->
-				<div class="employee-select-card">
-					<div class="employee-checkbox">
-						<input type="checkbox" id="emp6" value="Lisa Anderson" onchange="toggleEmployee(this)">
-						<label for="emp6">
-							<span class="emp-avatar">👩</span>
-							<div class="emp-info">
-								<strong>Lisa Anderson</strong>
-								<span class="emp-role staff-badge">Staff</span>
-							</div>
-						</label>
-					</div>
-					<div class="hours-input-container" style="display: none;">
-						<label>Max Hours:</label>
-						<input type="number" class="hours-input" min="1" max="40" value="28" placeholder="Hours">
-					</div>
-				</div>
-			</div>
+          <!-- Employee 5 -->
+          <div class="employee-select-card">
+            <div class="employee-checkbox">
+              <input
+                type="checkbox"
+                id="emp5"
+                value="Robert Brown"
+                onchange="toggleEmployee(this)"
+              />
+              <label for="emp5">
+                <span class="emp-avatar">👨</span>
+                <div class="emp-info">
+                  <strong>Robert Brown</strong>
+                  <span class="emp-role staff-badge">Staff</span>
+                </div>
+              </label>
+            </div>
+            <div class="hours-input-container" style="display: none">
+              <label>Max Hours:</label>
+              <input
+                type="number"
+                class="hours-input"
+                min="1"
+                max="40"
+                value="35"
+                placeholder="Hours"
+              />
+            </div>
+          </div>
 
-			<div class="generate-section">
-				<button class="btn-generate-roster" onclick="generateRoster()">Generate Roster</button>
-			</div>
-		</div>
+          <!-- Employee 6 -->
+          <div class="employee-select-card">
+            <div class="employee-checkbox">
+              <input
+                type="checkbox"
+                id="emp6"
+                value="Lisa Anderson"
+                onchange="toggleEmployee(this)"
+              />
+              <label for="emp6">
+                <span class="emp-avatar">👩</span>
+                <div class="emp-info">
+                  <strong>Lisa Anderson</strong>
+                  <span class="emp-role staff-badge">Staff</span>
+                </div>
+              </label>
+            </div>
+            <div class="hours-input-container" style="display: none">
+              <label>Max Hours:</label>
+              <input
+                type="number"
+                class="hours-input"
+                min="1"
+                max="40"
+                value="28"
+                placeholder="Hours"
+              />
+            </div>
+          </div>
+        </div>
 
-		<!-- Step 3: Generated Roster -->
-		<div id="generated-roster" class="roster-section" style="display: none;">
-			<h2>Step 3: Generated Roster</h2>
-			<p class="section-description">Review the automatically generated schedule. Shifts are distributed to prevent fatigue.</p>
-			
-			<div class="roster-table-container">
-				<table class="roster-table">
-					<thead>
-						<tr>
-							<th>Employee</th>
-							<th>Monday</th>
-							<th>Tuesday</th>
-							<th>Wednesday</th>
-							<th>Thursday</th>
-							<th>Friday</th>
-							<th>Saturday</th>
-							<th>Sunday</th>
-							<th>Total Hours</th>
-						</tr>
-					</thead>
-					<tbody id="roster-body">
-						<!-- Generated rows will appear here -->
-					</tbody>
-				</table>
-			</div>
+        <div class="generate-section">
+          <button class="btn-generate-roster" onclick="generateRoster()">
+            Generate Roster
+          </button>
+        </div>
+      </div>
 
-			<div class="roster-actions">
-				<button class="btn-save-roster" onclick="saveRoster()">Save & Publish Roster</button>
-				<button class="btn-regenerate" onclick="generateRoster()">Regenerate Schedule</button>
-			</div>
-		</div>
-	</main>
+      <!-- Step 3: Generated Roster -->
+      <div id="generated-roster" class="roster-section" style="display: none">
+        <h2>Step 3: Generated Roster</h2>
+        <p class="section-description">
+          Review the automatically generated schedule. Shifts are distributed to
+          prevent fatigue.
+        </p>
 
-	<script>
-		let currentRosterData = [];
+        <div class="roster-table-container">
+          <table class="roster-table">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+                <th>Total Hours</th>
+              </tr>
+            </thead>
+            <tbody id="roster-body">
+              <!-- Generated rows will appear here -->
+            </tbody>
+          </table>
+        </div>
 
-		function toggleEmployee(checkbox) {
-			const card = checkbox.closest('.employee-select-card');
-			const hoursContainer = card.querySelector('.hours-input-container');
-			
-			if (checkbox.checked) {
-				hoursContainer.style.display = 'flex';
-			} else {
-				hoursContainer.style.display = 'none';
-			}
-		}
+        <div class="roster-actions">
+          <button class="btn-save-roster" onclick="saveRoster()">
+            Save & Publish Roster
+          </button>
+          <button class="btn-regenerate" onclick="generateRoster()">
+            Regenerate Schedule
+          </button>
+        </div>
+      </div>
+    </main>
 
-		function generateRoster() {
-			const selectedEmployees = [];
-			const checkboxes = document.querySelectorAll('.employee-select-card input[type="checkbox"]:checked');
-			
-			if (checkboxes.length === 0) {
-				alert('Please select at least one employee');
-				return;
-			}
+    <script src="../js/admin/createRoster.js"></script>
 
-			// Collect selected employees and their max hours
-			checkboxes.forEach(checkbox => {
-				const card = checkbox.closest('.employee-select-card');
-				const name = checkbox.value;
-				const maxHours = parseInt(card.querySelector('.hours-input').value);
-				selectedEmployees.push({ name, maxHours });
-			});
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
 
-			// Generate roster
-			const rosterBody = document.getElementById('roster-body');
-			rosterBody.innerHTML = '';
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="../ReadyToOrder.html">Sandwiches</a>
+          <a href="../beverages.html">Beverages</a>
+          <a href="../login.html">Sign In</a>
+        </div>
 
-			currentRosterData = []; // Reset
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
 
-			selectedEmployees.forEach(emp => {
-				const row = document.createElement('tr');
-				let totalHours = 0;
-				const dailyHours = [];
-				const dailySchedule = [];
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
 
-				// Distribute hours across the week (max 8 hours per day)
-				let remainingHours = emp.maxHours;
-				const days = 7;
-				
-				for (let i = 0; i < days; i++) {
-					// Random distribution with rest days
-					let hoursToday;
-					if (remainingHours > 0 && Math.random() > 0.2) { // 80% chance of working
-						hoursToday = Math.min(
-							Math.floor(Math.random() * 5) + 4, // 4-8 hours
-							remainingHours,
-							8
-						);
-						remainingHours -= hoursToday;
-					} else {
-						hoursToday = 0;
-					}
-					dailyHours.push(hoursToday);
-					totalHours += hoursToday;
-					
-					// Store shift data
-					dailySchedule.push({
-						hours: hoursToday,
-						shift: hoursToday > 0 ? getShiftTime(hoursToday) : 'OFF'
-					});
-				}
-
-				// Store employee roster data
-				currentRosterData.push({
-					name: emp.name,
-					dailySchedule: dailySchedule,
-					totalHours: totalHours
-				});
-
-				// Create row
-				row.innerHTML = `
-					<td class="employee-name-cell">${emp.name}</td>
-					${dailyHours.map(hours => {
-						if (hours === 0) {
-							return '<td class="day-off">OFF</td>';
-						}
-						const shift = getShiftTime(hours);
-						return `<td class="shift-cell">${shift}<br><small>${hours}h</small></td>`;
-					}).join('')}
-					<td class="total-hours-cell">${totalHours}h</td>
-				`;
-				
-				rosterBody.appendChild(row);
-			});
-
-			// Show the generated roster
-			document.getElementById('generated-roster').style.display = 'block';
-			
-			// Scroll to roster
-			document.getElementById('generated-roster').scrollIntoView({ behavior: 'smooth' });
-		}
-
-		function getShiftTime(hours) {
-			// Generate shift times based on hours
-			if (hours <= 4) {
-				return '9AM-1PM';
-			} else if (hours <= 6) {
-				return '9AM-3PM';
-			} else if (hours <= 8) {
-				return '9AM-5PM';
-			} else {
-				return '8AM-5PM';
-			}
-		}
-
-		function saveRoster() {
-			if (currentRosterData.length === 0) {
-				alert('Please generate a roster first before saving');
-				return;
-			}
-
-			const weekStart = document.getElementById('week-start').value;
-			if (!weekStart) {
-				alert('Please select a week start date');
-				return;
-			}
-
-			// Save to localStorage
-			localStorage.setItem('weeklyRoster', JSON.stringify(currentRosterData));
-			localStorage.setItem('weekStartDate', weekStart);
-
-			alert('Roster saved successfully!');
-			
-			// Redirect to view roster
-			setTimeout(() => {
-				window.location.href = 'ViewRoster.html';
-			}, 500);
-		}
-
-		// Set default week start to next Monday
-		window.onload = function() {
-			const today = new Date();
-			const nextMonday = new Date(today);
-			nextMonday.setDate(today.getDate() + ((8 - today.getDay()) % 7));
-			document.getElementById('week-start').valueAsDate = nextMonday;
-		}
-	</script>
-
-	<footer>
-		<div class="footer-content">
-			<div class="footer-section">
-				<h3 class="footer-logo">Grill & Go</h3>
-				<p class="footer-description">Fresh, delicious sandwiches and beverages made just for you.</p>
-			</div>
-
-			<div class="footer-section">
-				<h3>Quick Links</h3>
-				<a href="../ReadyToOrder.html">Sandwiches</a>
-				<a href="../beverages.html">Beverages</a>
-				<a href="../promotions.html">Promotions</a>
-				<a href="../login.html">Sign In</a>
-			</div>
-
-			<div class="footer-section">
-				<h3>Contact</h3>
-				<p>📞 (555) 474-5546</p>
-				<p>📍 123 Main Street<br>New York, NY 10001</p>
-				<p>✉️ info@grillandgo.com</p>
-			</div>
-
-			<div class="footer-section">
-				<h3>Hours</h3>
-				<p>Monday - Saturday<br>9:00 AM - 9:00 PM</p>
-				<p>Sunday<br>10:00 AM - 8:00 PM</p>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<p>© 2025 GrillAndGo. All rights reserved.</p>
-		</div>
-	</footer>
-</body>
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>

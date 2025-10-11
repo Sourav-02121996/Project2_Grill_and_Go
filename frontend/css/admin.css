@@ -153,16 +153,16 @@
   .admin-header h1 {
     font-size: 2rem;
   }
-  
+
   .dashboard-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .stats-row {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .quick-stats {
     padding: 1.5rem;
   }
@@ -173,4 +173,3 @@
     grid-template-columns: 1fr;
   }
 }
-

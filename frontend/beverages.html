@@ -1,289 +1,336 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Beverages - GrillAndGo</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/readytoorder.css">
-	<link rel="stylesheet" type="text/css" href="css/beverages.css">
-</head>
-<body>
-	<nav class="navbar">
-		<a href="index.html" class="brand">
-			<img src="images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-		</a>
-		<ol class="navlist">
-			<li class="navitem"><a href="index.html#Menu" class="navlink">Home</a></li>
-			<li class="navitem"><a href="ReadyToOrder.html" class="navlink">Sandwiches</a></li>
-			<li class="navitem"><a href="beverages.html" class="navlink">Beverages</a></li>
-			<li class="navitem"><a href="promotions.html" class="navlink">Promotions</a></li> 
-		</ol>
-		<div class="signin-container">
-			<a href="login.html" class="signin-btn">Sign In</a>
-		</div>
-	</nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beverages - GrillAndGo</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/readytoorder.css" />
+    <link rel="stylesheet" type="text/css" href="css/beverages.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <img
+          src="images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="index.html#Menu" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="ReadyToOrder.html" class="navlink">Sandwiches</a>
+        </li>
+        <li class="navitem">
+          <a href="beverages.html" class="navlink">Beverages</a>
+        </li>
+      </ol>
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn">
+          🛒 Your Cart <span id="cart-count" class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
+    <script src="js/cart.js"></script>
 
-	<main class="container">
-		<h1>Beverages</h1>
-		<p>Refresh yourself with our selection of cold and hot beverages!</p>
+    <main class="container">
+      <h1>Beverages</h1>
+      <p>Refresh yourself with our selection of cold and hot beverages!</p>
 
-		<!-- Hot Beverages Section -->
-		<section class="section">
-			<h2>Hot Beverages</h2>
-			<div class="beverages-grid">
-				<!-- Coffee -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/freshlybrewedcoffee.png" alt="Fresh Brewed Coffee">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Fresh Brewed Coffee</h3>
-						<p class="menu-item-description">Premium roasted coffee beans, freshly brewed to perfection</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$2.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+      <!-- Hot Beverages Section -->
+      <section class="section">
+        <h2>Hot Beverages</h2>
+        <div class="beverages-grid">
+          <!-- Coffee -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img
+                src="images/freshlybrewedcoffee.png"
+                alt="Fresh Brewed Coffee"
+              />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Fresh Brewed Coffee</h3>
+              <p class="menu-item-description">
+                Premium roasted coffee beans, freshly brewed to perfection
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$2.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Espresso -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/espresso.png" alt="Espresso">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Espresso</h3>
-						<p class="menu-item-description">Rich and bold espresso shot for coffee lovers</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$2.99</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Espresso -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/espresso.png" alt="Espresso" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Espresso</h3>
+              <p class="menu-item-description">
+                Rich and bold espresso shot for coffee lovers
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$2.99</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Cappuccino -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/cappuccino.png" alt="Cappuccino">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Cappuccino</h3>
-						<p class="menu-item-description">Espresso with steamed milk and foam, perfectly balanced</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$3.99</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Cappuccino -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/cappuccino.png" alt="Cappuccino" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Cappuccino</h3>
+              <p class="menu-item-description">
+                Espresso with steamed milk and foam, perfectly balanced
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$3.99</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Latte -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/coffeelatte.png" alt="Caffe Latte">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Caffe Latte</h3>
-						<p class="menu-item-description">Smooth espresso with creamy steamed milk</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$4.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Latte -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/coffeelatte.png" alt="Caffe Latte" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Caffe Latte</h3>
+              <p class="menu-item-description">
+                Smooth espresso with creamy steamed milk
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$4.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Hot Chocolate -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/hotchocolate.png" alt="Hot Chocolate">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Hot Chocolate</h3>
-						<p class="menu-item-description">Rich chocolate drink topped with whipped cream</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$3.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Hot Chocolate -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/hotchocolate.png" alt="Hot Chocolate" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Hot Chocolate</h3>
+              <p class="menu-item-description">
+                Rich chocolate drink topped with whipped cream
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$3.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Tea -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/tea.png" alt="Premium Tea">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Premium Tea</h3>
-						<p class="menu-item-description">Selection of black, green, and herbal teas</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$2.29</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+          <!-- Tea -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/tea.png" alt="Premium Tea" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Premium Tea</h3>
+              <p class="menu-item-description">
+                Selection of black, green, and herbal teas
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$2.29</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-		<!-- Cold Beverages Section -->
-		<section class="section">
-			<h2>Cold Beverages</h2>
-			<div class="beverages-grid">
-				<!-- Iced Coffee -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/icedcoffee.png" alt="Iced Coffee">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Iced Coffee</h3>
-						<p class="menu-item-description">Cold brewed coffee served over ice</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$3.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+      <!-- Cold Beverages Section -->
+      <section class="section">
+        <h2>Cold Beverages</h2>
+        <div class="beverages-grid">
+          <!-- Iced Coffee -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/icedcoffee.png" alt="Iced Coffee" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Iced Coffee</h3>
+              <p class="menu-item-description">
+                Cold brewed coffee served over ice
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$3.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Iced Tea -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/icedtea.png" alt="Iced Tea">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Iced Tea</h3>
-						<p class="menu-item-description">Refreshing iced tea with lemon</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$2.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Iced Tea -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/icedtea.png" alt="Iced Tea" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Iced Tea</h3>
+              <p class="menu-item-description">
+                Refreshing iced tea with lemon
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$2.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Lemonade -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/lemonade.png" alt="Fresh Lemonade">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Fresh Lemonade</h3>
-						<p class="menu-item-description">Freshly squeezed lemonade, sweet and tangy</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$2.99</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Lemonade -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/lemonade.png" alt="Fresh Lemonade" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Fresh Lemonade</h3>
+              <p class="menu-item-description">
+                Freshly squeezed lemonade, sweet and tangy
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$2.99</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Smoothies -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/fruitsmoothie.png" alt="Fruit Smoothie">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Fruit Smoothie</h3>
-						<p class="menu-item-description">Blended fresh fruits with yogurt - Strawberry, Mango, or Mixed Berry</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$4.99</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Smoothies -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/fruitsmoothie.png" alt="Fruit Smoothie" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Fruit Smoothie</h3>
+              <p class="menu-item-description">
+                Blended fresh fruits with yogurt - Strawberry, Mango, or Mixed
+                Berry
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$4.99</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Soda -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/softdrinks.png" alt="Soft Drinks">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Soft Drinks</h3>
-						<p class="menu-item-description">Coca-Cola, Sprite, Fanta, or Diet options</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$1.99</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Soda -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/softdrinks.png" alt="Soft Drinks" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Soft Drinks</h3>
+              <p class="menu-item-description">
+                Coca-Cola, Sprite, Fanta, or Diet options
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$1.99</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Water -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/bottledwater.png" alt="Bottled Water">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Bottled Water</h3>
-						<p class="menu-item-description">Premium spring water, still or sparkling</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$1.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Water -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/bottledwater.png" alt="Bottled Water" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Bottled Water</h3>
+              <p class="menu-item-description">
+                Premium spring water, still or sparkling
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$1.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Juice -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/freshjuice.png" alt="Fresh Juice">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Fresh Juice</h3>
-						<p class="menu-item-description">Orange, Apple, Cranberry, or Mixed Fruit</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$3.29</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
+          <!-- Juice -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/freshjuice.png" alt="Fresh Juice" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Fresh Juice</h3>
+              <p class="menu-item-description">
+                Orange, Apple, Cranberry, or Mixed Fruit
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$3.29</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
 
-				<!-- Milkshake -->
-				<div class="menu-item">
-					<div class="menu-item-image">
-						<img src="images/milkshake.png" alt="Milkshake">
-					</div>
-					<div class="menu-item-content">
-						<h3 class="menu-item-title">Milkshake</h3>
-						<p class="menu-item-description">Creamy milkshake - Vanilla, Chocolate, or Strawberry</p>
-						<div class="menu-item-footer">
-							<span class="menu-item-price">$4.49</span>
-							<button class="btn-add-to-cart">Add to Cart</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+          <!-- Milkshake -->
+          <div class="menu-item">
+            <div class="menu-item-image">
+              <img src="images/milkshake.png" alt="Milkshake" />
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-title">Milkshake</h3>
+              <p class="menu-item-description">
+                Creamy milkshake - Vanilla, Chocolate, or Strawberry
+              </p>
+              <div class="menu-item-footer">
+                <span class="menu-item-price">$4.49</span>
+                <button class="btn-add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-	<footer>
-		<div class="footer-content">
-			<div class="footer-section">
-				<h3 class="footer-logo">Grill & Go</h3>
-				<p class="footer-description">Fresh, delicious sandwiches and beverages made just for you.</p>
-			</div>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
 
-			<div class="footer-section">
-				<h3>Quick Links</h3>
-				<a href="ReadyToOrder.html">Sandwiches</a>
-				<a href="beverages.html">Beverages</a>
-				<a href="promotions.html">Promotions</a>
-				<a href="login.html">Sign In</a>
-			</div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="ReadyToOrder.html">Sandwiches</a>
+          <a href="beverages.html">Beverages</a>
+          <a href="login.html">Sign In</a>
+        </div>
 
-			<div class="footer-section">
-				<h3>Contact</h3>
-				<p>📞 (555) 474-5546</p>
-				<p>📍 123 Main Street<br>New York, NY 10001</p>
-				<p>✉️ info@grillandgo.com</p>
-			</div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
 
-			<div class="footer-section">
-				<h3>Hours</h3>
-				<p>Monday - Saturday<br>9:00 AM - 9:00 PM</p>
-				<p>Sunday<br>10:00 AM - 8:00 PM</p>
-			</div>
-		</div>
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
 
-		<div class="footer-bottom">
-			<p>© 2025 GrillAndGo. All rights reserved.</p>
-		</div>
-	</footer>
-</body>
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+  </body>
 </html>
-

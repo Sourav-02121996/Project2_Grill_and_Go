@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Cart - GrillAndGo</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/cart.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <img
+          src="images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="index.html#Menu" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="ReadyToOrder.html" class="navlink">Sandwiches</a>
+        </li>
+        <li class="navitem">
+          <a href="beverages.html" class="navlink">Beverages</a>
+        </li>
+      </ol>
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn">
+          🛒 Your Cart <span id="cart-count" class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <h1>Your Cart</h1>
+
+      <div class="cart-container">
+        <!-- Cart Items Section -->
+        <div class="cart-items-section">
+          <div id="cart-items" class="cart-items">
+            <!-- Cart items will be dynamically loaded here -->
+          </div>
+
+          <div id="empty-cart" class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+            <h2>Your cart is empty</h2>
+            <p>Add some delicious items to get started!</p>
+            <div class="empty-cart-actions">
+              <a href="ReadyToOrder.html" class="btn-primary"
+                >Browse Sandwiches</a
+              >
+              <a href="beverages.html" class="btn-secondary"
+                >Browse Beverages</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary Section -->
+        <div class="cart-summary-section">
+          <div class="cart-summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (8%)</span>
+              <span id="tax">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Delivery Fee</span>
+              <span id="delivery-fee">$2.99</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row total-row">
+              <span>Total</span>
+              <span id="total">$0.00</span>
+            </div>
+
+            <div class="payment-section">
+              <h3>Payment Method</h3>
+              <div class="payment-options">
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="card" checked />
+                  <div class="payment-option-content">
+                    <span class="payment-icon">💳</span>
+                    <span>Credit/Debit Card</span>
+                  </div>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="paypal" />
+                  <div class="payment-option-content">
+                    <span class="payment-icon">🅿️</span>
+                    <span>PayPal</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <button id="checkout-btn" class="btn-checkout" disabled>
+              Proceed to Checkout
+            </button>
+            <a href="ReadyToOrder.html" class="btn-continue-shopping"
+              >Continue Shopping</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="ReadyToOrder.html">Sandwiches</a>
+          <a href="beverages.html">Beverages</a>
+          <a href="login.html">Sign In</a>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+  </body>
+</html>

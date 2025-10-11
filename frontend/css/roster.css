@@ -540,15 +540,13 @@
   .roster-table-container {
     border-radius: 8px;
   }
-  
+
   .roster-info-bar {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .summary-cards-grid {
     grid-template-columns: 1fr;
   }
 }
-
-

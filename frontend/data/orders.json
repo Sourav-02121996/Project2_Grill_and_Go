@@ -79,13 +79,10 @@
         "name": "Lisa Wilson",
         "phone": "(555) 666-7777"
       },
-      "items": [
-        { "name": "Italian Supreme", "quantity": 1, "price": 9.99 }
-      ],
+      "items": [{ "name": "Italian Supreme", "quantity": 1, "price": 9.99 }],
       "total": 9.99,
       "status": "completed",
       "time": "4 hours ago"
     }
   ]
 }
-

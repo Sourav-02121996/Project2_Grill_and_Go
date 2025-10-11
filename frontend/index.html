@@ -1,160 +1,288 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>GrillAndGo - Fresh Sandwiches & Beverages</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="js/auth.js" defer></script>
-</head>
-<body>
-	<nav class="navbar">
-		<a href="index.html" class="brand">
-			<img src="images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-		</a>
-		<ol class="navlist">
-			<li class= "navitem"><a href="#Menu" class= "navlink">Menu</a></li>
-			<li class= "navitem"><a href="customize.html" class= "navlink">Customize</a></li>
-			<li class= "navitem"><a href="ReadyToOrder.html" class= "navlink">Ready To Order</a></li>
-			<li class= "navitem"><a href="promotions.html" class= "navlink">Promotions</a></li> 
-			<li class= "navitem"><a href="employees.html" class= "navlink">Employees</a></li>
-		</ol>
-		<div class="signin-container">
-			<a href="/login" class="signin-btn">Sign In</a>
-		</div>
-	</nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GrillAndGo - Fresh Sandwiches & Beverages</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" href="css/carousel.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <img
+          src="images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem"><a href="index.html" class="navlink">Home</a></li>
+        <li class="navitem">
+          <a href="ReadyToOrder.html" class="navlink">Sandwiches</a>
+        </li>
+        <li class="navitem">
+          <a href="beverages.html" class="navlink">Beverages</a>
+        </li>
+      </ol>
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn">
+          🛒 Your Cart <span id="cart-count" class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
+    <script src="js/cart.js"></script>
 
-	<main id="top" class="container">
-		<!-- Hero Section -->
-		<section class="hero-section">
-			<h1>Welcome to Grill &amp; Go</h1>
-			<p class="hero-subtitle">Fresh, delicious sandwiches and beverages made just for you!</p>
-			<div class="hero-buttons">
-				<a href="ReadyToOrder.html" class="btn-hero-primary">Order Now</a>
-				<a href="#contact" class="btn-hero-secondary">Contact Us</a>
-			</div>
-		</section>
+    <main id="top" class="container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <h1>Welcome to Grill &amp; Go</h1>
+        <p class="hero-subtitle">
+          Fresh, delicious sandwiches and beverages made just for you!
+        </p>
+        <div class="hero-buttons">
+          <a href="ReadyToOrder.html" class="btn-hero-primary">Order Now</a>
+          <a href="#contact" class="btn-hero-secondary">Contact Us</a>
+        </div>
+      </section>
 
-		<!-- Features Section -->
-		<section class="features-section">
-			<h2>Why Choose Grill &amp; Go?</h2>
-			<div class="features-grid">
-				<div class="feature-card">
-					<div class="feature-icon">🥪</div>
-					<h3>Fresh Ingredients</h3>
-					<p>Only the finest, freshest ingredients in every bite</p>
-				</div>
-				<div class="feature-card">
-					<div class="feature-icon">⚡</div>
-					<h3>Fast Service</h3>
-					<p>Quick preparation without compromising quality</p>
-				</div>
-				<div class="feature-card">
-					<div class="feature-icon">🎨</div>
-					<h3>Customize Your Order</h3>
-					<p>Build your perfect sandwich exactly how you like it</p>
-				</div>
-				<div class="feature-card">
-					<div class="feature-icon">🚚</div>
-					<h3>Delivery Available</h3>
-					<p>Get your favorites delivered right to your door</p>
-				</div>
-			</div>
-		</section>
+      <!-- Sandwich Carousel Section -->
+      <section class="carousel-section">
+        <h2>Our Signature Sandwiches</h2>
+        <p class="carousel-subtitle">
+          Discover our most popular handcrafted sandwiches
+        </p>
 
-		<!-- Quick Links Section -->
-		<section class="quick-links-section">
-			<h2>Explore Our Menu</h2>
-			<div class="quick-links-grid">
-				<a href="ReadyToOrder.html" class="quick-link-card">
-					<div class="quick-link-icon">🥪</div>
-					<h3>Signature Sandwiches</h3>
-					<p>Pre-made classics ready in minutes</p>
-				</a>
-				<a href="beverages.html" class="quick-link-card">
-					<div class="quick-link-icon">☕</div>
-					<h3>Beverages</h3>
-					<p>Hot and cold drinks to refresh you</p>
-				</a>
-				<a href="promotions.html" class="quick-link-card">
-					<div class="quick-link-icon">🎉</div>
-					<h3>Special Offers</h3>
-					<p>Limited-time deals and discounts</p>
-				</a>
-			</div>
-		</section>
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+              <img src="images/turkeyclub.png" alt="Classic Turkey Club" />
+              <div class="carousel-caption">
+                <h3>Classic Turkey Club</h3>
+                <p>
+                  Fresh turkey, crispy bacon, lettuce, tomato, and mayo on
+                  toasted wheat bread
+                </p>
+                <span class="carousel-price">$8.99</span>
+              </div>
+            </div>
 
-		<!-- Contact Us Section -->
-		<section id="contact" class="contact-section">
-			<h2>Contact Us</h2>
-			<p class="contact-subtitle">Have questions? We're here to help!</p>
-			
-			<div class="contact-grid">
-				<div class="contact-card">
-					<div class="contact-icon">📞</div>
-					<h3>Call Us</h3>
-					<p class="contact-info">(555) GRILL-GO</p>
-					<p class="contact-info">(555) 474-5546</p>
-					<p class="contact-hours">Mon-Sat: 9AM - 9PM<br>Sunday: 10AM - 8PM</p>
-				</div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="images/italiansupreme.png" alt="Italian Supreme" />
+              <div class="carousel-caption">
+                <h3>Italian Supreme</h3>
+                <p>
+                  Salami, prosciutto, fresh mozzarella, basil, and balsamic
+                  glaze
+                </p>
+                <span class="carousel-price">$9.99</span>
+              </div>
+            </div>
 
-				<div class="contact-card">
-					<div class="contact-icon">📍</div>
-					<h3>Visit Us</h3>
-					<p class="contact-info">123 Main Street</p>
-					<p class="contact-info">Downtown District</p>
-					<p class="contact-info">New York, NY 10001</p>
-				</div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="images/bbqchicken.png" alt="BBQ Chicken Delight" />
+              <div class="carousel-caption">
+                <h3>BBQ Chicken Delight</h3>
+                <p>
+                  Grilled chicken, BBQ sauce, cheddar cheese, red onions, and
+                  coleslaw
+                </p>
+                <span class="carousel-price">$9.49</span>
+              </div>
+            </div>
 
-				<div class="contact-card">
-					<div class="contact-icon">✉️</div>
-					<h3>Email Us</h3>
-					<p class="contact-info">info@grillandgo.com</p>
-					<p class="contact-info">support@grillandgo.com</p>
-					<p class="contact-hours">We respond within 24 hours</p>
-				</div>
-			</div>
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <img src="images/veggiesupreme.png" alt="Veggie Supreme" />
+              <div class="carousel-caption">
+                <h3>Veggie Supreme</h3>
+                <p>
+                  Grilled vegetables, hummus, avocado, sprouts, and balsamic
+                </p>
+                <span class="carousel-price">$7.99</span>
+              </div>
+            </div>
 
-			<div class="contact-cta">
-				<h3>Ready to Order?</h3>
-				<a href="ReadyToOrder.html" class="btn-order-now">Start Your Order</a>
-			</div>
-		</section>
-	</main>
+            <!-- Slide 5 -->
+            <div class="carousel-slide">
+              <img src="images/phillyspecial.png" alt="The Philly Special" />
+              <div class="carousel-caption">
+                <h3>The Philly Special</h3>
+                <p>
+                  Sliced steak, sautéed peppers and onions, provolone cheese
+                </p>
+                <span class="carousel-price">$10.99</span>
+              </div>
+            </div>
 
-	<footer>
-		<div class="footer-content">
-			<div class="footer-section">
-				<h3 class="footer-logo">Grill & Go</h3>
-				<p class="footer-description">Fresh, delicious sandwiches and beverages made just for you.</p>
-			</div>
+            <!-- Slide 6 -->
+            <div class="carousel-slide">
+              <img src="images/bltsandwich.png" alt="Classic BLT" />
+              <div class="carousel-caption">
+                <h3>Classic BLT</h3>
+                <p>Crispy bacon, fresh lettuce, ripe tomatoes, and mayo</p>
+                <span class="carousel-price">$7.49</span>
+              </div>
+            </div>
+          </div>
 
-			<div class="footer-section">
-				<h3>Quick Links</h3>
-				<a href="ReadyToOrder.html">Sandwiches</a>
-				<a href="beverages.html">Beverages</a>
-				<a href="promotions.html">Promotions</a>
-				<a href="login.html">Sign In</a>
-			</div>
+          <!-- Navigation Arrows -->
+          <button
+            class="carousel-arrow carousel-prev"
+            onclick="moveCarousel(-1)"
+          >
+            <span>‹</span>
+          </button>
+          <button
+            class="carousel-arrow carousel-next"
+            onclick="moveCarousel(1)"
+          >
+            <span>›</span>
+          </button>
 
-			<div class="footer-section">
-				<h3>Contact</h3>
-				<p>📞 (555) 474-5546</p>
-				<p>📍 123 Main Street<br>New York, NY 10001</p>
-				<p>✉️ info@grillandgo.com</p>
-			</div>
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+            <span class="indicator" onclick="goToSlide(4)"></span>
+            <span class="indicator" onclick="goToSlide(5)"></span>
+          </div>
 
-			<div class="footer-section">
-				<h3>Hours</h3>
-				<p>Monday - Saturday<br>9:00 AM - 9:00 PM</p>
-				<p>Sunday<br>10:00 AM - 8:00 PM</p>
-			</div>
-		</div>
+          <!-- View All Button -->
+          <div class="carousel-action">
+            <a href="ReadyToOrder.html" class="btn-view-all"
+              >View All Sandwiches</a
+            >
+          </div>
+        </div>
+      </section>
 
-		<div class="footer-bottom">
-			<p>© 2025 GrillAndGo. All rights reserved.</p>
-		</div>
-	</footer>
-</body>
+      <!-- Features Section -->
+      <section class="features-section">
+        <h2>Why Choose Grill &amp; Go?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🥪</div>
+            <h3>Fresh Ingredients</h3>
+            <p>Only the finest, freshest ingredients in every bite</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Fast Service</h3>
+            <p>Quick preparation without compromising quality</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Customize Your Order</h3>
+            <p>Build your perfect sandwich exactly how you like it</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <h3>Delivery Available</h3>
+            <p>Get your favorites delivered right to your door</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section class="quick-links-section">
+        <h2>Explore Our Menu</h2>
+        <div class="quick-links-grid">
+          <a href="ReadyToOrder.html" class="quick-link-card">
+            <div class="quick-link-icon">🥪</div>
+            <h3>Signature Sandwiches</h3>
+            <p>Pre-made classics ready in minutes</p>
+          </a>
+                <a href="beverages.html" class="quick-link-card">
+                  <div class="quick-link-icon">☕</div>
+                  <h3>Beverages</h3>
+                  <p>Hot and cold drinks to refresh you</p>
+                </a>
+              </div>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p class="contact-subtitle">Have questions? We're here to help!</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <h3>Call Us</h3>
+            <p class="contact-info">(555) GRILL-GO</p>
+            <p class="contact-info">(555) 474-5546</p>
+            <p class="contact-hours">
+              Mon-Sat: 9AM - 9PM<br />Sunday: 10AM - 8PM
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>Visit Us</h3>
+            <p class="contact-info">123 Main Street</p>
+            <p class="contact-info">Downtown District</p>
+            <p class="contact-info">New York, NY 10001</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <h3>Email Us</h3>
+            <p class="contact-info">info@grillandgo.com</p>
+            <p class="contact-info">support@grillandgo.com</p>
+            <p class="contact-hours">We respond within 24 hours</p>
+          </div>
+        </div>
+
+        <div class="contact-cta">
+          <h3>Ready to Order?</h3>
+          <a href="ReadyToOrder.html" class="btn-order-now">Start Your Order</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-logo">Grill & Go</h3>
+          <p class="footer-description">
+            Fresh, delicious sandwiches and beverages made just for you.
+          </p>
+        </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="ReadyToOrder.html">Sandwiches</a>
+            <a href="beverages.html">Beverages</a>
+            <a href="login.html">Sign In</a>
+          </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 (555) 474-5546</p>
+          <p>📍 123 Main Street<br />New York, NY 10001</p>
+          <p>✉️ info@grillandgo.com</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Saturday<br />9:00 AM - 9:00 PM</p>
+          <p>Sunday<br />10:00 AM - 8:00 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 GrillAndGo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/carousel.js"></script>
+  </body>
 </html>
-
