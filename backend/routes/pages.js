@@ -81,7 +81,7 @@ const createPagesRouter = (frontendDir) => {
     try {
       const db = await getDb();
       const normalizedEmail = normalizeEmail(email);
-      const employee = await db.collection('employees').findOne({
+      const employee = await db.collection('Employees').findOne({
         $or: [{ email }, { email: normalizedEmail }, { emailLower: normalizedEmail }],
       });
 
