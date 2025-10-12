@@ -1,378 +1,129 @@
-const AUTH_STORAGE_KEY = "grillandgo.auth";
-const ROSTER_API_BASE = "/api/roster";
+// Simple Staff Dashboard - Load and Display Roster
+console.log("🚀 Staff Dashboard JS Loaded");
 
-const WEEKDAY_LABELS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-const getEl = (id) => document.getElementById(id);
-
-const formatDate = (value) => {
-  if (!value) return "Not Set";
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return "Not Set";
-  }
-  return date.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
-
-const readAuth = () => {
+// Fetch and display roster
+async function loadAndDisplayRoster() {
   try {
-    const raw = localStorage.getItem(AUTH_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-};
+    console.log("📡 Fetching roster from API...");
 
-const syncAuthUi = () => {
-  if (
-    window.GrillAndGoAuth &&
-    typeof window.GrillAndGoAuth.sync === "function"
-  ) {
-    window.GrillAndGoAuth.sync();
-  }
-};
+    // Fetch roster from API
+    const response = await fetch("/api/roster");
+    const data = await response.json();
 
-const normalize = (value = "") => value.trim().toLowerCase();
+    console.log("📋 API Response:", data);
 
-const setRosterInfo = (message) => {
-  const info = getEl("staff-roster-info");
-  if (info) {
-    info.textContent = message;
-  }
-};
-
-const updateRosterMeta = (roster) => {
-  const meta = getEl("staff-roster-meta");
-  if (!meta) return;
-
-  meta.style.display = "flex";
-
-  const weekDate = getEl("staff-week-date");
-  if (weekDate) {
-    weekDate.textContent = formatDate(roster.weekStart);
-  }
-
-  const employeeCount = getEl("staff-employee-count");
-  if (employeeCount) {
-    employeeCount.textContent = Array.isArray(roster.entries)
-      ? roster.entries.length
-      : 0;
-  }
-
-  const totalHours = getEl("staff-total-hours");
-  if (totalHours) {
-    const total = Array.isArray(roster.entries)
-      ? roster.entries.reduce((sum, entry) => {
-          if (!entry) return sum;
-          if (
-            typeof entry.totalHours === "number" &&
-            Number.isFinite(entry.totalHours)
-          ) {
-            return sum + entry.totalHours;
-          }
-          if (Array.isArray(entry.dailySchedule)) {
-            return (
-              sum +
-              entry.dailySchedule.reduce((daySum, day) => {
-                const hours =
-                  typeof day?.hours === "number" && Number.isFinite(day.hours)
-                    ? day.hours
-                    : 0;
-                return daySum + hours;
-              }, 0)
-            );
-          }
-          return sum;
-        }, 0)
-      : 0;
-
-    totalHours.textContent = `${total}h`;
-  }
-};
-
-const hideRosterMeta = () => {
-  const meta = getEl("staff-roster-meta");
-  if (meta) {
-    meta.style.display = "none";
-  }
-};
-
-const clearRosterTable = () => {
-  const container = getEl("staff-roster-container");
-  const body = getEl("staff-roster-body");
-
-  if (container) {
-    container.style.display = "none";
-  }
-
-  if (body) {
-    body.innerHTML = "";
-  }
-};
-
-const showRosterTable = () => {
-  const container = getEl("staff-roster-container");
-  if (container) {
-    container.style.display = "block";
-  }
-};
-
-const showShiftPlaceholder = (message, description) => {
-  const descriptionEl = getEl("staff-shift-description");
-  if (descriptionEl && description) {
-    descriptionEl.textContent = description;
-  }
-
-  const list = getEl("staff-shift-list");
-  if (list) {
-    list.innerHTML = "";
-  }
-
-  const emptyEl = getEl("staff-shift-empty");
-  if (emptyEl) {
-    emptyEl.textContent = message;
-    emptyEl.style.display = "block";
-  }
-};
-
-const hideShiftPlaceholder = () => {
-  const emptyEl = getEl("staff-shift-empty");
-  if (emptyEl) {
-    emptyEl.style.display = "none";
-  }
-};
-
-const renderShiftList = (entry) => {
-  const list = getEl("staff-shift-list");
-  if (!list || !entry || !Array.isArray(entry.dailySchedule)) {
-    return;
-  }
-
-  list.innerHTML = "";
-
-  entry.dailySchedule.forEach((day, index) => {
-    const li = document.createElement("li");
-    const label = WEEKDAY_LABELS[index] || `Day ${index + 1}`;
-
-    if (!day || !day.hours) {
-      li.textContent = `${label}: OFF`;
-    } else {
-      const shiftLabel = day.shift || "Scheduled";
-      li.textContent = `${label}: ${shiftLabel} (${day.hours}h)`;
+    if (
+      !data.success ||
+      !data.roster ||
+      !data.roster.entries ||
+      data.roster.entries.length === 0
+    ) {
+      console.log("⚠️ No roster found");
+      document.getElementById("staff-roster-info").textContent =
+        "No roster has been published yet.";
+      return;
     }
 
-    list.appendChild(li);
-  });
+    const roster = data.roster;
+    console.log("✅ Roster loaded with", roster.entries.length, "employees");
 
-  hideShiftPlaceholder();
-};
+    // Set week date (used in multiple places)
+    const weekDate = new Date(roster.weekStart);
 
-const sameEntry = (target, candidate) => {
-  if (!target || !candidate) {
-    return false;
-  }
+    // Show roster metadata
+    const metaBar = document.getElementById("staff-roster-meta");
+    if (metaBar) {
+      metaBar.style.display = "flex";
 
-  const candidateId = (candidate.employeeId || "").trim();
-  if (candidateId && candidateId === (target.employeeId || "").trim()) {
-    return true;
-  }
+      // Set week date
+      const weekDateEl = document.getElementById("staff-week-date");
+      if (weekDateEl) {
+        weekDateEl.textContent = weekDate.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
 
-  const candidateEmail = normalize(candidate.email || "");
-  if (candidateEmail && candidateEmail === normalize(target.email || "")) {
-    return true;
-  }
+      // Set employee count
+      const empCountEl = document.getElementById("staff-employee-count");
+      if (empCountEl) {
+        empCountEl.textContent = roster.entries.length;
+      }
 
-  const candidateName = normalize(candidate.name || "");
-  if (candidateName && candidateName === normalize(target.name || "")) {
-    return true;
-  }
-
-  return false;
-};
-
-const renderRosterTable = (roster, highlightEntry) => {
-  const body = getEl("staff-roster-body");
-  if (!body || !Array.isArray(roster.entries)) {
-    return;
-  }
-
-  body.innerHTML = "";
-  showRosterTable();
-
-  roster.entries.forEach((entry) => {
-    if (!entry) return;
-
-    const row = document.createElement("tr");
-    if (highlightEntry && sameEntry(highlightEntry, entry)) {
-      row.classList.add("current-employee-row");
+      // Calculate total hours
+      const totalHours = roster.entries.reduce(
+        (sum, entry) => sum + (entry.totalHours || 0),
+        0,
+      );
+      const totalHoursEl = document.getElementById("staff-total-hours");
+      if (totalHoursEl) {
+        totalHoursEl.textContent = totalHours + "h";
+      }
     }
 
-    const schedule = Array.isArray(entry.dailySchedule)
-      ? entry.dailySchedule
-      : [];
+    // Update info text
+    const rosterInfoEl = document.getElementById("staff-roster-info");
+    if (rosterInfoEl) {
+      rosterInfoEl.textContent = `Week of ${weekDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}`;
+    }
 
-    const totalHours =
-      typeof entry.totalHours === "number" && Number.isFinite(entry.totalHours)
-        ? entry.totalHours
-        : schedule.reduce((sum, day) => {
-            const hours =
-              typeof day?.hours === "number" && Number.isFinite(day.hours)
-                ? day.hours
-                : 0;
-            return sum + hours;
-          }, 0);
+    // Show roster table
+    const tableContainer = document.getElementById("staff-roster-container");
+    if (tableContainer) {
+      tableContainer.style.display = "block";
+    }
 
-    const cells = schedule
-      .map((day) => {
-        if (!day || !day.hours) {
-          return '<td class="day-off">OFF</td>';
+    // Render roster table
+    const tbody = document.getElementById("staff-roster-body");
+    if (!tbody) {
+      console.error("❌ Could not find staff-roster-body element");
+      return;
+    }
+
+    tbody.innerHTML = "";
+
+    roster.entries.forEach((employee) => {
+      const row = document.createElement("tr");
+
+      // Employee name
+      let html = `<td class="employee-name-cell">${employee.name}</td>`;
+
+      // Daily schedule (7 days)
+      employee.dailySchedule.forEach((day) => {
+        if (day.hours === 0) {
+          html += `<td class="day-off">OFF</td>`;
+        } else {
+          html += `<td class="shift-cell">${day.shift}<br><small>${day.hours}h</small></td>`;
         }
+      });
 
-        const shiftLabel = day.shift || "Scheduled";
-        return `<td class="shift-cell">${shiftLabel}<br><small>${day.hours}h</small></td>`;
-      })
-      .join("");
+      // Total hours
+      html += `<td class="total-hours-cell">${employee.totalHours}h</td>`;
 
-    row.innerHTML = `
-      <td class="employee-name-cell">${entry.name || "Unnamed Employee"}</td>
-      ${cells}
-      <td class="total-hours-cell">${totalHours}h</td>
-    `;
+      row.innerHTML = html;
+      tbody.appendChild(row);
+    });
 
-    body.appendChild(row);
-  });
-};
-
-const findStaffEntry = (roster, auth) => {
-  if (!auth || auth.type !== "employee" || !Array.isArray(roster.entries)) {
-    return null;
-  }
-
-  const normalizedEmail = normalize(auth.email || "");
-  const normalizedName = normalize(auth.name || "");
-  const authId = (auth.id || "").trim();
-
-  return roster.entries.find((entry) => {
-    if (!entry) return false;
-
-    const entryEmail = normalize(entry.email || "");
-    if (entryEmail && normalizedEmail && entryEmail === normalizedEmail) {
-      return true;
-    }
-
-    const entryId = (entry.employeeId || "").trim();
-    if (entryId && authId && entryId === authId) {
-      return true;
-    }
-
-    const entryName = normalize(entry.name || "");
-    return entryName && normalizedName && entryName === normalizedName;
-  });
-};
-
-const showNoRosterState = () => {
-  clearRosterTable();
-  hideRosterMeta();
-  setRosterInfo("Roster details will appear here once published.");
-  showShiftPlaceholder(
-    "The roster has not been published yet.",
-    "We will notify you as soon as the new roster is available.",
-  );
-};
-
-const showErrorState = (message) => {
-  clearRosterTable();
-  hideRosterMeta();
-  setRosterInfo(message || "Unable to load roster.");
-  showShiftPlaceholder(
-    message || "Unable to load roster.",
-    "Please try again later or contact an administrator.",
-  );
-};
-
-const populateRoster = (roster, auth) => {
-  if (
-    !roster ||
-    !Array.isArray(roster.entries) ||
-    roster.entries.length === 0
-  ) {
-    showNoRosterState();
-    return;
-  }
-
-  updateRosterMeta(roster);
-  const formattedWeek = formatDate(roster.weekStart);
-  setRosterInfo(
-    formattedWeek !== "Not Set" ? `Week of ${formattedWeek}` : "Roster details",
-  );
-
-  const staffEntry = findStaffEntry(roster, auth);
-  renderRosterTable(roster, staffEntry);
-
-  if (staffEntry) {
-    const descriptionEl = getEl("staff-shift-description");
-    if (descriptionEl) {
-      descriptionEl.textContent =
-        "Here are your scheduled shifts for this week.";
-    }
-    renderShiftList(staffEntry);
-  } else if (auth && auth.type === "employee") {
-    showShiftPlaceholder(
-      "You have not been assigned any shifts this week.",
-      "Reach out to your manager if you believe this is a mistake.",
-    );
-  } else {
-    showShiftPlaceholder(
-      "Sign in as a staff member to view your shifts.",
-      "Sign in to see your personalised schedule.",
-    );
-  }
-};
-
-const fetchRoster = async () => {
-  const response = await fetch(ROSTER_API_BASE, { cache: "no-store" });
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(data.message || "Unable to load roster right now.");
-  }
-
-  return data.roster || null;
-};
-
-const loadStaffRoster = async () => {
-  try {
-    const auth = readAuth();
-    const roster = await fetchRoster();
-    populateRoster(roster, auth);
+    console.log("✅ Roster table rendered successfully");
   } catch (error) {
-    console.error("Failed to load staff roster", error);
-    showErrorState(error.message || "Unable to load roster.");
+    console.error("❌ Error loading roster:", error);
+    console.error("❌ Error message:", error.message);
+    console.error("❌ Error stack:", error.stack);
+    const infoEl = document.getElementById("staff-roster-info");
+    if (infoEl) {
+      infoEl.textContent = "Error loading roster: " + error.message;
+    }
   }
-};
+}
 
-const initializeStaffDashboard = () => {
-  syncAuthUi();
-  clearRosterTable();
-  hideRosterMeta();
-  showShiftPlaceholder("Loading roster...", "Fetching the latest schedule.");
-  loadStaffRoster();
-};
-
+// Initialize when page loads
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeStaffDashboard);
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("📄 DOM loaded, initializing...");
+    loadAndDisplayRoster();
+  });
 } else {
-  initializeStaffDashboard();
+  console.log("📄 DOM already loaded, initializing...");
+  loadAndDisplayRoster();
 }

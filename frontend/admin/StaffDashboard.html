@@ -1,111 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Staff Dashboard - GrillAndGo</title>
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <script src="../js/auth.js" defer></script>
-  <link rel="stylesheet" type="text/css" href="../css/admin.css">
-  <link rel="stylesheet" type="text/css" href="../css/roster.css">
-</head>
-<body>
-  <nav class="navbar">
-    <a href="../index.html" class="brand">
-      <img src="../images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-    </a>
-    <ol class="navlist">
-      <li class="navitem"><a href="/staff/dashboard" class="navlink">Home</a></li>
-      <li class="navitem"><a href="../ReadyToOrder.html" class="navlink">Ready To Order</a></li>
-      <li class="navitem"><a href="../promotions.html" class="navlink">Promotions</a></li>
-    </ol>
-    <div class="signin-container">
-      <a href="/login" class="signin-btn">Sign In</a>
-    </div>
-  </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Staff Dashboard - GrillAndGo</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script src="../js/auth.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="../css/roster.css" />
+    <style>
+      .training-btn:hover {
+        background: #e8e8e8 !important;
+        border-color: #ccc !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html" class="brand">
+        <img
+          src="../images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem">
+          <a href="/staff/dashboard" class="navlink">Home</a>
+        </li>
+        <li class="navitem">
+          <a href="../ReadyToOrder.html" class="navlink">Ready To Order</a>
+        </li>
+        <li class="navitem">
+          <a href="../promotions.html" class="navlink">Promotions</a>
+        </li>
+      </ol>
+      <div class="signin-container">
+        <a href="/login" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
 
-  <main class="container">
-    <header class="admin-header">
-      <h1>Staff Dashboard</h1>
-      <p class="admin-welcome">Welcome! Review your shifts and announcements below.</p>
-    </header>
+    <main class="container">
+      <header class="admin-header">
+        <h1>Staff Dashboard</h1>
+        <p class="admin-welcome">
+          Welcome! Review your shifts and announcements below.
+        </p>
+      </header>
 
-    <div class="dashboard-grid">
-      <div class="dashboard-card">
-        <div class="card-icon">🗓️</div>
-        <h3>Your Upcoming Shifts</h3>
-        <p id="staff-shift-description">We’ll show your schedule once the roster is published.</p>
-        <ul class="card-list" id="staff-shift-list"></ul>
-        <div class="card-empty" id="staff-shift-empty" style="display: none;">
-          No shifts assigned yet. Check back later.
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <div class="card-icon">🗓️</div>
+          <h3>Your Upcoming Shifts</h3>
+          <p id="staff-shift-description">
+            We’ll show your schedule once the roster is published.
+          </p>
+          <ul class="card-list" id="staff-shift-list"></ul>
+          <div class="card-empty" id="staff-shift-empty" style="display: none">
+            No shifts assigned yet. Check back later.
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-icon">📢</div>
+          <h3>Announcements</h3>
+          <p>Stay informed with the latest store updates.</p>
+          <ul class="card-list">
+            <li>Team meeting Tuesday at 9:30 AM.</li>
+            <li>Remember to log inventory before closing.</li>
+            <li>New seasonal menu items launch next week.</li>
+          </ul>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-icon">🎓</div>
+          <h3>Training Resources</h3>
+          <p>Brush up on skills with quick refreshers.</p>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+              margin-top: 1rem;
+            "
+          >
+            <a
+              href="#"
+              class="training-btn"
+              style="
+                display: block;
+                padding: 0.75rem 1rem;
+                background: #f5f5f5;
+                color: #333;
+                text-decoration: none;
+                border-radius: 8px;
+                border: 2px solid #e0e0e0;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                text-align: center;
+              "
+              >📋 Food safety checklist</a
+            >
+            <a
+              href="#"
+              class="training-btn"
+              style="
+                display: block;
+                padding: 0.75rem 1rem;
+                background: #f5f5f5;
+                color: #333;
+                text-decoration: none;
+                border-radius: 8px;
+                border: 2px solid #e0e0e0;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                text-align: center;
+              "
+              >💬 Customer service tips</a
+            >
+            <a
+              href="#"
+              class="training-btn"
+              style="
+                display: block;
+                padding: 0.75rem 1rem;
+                background: #f5f5f5;
+                color: #333;
+                text-decoration: none;
+                border-radius: 8px;
+                border: 2px solid #e0e0e0;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                text-align: center;
+              "
+              >🖥️ POS quick start guide</a
+            >
+          </div>
+          <p
+            style="
+              text-align: center;
+              color: #999;
+              font-style: italic;
+              margin-top: 1.5rem;
+              font-size: 1.1rem;
+              font-weight: 500;
+            "
+          >
+            Coming Soon
+          </p>
         </div>
       </div>
 
-      <div class="dashboard-card">
-        <div class="card-icon">📢</div>
-        <h3>Announcements</h3>
-        <p>Stay informed with the latest store updates.</p>
-        <ul class="card-list">
-          <li>Team meeting Tuesday at 9:30 AM.</li>
-          <li>Remember to log inventory before closing.</li>
-          <li>New seasonal menu items launch next week.</li>
-        </ul>
-      </div>
-
-      <div class="dashboard-card">
-        <div class="card-icon">🎓</div>
-        <h3>Training Resources</h3>
-        <p>Brush up on skills with quick refreshers.</p>
-        <ul class="card-list">
-          <li><a href="#">Food safety checklist</a></li>
-          <li><a href="#">Customer service tips</a></li>
-          <li><a href="#">POS quick start guide</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <section class="staff-roster" id="staff-roster-section">
-      <h2>Team Roster</h2>
-      <div class="roster-info-bar" id="staff-roster-meta" style="display: none;">
-        <div class="info-item">
-          <strong>Week Starting</strong>
-          <span id="staff-week-date">Not Set</span>
+      <section class="staff-roster" id="staff-roster-section">
+        <h2>Team Roster</h2>
+        <div
+          class="roster-info-bar"
+          id="staff-roster-meta"
+          style="display: none"
+        >
+          <div class="info-item">
+            <strong>Week Starting</strong>
+            <span id="staff-week-date">Not Set</span>
+          </div>
+          <div class="info-item">
+            <strong>Employees Scheduled</strong>
+            <span id="staff-employee-count">0</span>
+          </div>
+          <div class="info-item">
+            <strong>Total Hours</strong>
+            <span id="staff-total-hours">0h</span>
+          </div>
         </div>
-        <div class="info-item">
-          <strong>Employees Scheduled</strong>
-          <span id="staff-employee-count">0</span>
+        <p id="staff-roster-info">
+          Roster details will appear here once published.
+        </p>
+        <div
+          class="roster-table-container"
+          id="staff-roster-container"
+          style="display: none"
+        >
+          <table class="roster-table">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+                <th>Total Hours</th>
+              </tr>
+            </thead>
+            <tbody id="staff-roster-body"></tbody>
+          </table>
         </div>
-        <div class="info-item">
-          <strong>Total Hours</strong>
-          <span id="staff-total-hours">0h</span>
-        </div>
-      </div>
-      <p id="staff-roster-info">Roster details will appear here once published.</p>
-      <div class="roster-table-container" id="staff-roster-container" style="display: none;">
-        <table class="roster-table">
-          <thead>
-            <tr>
-              <th>Employee</th>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
-              <th>Saturday</th>
-              <th>Sunday</th>
-              <th>Total Hours</th>
-            </tr>
-          </thead>
-          <tbody id="staff-roster-body"></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer>
-    <p class="footer">2025 GrillAndGo website. All rights reserved.</p>
-  </footer>
+    <footer>
+      <p class="footer">2025 GrillAndGo website. All rights reserved.</p>
+    </footer>
 
-  <script src="../js/admin/staffDashboard.js" defer></script>
-</body>
+    <script src="../js/admin/staffDashboard.js" defer></script>
+  </body>
 </html>
