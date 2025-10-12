@@ -54,17 +54,31 @@
       <!-- Active/Completed Orders Section -->
       <div id="active-orders" class="orders-section">
         <h2>Active/Completed Orders</h2>
-        <p style="text-align: center; color: #666; padding: 2rem">
-          Loading orders...
-        </p>
+        <div id="active-orders-list">
+          <p style="text-align: center; color: #666; padding: 2rem">
+            Loading orders...
+          </p>
+        </div>
+        <div
+          id="active-pagination"
+          class="pagination"
+          style="display: none"
+        ></div>
       </div>
 
       <!-- Cancelled Orders Section -->
       <div id="cancelled-orders" class="orders-section" style="display: none">
         <h2>Cancelled Orders</h2>
-        <p style="text-align: center; color: #666; padding: 2rem">
-          Loading orders...
-        </p>
+        <div id="cancelled-orders-list">
+          <p style="text-align: center; color: #666; padding: 2rem">
+            Loading orders...
+          </p>
+        </div>
+        <div
+          id="cancelled-pagination"
+          class="pagination"
+          style="display: none"
+        ></div>
       </div>
     </main>
 

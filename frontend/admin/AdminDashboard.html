@@ -124,19 +124,19 @@
         <div class="stats-row">
           <div class="stat-box">
             <span class="stat-title">Today's Revenue</span>
-            <span class="stat-value">$1,247</span>
+            <span class="stat-value" id="today-revenue">$0</span>
           </div>
           <div class="stat-box">
             <span class="stat-title">Orders Completed</span>
-            <span class="stat-value">48</span>
+            <span class="stat-value" id="completed-orders">0</span>
           </div>
           <div class="stat-box">
             <span class="stat-title">Pending Orders</span>
-            <span class="stat-value">12</span>
+            <span class="stat-value" id="pending-orders">0</span>
           </div>
           <div class="stat-box">
-            <span class="stat-title">Staff Present</span>
-            <span class="stat-value">8/15</span>
+            <span class="stat-title">Total Employees</span>
+            <span class="stat-value" id="total-staff">0</span>
           </div>
         </div>
       </div>
@@ -181,23 +181,60 @@
       // Load dashboard statistics
       async function loadDashboardStats() {
         try {
-          // Fetch orders count
+          // Fetch orders
           const ordersResponse = await fetch("/api/orders");
           const ordersData = await ordersResponse.json();
+
           if (ordersData.success) {
-            const activeOrders = ordersData.orders.filter(
-              (o) => o.status !== "completed" && o.status !== "cancelled",
-            );
+            const orders = ordersData.orders;
+
+            // Calculate active orders (pending only)
+            const activeOrders = orders.filter((o) => o.status === "pending");
             document.getElementById("active-orders-count").textContent =
               activeOrders.length;
+
+            // Calculate pending orders for quick stats
+            document.getElementById("pending-orders").textContent =
+              activeOrders.length;
+
+            // Calculate completed orders
+            const completedOrders = orders.filter(
+              (o) => o.status === "completed",
+            );
+            document.getElementById("completed-orders").textContent =
+              completedOrders.length;
+
+            // Calculate today's revenue (orders from today)
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const todayOrders = orders.filter((o) => {
+              if (!o.createdAt || o.createdAt === "iso_8601") return false;
+              const orderDate = new Date(o.createdAt);
+              orderDate.setHours(0, 0, 0, 0);
+              return (
+                orderDate.getTime() === today.getTime() &&
+                o.status === "completed"
+              );
+            });
+
+            const todayRevenue = todayOrders.reduce((sum, order) => {
+              const price = order["total price"] || order.totalPrice || 0;
+              return sum + price;
+            }, 0);
+
+            document.getElementById("today-revenue").textContent =
+              "$" + todayRevenue.toFixed(2);
           }
 
           // Fetch employees count
           const employeesResponse = await fetch("/api/employees");
           const employeesData = await employeesResponse.json();
           if (employeesData.success) {
+            const employeeCount = employeesData.employees.length;
             document.getElementById("total-employees-count").textContent =
-              employeesData.employees.length;
+              employeeCount;
+            document.getElementById("total-staff").textContent = employeeCount;
           }
         } catch (error) {
           console.error("Failed to load dashboard stats:", error);
