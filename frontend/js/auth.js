@@ -259,6 +259,7 @@ window.GrillAndGoAuth = {
     syncSignInButtons();
   },
   read: readAuth,
+  sync: syncSignInButtons,
 };
 
 // Authentication page functionality (Login/Signup tabs)

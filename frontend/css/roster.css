@@ -98,6 +98,29 @@
   gap: 1.5rem;
 }
 
+.employee-selection-status {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  text-align: center;
+  background: #f8f9fa;
+  border: 2px dashed #e0e0e0;
+  border-radius: 12px;
+  color: #555;
+  font-weight: 600;
+}
+
+.employee-selection-status.error {
+  background: rgba(192, 57, 43, 0.12);
+  border-color: rgba(192, 57, 43, 0.4);
+  color: #922b21;
+}
+
+.employee-selection-status.empty {
+  background: rgba(255, 249, 196, 0.5);
+  border-color: rgba(249, 231, 159, 1);
+  color: #8d6e63;
+}
+
 .employee-select-card {
   background: #f8f9fa;
   border: 2px solid #e0e0e0;
@@ -109,6 +132,10 @@
 .employee-select-card:has(input:checked) {
   background: #e8f5e9;
   border-color: #4caf50;
+}
+
+.roster-table tr.current-employee-row {
+  background: rgba(255, 235, 59, 0.2);
 }
 
 .employee-checkbox {
