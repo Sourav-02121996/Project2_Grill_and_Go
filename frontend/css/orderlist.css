@@ -7,6 +7,7 @@
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   border-bottom: 2px solid #e0e0e0;
+  gap: 3rem;
 }
 
 .page-header h1 {
@@ -151,6 +152,11 @@
 .status-completed {
   background: #d1ecf1;
   color: #0c5460;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
 }
 
 /* Order Body */

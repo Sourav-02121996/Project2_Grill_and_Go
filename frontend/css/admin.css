@@ -1,5 +1,46 @@
 /* Admin Dashboard Specific Styles */
 
+/* Shared Page Header for All Admin Pages */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  gap: 3rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2.25rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.btn-back {
+  background: #f5f5f5;
+  color: #333;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.btn-back:hover {
+  background: #333;
+  color: white;
+  border-color: #333;
+  transform: translateX(-3px);
+}
+
 .admin-header {
   text-align: center;
   margin-bottom: 3rem;

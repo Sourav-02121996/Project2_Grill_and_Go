@@ -216,18 +216,53 @@
     <script src="js/auth.js"></script>
     <script src="js/cart.js"></script>
     <script>
-      // Clear cart after successful payment
-      localStorage.removeItem("cart");
-      updateCartCount();
+      // Get cart items and totals before clearing
+      const cart = getCart();
+      const { subtotal, tax, deliveryFee, total } = calculateTotals();
 
       // Get session ID from URL
       const urlParams = new URLSearchParams(window.location.search);
       const sessionId = urlParams.get("session_id");
 
-      if (sessionId) {
-        console.log("Payment session:", sessionId);
-        // You can verify the session with the backend if needed
+      if (sessionId && cart && cart.length > 0) {
+        // Get customer info from auth
+        const auth = window.GrillAndGoAuth?.read();
+        const customerInfo = {
+          name: auth?.name || "Guest Customer",
+          email: auth?.email || "",
+          customerId: auth?.customerId || null,
+        };
+
+        // Save order to database
+        fetch("/api/payment/save-order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            items: cart,
+            customerInfo,
+            sessionId,
+            totals: {
+              subtotal: subtotal.toFixed(2),
+              tax: tax.toFixed(2),
+              deliveryFee: deliveryFee.toFixed(2),
+              total: total.toFixed(2),
+            },
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("✅ Order saved:", data.orderId);
+          })
+          .catch((error) => {
+            console.error("Failed to save order:", error);
+          });
       }
+
+      // Clear cart after successful payment
+      localStorage.removeItem("cart");
+      updateCartCount();
     </script>
   </body>
 </html>

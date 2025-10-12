@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Stripe from "stripe";
+import { getDb } from "../db/mongoClient.js";
 
 const router = Router();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -72,7 +73,7 @@ router.post("/create-checkout-session", async (req, res) => {
   }
 });
 
-// Verify payment session
+// Verify payment session and save order
 router.get("/verify-session/:sessionId", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.retrieve(
@@ -81,6 +82,32 @@ router.get("/verify-session/:sessionId", async (req, res) => {
     res.json({ session });
   } catch (error) {
     console.error("Session verification error:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Save completed order to database
+router.post("/save-order", async (req, res) => {
+  try {
+    const { items, customerInfo, sessionId, totals } = req.body;
+
+    const db = await getDb();
+
+    const order = {
+      "customer name": customerInfo?.name || "Guest Customer",
+      email: customerInfo?.email || "",
+      "order details": items,
+      "total price": parseFloat(totals.total),
+      status: "completed", // Paid orders are marked as completed
+      createdAt: new Date(),
+    };
+
+    const result = await db.collection("Orders").insertOne(order);
+    console.log("✅ Order saved to database:", result.insertedId);
+
+    res.json({ success: true, orderId: result.insertedId });
+  } catch (error) {
+    console.error("Save order error:", error);
     res.status(500).json({ error: error.message });
   }
 });
