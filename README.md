@@ -12,12 +12,12 @@ Grill & Go is a full‑stack web application for a sandwich shop. The project pa
 ## Prerequisites
 - Node.js 18+ (project tested with Node 24)
 - npm 9+
-- MongoDB running locally (defaults to `mongodb://localhost:37017/grillandgo`)
+- MongoDB running in shared server (defaults to `mongodb+srv://souravspy_db_user:Sourav@1996@cluster0.fasb47g.mongodb.net/`)
 
 If your database runs elsewhere, set:
 
 ```bash
-export MONGODB_URI="your-mongodb-uri"
+export MONGODB_URI="mongodb+srv://souravspy_db_user:Sourav@1996@cluster0.fasb47g.mongodb.net/"
 export MONGODB_DB="GrillAndGo"
 ```
 
@@ -82,6 +82,13 @@ README.md
 ![Footer call-to-action](frontend/images/HomePage9.png)
 ![Mobile layout preview](frontend/images/HomePage10.png)
 ![Checkout summary](frontend/images/HomePage11.png)
+
+## Test Data
+| Role | Name | Email | Password | Phone | Role
+| --- | --- | --- | --- | --- |
+| Customer | TESTCUSTOMER01 | TestCustomer01@gmail.com | Test@01 | 0111111111 |(Customer)
+| Employee | TESTEMPLOYEE01 | TestEmployee01@gmail.com | TestEmployee@01 | 0222222222 | (Admin)
+| Employee | TESTEMPLOYEE02 | TestEmployee02@gmail.com | TestEmployee@02 | 0333333333 | (Staff)
 
 ## Testing & Linting
 - `npm run lint` – run ESLint across the project.
