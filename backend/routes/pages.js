@@ -97,6 +97,7 @@ const createPagesRouter = (frontendDir) => {
       const redirectPath = role === 'admin' ? '/admin/dashboard' : '/staff/dashboard';
 
       const payload = {
+        id: employee._id?.toString(),
         email: normalizedEmail,
         role,
         name: employee.name ?? [employee.firstName, employee.lastName].filter(Boolean).join(' '),
