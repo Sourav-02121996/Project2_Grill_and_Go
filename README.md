@@ -18,7 +18,7 @@ If your database runs elsewhere, set:
 
 ```bash
 export MONGODB_URI="your-mongodb-uri"
-export MONGODB_DB="grillandgo"
+export MONGODB_DB="GrillAndGo"
 ```
 
 These can also be placed in a `.env` file (dotenv is available if you decide to load it).
@@ -31,7 +31,7 @@ npm install
 ```
 
 ## Development
-Start the backend with hot reload via Nodemon:
+Starting the backend with hot reload via Nodemon:
 
 ```bash
 npm run dev
@@ -69,6 +69,19 @@ frontend/
 LICENSE
 README.md
 ```
+
+## UI Gallery
+![Home page hero](frontend/images/HomePage_image.png)
+![Ordering flow overview](frontend/images/HomePage2.png)
+![Menu categories](frontend/images/HomePage3.png)
+![Daily specials](frontend/images/HomePage4.png)
+![Beverage highlights](frontend/images/HomePage5.png)
+![Promotions section](frontend/images/HomePage6.png)
+![Rewards banner](frontend/images/HomePage7.png)
+![Customer testimonials](frontend/images/HomePage8.png)
+![Footer call-to-action](frontend/images/HomePage9.png)
+![Mobile layout preview](frontend/images/HomePage10.png)
+![Checkout summary](frontend/images/HomePage11.png)
 
 ## Testing & Linting
 - `npm run lint` – run ESLint across the project.
