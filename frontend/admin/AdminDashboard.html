@@ -55,7 +55,7 @@
           <h3>Order List</h3>
           <p>View and manage current orders</p>
           <div class="card-stats">
-            <span class="stat-number">12</span>
+            <span class="stat-number" id="active-orders-count">0</span>
             <span class="stat-label">Active Orders</span>
           </div>
           <a href="OrderList.html"
@@ -109,7 +109,7 @@
           <h3>Manage Employees</h3>
           <p>Add or remove staff members</p>
           <div class="card-stats">
-            <span class="stat-number">15</span>
+            <span class="stat-number" id="total-employees-count">0</span>
             <span class="stat-label">Total Employees</span>
           </div>
           <a href="ManageEmployees.html"
@@ -176,5 +176,40 @@
         <p>© 2025 GrillAndGo. All rights reserved.</p>
       </div>
     </footer>
+
+    <script>
+      // Load dashboard statistics
+      async function loadDashboardStats() {
+        try {
+          // Fetch orders count
+          const ordersResponse = await fetch("/api/orders");
+          const ordersData = await ordersResponse.json();
+          if (ordersData.success) {
+            const activeOrders = ordersData.orders.filter(
+              (o) => o.status !== "completed" && o.status !== "cancelled",
+            );
+            document.getElementById("active-orders-count").textContent =
+              activeOrders.length;
+          }
+
+          // Fetch employees count
+          const employeesResponse = await fetch("/api/employees");
+          const employeesData = await employeesResponse.json();
+          if (employeesData.success) {
+            document.getElementById("total-employees-count").textContent =
+              employeesData.employees.length;
+          }
+        } catch (error) {
+          console.error("Failed to load dashboard stats:", error);
+        }
+      }
+
+      // Load stats on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        loadDashboardStats();
+        // Refresh every minute
+        setInterval(loadDashboardStats, 60000);
+      });
+    </script>
   </body>
 </html>
