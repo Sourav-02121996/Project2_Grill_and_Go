@@ -72,3 +72,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+window.moveCarousel = moveCarousel;
+window.goToSlide = goToSlide;

@@ -79,9 +79,11 @@ async function loadPromotions() {
   }
 }
 
-// Export functions (when using modules)
-// Later, these will be replaced with API calls like:
-// async function loadEmployees() {
-//   const response = await fetch('/api/employees');
-//   return await response.json();
-// }
+window.DataLoader = {
+  loadEmployees,
+  loadOrders,
+  loadMenuItems,
+  loadIngredients,
+  loadDashboardStats,
+  loadPromotions,
+};

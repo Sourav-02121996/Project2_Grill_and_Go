@@ -95,6 +95,10 @@ README.md
 - `npm run lint:fix` – attempt auto-fixes.
 - `npm run test:jest` – placeholder for Jest tests (add suites as needed).
 
+## Authors
+- Sourav Das
+- Puneet Singh Puri
+
 ## Contributing
 1. Create a feature branch.
 2. Commit changes with clear messages.

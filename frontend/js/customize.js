@@ -66,7 +66,7 @@ function proceedToCheckout() {
       customizations: customizations.join(", "),
     };
 
-    addToCart(item);
+    window.addToCart(item);
 
     // Reset the form
     const inputs = document.querySelectorAll(
@@ -80,3 +80,5 @@ function proceedToCheckout() {
   }
 }
 
+window.updateSummary = updateSummary;
+window.proceedToCheckout = proceedToCheckout;

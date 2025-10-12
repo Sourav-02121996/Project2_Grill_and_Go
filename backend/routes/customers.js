@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import bcrypt from 'bcrypt';
-import { getDb } from '../db/mongoClient.js';
+import { Router } from "express";
+import bcrypt from "bcrypt";
+import { getDb } from "../db/mongoClient.js";
 
 const router = Router();
-const COLLECTION_NAME = 'Customers';
+const COLLECTION_NAME = "Customers";
 
 const normalizeEmail = (email) => email.trim().toLowerCase();
 
@@ -14,22 +14,22 @@ const buildCustomerResponse = (customer) => ({
   phone: customer.phone ?? null,
 });
 
-router.post('/register', async (req, res, next) => {
+router.post("/register", async (req, res, next) => {
   try {
     const { name, email, password, confirmPassword, phone } = req.body ?? {};
 
     if (
-      typeof name !== 'string' ||
+      typeof name !== "string" ||
       !name.trim() ||
-      typeof email !== 'string' ||
+      typeof email !== "string" ||
       !email.trim() ||
-      typeof password !== 'string' ||
+      typeof password !== "string" ||
       password.length < 6
     ) {
       res.status(400).json({
         success: false,
         message:
-          'Name, email, and a password with at least 6 characters are required.',
+          "Name, email, and a password with at least 6 characters are required.",
       });
       return;
     }
@@ -37,7 +37,7 @@ router.post('/register', async (req, res, next) => {
     if (password !== confirmPassword) {
       res.status(400).json({
         success: false,
-        message: 'Passwords do not match.',
+        message: "Passwords do not match.",
       });
       return;
     }
@@ -53,7 +53,7 @@ router.post('/register', async (req, res, next) => {
     if (existing) {
       res.status(409).json({
         success: false,
-        message: 'An account with this email already exists.',
+        message: "An account with this email already exists.",
       });
       return;
     }
@@ -65,7 +65,7 @@ router.post('/register', async (req, res, next) => {
       name: name.trim(),
       email: email.trim(),
       emailLower: normalizedEmail,
-      phone: typeof phone === 'string' && phone.trim() ? phone.trim() : null,
+      phone: typeof phone === "string" && phone.trim() ? phone.trim() : null,
       passwordHash,
       createdAt: now,
       updatedAt: now,
@@ -87,19 +87,19 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-router.post('/login', async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body ?? {};
 
     if (
-      typeof email !== 'string' ||
+      typeof email !== "string" ||
       !email.trim() ||
-      typeof password !== 'string' ||
+      typeof password !== "string" ||
       !password
     ) {
       res
         .status(400)
-        .json({ success: false, message: 'Email and password are required.' });
+        .json({ success: false, message: "Email and password are required." });
       return;
     }
 
@@ -112,22 +112,23 @@ router.post('/login', async (req, res, next) => {
     });
 
     if (!customer) {
-      res
-        .status(404)
-        .json({ success: false, message: 'Account not found. Please sign up.' });
+      res.status(404).json({
+        success: false,
+        message: "Account not found. Please sign up.",
+      });
       return;
     }
 
     const storedHash = customer.passwordHash || customer.password;
     const passwordMatches =
-      typeof storedHash === 'string' && storedHash
+      typeof storedHash === "string" && storedHash
         ? await bcrypt.compare(password, storedHash)
         : false;
 
     if (!passwordMatches) {
       res.status(401).json({
         success: false,
-        message: 'Incorrect password. Please try again.',
+        message: "Incorrect password. Please try again.",
       });
       return;
     }
@@ -141,7 +142,7 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.get('/health', (_req, res) => {
+router.get("/health", (_req, res) => {
   res.json({ success: true });
 });
 

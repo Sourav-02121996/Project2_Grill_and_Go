@@ -274,6 +274,10 @@ function showOrders(type) {
   }
 }
 
+window.changePage = changePage;
+window.updateOrderStatus = updateOrderStatus;
+window.showOrders = showOrders;
+
 // Load orders on page load
 document.addEventListener("DOMContentLoaded", () => {
   fetchOrders();

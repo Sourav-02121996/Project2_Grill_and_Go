@@ -90,7 +90,8 @@ const setMessage = (element, message, type = "error") => {
 const parseJsonSafely = async (response) => {
   try {
     return await response.json();
-  } catch (_error) {
+  } catch (error) {
+    console.debug("auth: response was not JSON", error);
     return {};
   }
 };
@@ -160,7 +161,8 @@ const initLoginForm = () => {
         loginErrorEl,
         data.message || "Unable to sign in right now. Please try again.",
       );
-    } catch (_error) {
+    } catch (error) {
+      console.error("auth: login request failed", error);
       setMessage(
         loginErrorEl,
         "We couldn't reach the server. Please check your connection and try again.",
@@ -237,7 +239,8 @@ const initSignupForm = () => {
         data.message ||
           "Unable to create your account right now. Please try again.",
       );
-    } catch (_error) {
+    } catch (error) {
+      console.error("auth: signup request failed", error);
       setMessage(
         signupErrorEl,
         "We couldn't reach the server. Please check your connection and try again.",
@@ -285,3 +288,6 @@ function showSignup() {
   tabs[0].classList.remove("active");
   tabs[1].classList.add("active");
 }
+
+window.showLogin = showLogin;
+window.showSignup = showSignup;

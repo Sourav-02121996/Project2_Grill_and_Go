@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { getDb } from '../db/mongoClient.js';
+import { Router } from "express";
+import { getDb } from "../db/mongoClient.js";
 
 const router = Router();
 
-const COLLECTION_NAME = 'Rosters';
+const COLLECTION_NAME = "Rosters";
 
 const getRostersCollection = async () => {
   const db = await getDb();
@@ -27,18 +27,18 @@ const mapDailySchedule = (schedule) => {
   const normalized = Array.isArray(schedule)
     ? schedule.map((day) => ({
         shift:
-          typeof day?.shift === 'string' && day.shift.trim()
+          typeof day?.shift === "string" && day.shift.trim()
             ? day.shift.trim()
-            : 'OFF',
+            : "OFF",
         hours:
-          typeof day?.hours === 'number' && Number.isFinite(day.hours)
+          typeof day?.hours === "number" && Number.isFinite(day.hours)
             ? day.hours
             : 0,
       }))
     : [];
 
   while (normalized.length < 7) {
-    normalized.push({ shift: 'OFF', hours: 0 });
+    normalized.push({ shift: "OFF", hours: 0 });
   }
 
   return normalized;
@@ -48,23 +48,23 @@ const normalizeRosterEntry = (entry) => {
   const dailySchedule = mapDailySchedule(entry?.dailySchedule);
 
   const totalHours =
-    typeof entry?.totalHours === 'number' && Number.isFinite(entry.totalHours)
+    typeof entry?.totalHours === "number" && Number.isFinite(entry.totalHours)
       ? entry.totalHours
       : dailySchedule.reduce((sum, day) => sum + day.hours, 0);
 
   return {
     employeeId:
-      typeof entry?.employeeId === 'string' && entry.employeeId.trim()
+      typeof entry?.employeeId === "string" && entry.employeeId.trim()
         ? entry.employeeId.trim()
         : null,
     email:
-      typeof entry?.email === 'string' && entry.email.trim()
+      typeof entry?.email === "string" && entry.email.trim()
         ? entry.email.trim().toLowerCase()
         : null,
     name:
-      typeof entry?.name === 'string' && entry.name.trim()
+      typeof entry?.name === "string" && entry.name.trim()
         ? entry.name.trim()
-        : '',
+        : "",
     totalHours,
     dailySchedule,
   };
@@ -77,7 +77,7 @@ const mapRoster = (doc) => ({
     ? doc.entries.map((entry) => ({
         employeeId: entry.employeeId ?? null,
         email: entry.email ?? null,
-        name: entry.name ?? '',
+        name: entry.name ?? "",
         totalHours: entry.totalHours ?? 0,
         dailySchedule: mapDailySchedule(entry.dailySchedule),
       }))
@@ -95,7 +95,7 @@ const parseWeekStart = (value) => {
   return date;
 };
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const { weekStart } = req.query ?? {};
     const collection = await getRostersCollection();
@@ -106,7 +106,7 @@ router.get('/', async (req, res, next) => {
       if (!parsedDate) {
         res
           .status(400)
-          .json({ success: false, message: 'Invalid weekStart parameter.' });
+          .json({ success: false, message: "Invalid weekStart parameter." });
         return;
       }
 
@@ -130,29 +130,31 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const { weekStart, entries } = req.body ?? {};
 
-    if (typeof weekStart !== 'string' || !weekStart.trim()) {
+    if (typeof weekStart !== "string" || !weekStart.trim()) {
       res
         .status(400)
-        .json({ success: false, message: 'weekStart is required.' });
+        .json({ success: false, message: "weekStart is required." });
       return;
     }
 
     if (!Array.isArray(entries) || entries.length === 0) {
-      res
-        .status(400)
-        .json({ success: false, message: 'At least one roster entry is required.' });
+      res.status(400).json({
+        success: false,
+        message: "At least one roster entry is required.",
+      });
       return;
     }
 
     const parsedWeekStart = parseWeekStart(weekStart);
     if (!parsedWeekStart) {
-      res
-        .status(400)
-        .json({ success: false, message: 'weekStart must be a valid date string.' });
+      res.status(400).json({
+        success: false,
+        message: "weekStart must be a valid date string.",
+      });
       return;
     }
 
@@ -173,7 +175,7 @@ router.post('/', async (req, res, next) => {
       },
       {
         upsert: true,
-        returnDocument: 'after',
+        returnDocument: "after",
       },
     );
 
@@ -189,21 +191,23 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.delete('/', async (req, res, next) => {
+router.delete("/", async (req, res, next) => {
   try {
     const { weekStart } = req.query ?? {};
-    if (typeof weekStart !== 'string' || !weekStart.trim()) {
-      res
-        .status(400)
-        .json({ success: false, message: 'weekStart query parameter is required.' });
+    if (typeof weekStart !== "string" || !weekStart.trim()) {
+      res.status(400).json({
+        success: false,
+        message: "weekStart query parameter is required.",
+      });
       return;
     }
 
     const parsedWeekStart = parseWeekStart(weekStart);
     if (!parsedWeekStart) {
-      res
-        .status(400)
-        .json({ success: false, message: 'weekStart must be a valid date string.' });
+      res.status(400).json({
+        success: false,
+        message: "weekStart must be a valid date string.",
+      });
       return;
     }
 
@@ -211,7 +215,7 @@ router.delete('/', async (req, res, next) => {
     const result = await collection.deleteOne({ weekStart: parsedWeekStart });
 
     if (!result.deletedCount) {
-      res.status(404).json({ success: false, message: 'Roster not found.' });
+      res.status(404).json({ success: false, message: "Roster not found." });
       return;
     }
 

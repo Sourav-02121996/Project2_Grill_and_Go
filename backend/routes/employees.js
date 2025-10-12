@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import bcrypt from 'bcrypt';
-import { ObjectId } from 'mongodb';
-import { getDb } from '../db/mongoClient.js';
+import { Router } from "express";
+import bcrypt from "bcrypt";
+import { ObjectId } from "mongodb";
+import { getDb } from "../db/mongoClient.js";
 
 const router = Router();
 
-const COLLECTION_NAME = 'Employees';
-const normalizeEmail = (email = '') => email.trim().toLowerCase();
+const COLLECTION_NAME = "Employees";
+const normalizeEmail = (email = "") => email.trim().toLowerCase();
 
 const toIsoStringOrNull = (value) => {
   if (!value) {
@@ -22,27 +22,29 @@ const toIsoStringOrNull = (value) => {
 };
 
 const buildEmployeeName = (employee) => {
-  const direct = typeof employee?.name === 'string' ? employee.name.trim() : '';
+  const direct = typeof employee?.name === "string" ? employee.name.trim() : "";
   if (direct) {
     return direct;
   }
 
-  const first = typeof employee?.firstName === 'string' ? employee.firstName.trim() : '';
-  const last = typeof employee?.lastName === 'string' ? employee.lastName.trim() : '';
-  const combined = [first, last].filter(Boolean).join(' ');
+  const first =
+    typeof employee?.firstName === "string" ? employee.firstName.trim() : "";
+  const last =
+    typeof employee?.lastName === "string" ? employee.lastName.trim() : "";
+  const combined = [first, last].filter(Boolean).join(" ");
   if (combined) {
     return combined;
   }
 
-  return '';
+  return "";
 };
 
 const mapEmployee = (employee) => ({
   id: employee._id?.toString(),
   name: buildEmployeeName(employee),
-  email: employee.email ?? '',
+  email: employee.email ?? "",
   phone: employee.phone ?? null,
-  role: (employee.role ?? 'staff').toLowerCase(),
+  role: (employee.role ?? "staff").toLowerCase(),
   createdAt: toIsoStringOrNull(employee.createdAt),
   updatedAt: toIsoStringOrNull(employee.updatedAt),
 });
@@ -60,7 +62,7 @@ const ensureObjectId = (id) => {
   }
 };
 
-router.get('/', async (_req, res, next) => {
+router.get("/", async (_req, res, next) => {
   try {
     const collection = await getEmployeesCollection();
     const employees = await collection
@@ -77,11 +79,11 @@ router.get('/', async (_req, res, next) => {
   }
 });
 
-router.get('/:employeeId', async (req, res, next) => {
+router.get("/:employeeId", async (req, res, next) => {
   try {
     const employeeId = ensureObjectId(req.params.employeeId);
     if (!employeeId) {
-      res.status(400).json({ success: false, message: 'Invalid employee id.' });
+      res.status(400).json({ success: false, message: "Invalid employee id." });
       return;
     }
 
@@ -89,7 +91,7 @@ router.get('/:employeeId', async (req, res, next) => {
     const employee = await collection.findOne({ _id: employeeId });
 
     if (!employee) {
-      res.status(404).json({ success: false, message: 'Employee not found.' });
+      res.status(404).json({ success: false, message: "Employee not found." });
       return;
     }
 
@@ -99,24 +101,25 @@ router.get('/:employeeId', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
-    const { name, email, phone, role = 'staff', password } = req.body ?? {};
+    const { name, email, phone, role = "staff", password } = req.body ?? {};
 
-    if (typeof name !== 'string' || !name.trim()) {
-      res.status(400).json({ success: false, message: 'Name is required.' });
+    if (typeof name !== "string" || !name.trim()) {
+      res.status(400).json({ success: false, message: "Name is required." });
       return;
     }
 
-    if (typeof email !== 'string' || !email.trim()) {
-      res.status(400).json({ success: false, message: 'Email is required.' });
+    if (typeof email !== "string" || !email.trim()) {
+      res.status(400).json({ success: false, message: "Email is required." });
       return;
     }
 
-    if (typeof password !== 'string' || password.length < 6) {
-      res
-        .status(400)
-        .json({ success: false, message: 'Password must be at least 6 characters.' });
+    if (typeof password !== "string" || password.length < 6) {
+      res.status(400).json({
+        success: false,
+        message: "Password must be at least 6 characters.",
+      });
       return;
     }
 
@@ -130,7 +133,7 @@ router.post('/', async (req, res, next) => {
     if (existing) {
       res.status(409).json({
         success: false,
-        message: 'An employee with this email already exists.',
+        message: "An employee with this email already exists.",
       });
       return;
     }
@@ -142,8 +145,8 @@ router.post('/', async (req, res, next) => {
       name: name.trim(),
       email: email.trim(),
       emailLower,
-      phone: typeof phone === 'string' && phone.trim() ? phone.trim() : null,
-      role: typeof role === 'string' ? role.trim().toLowerCase() : 'staff',
+      phone: typeof phone === "string" && phone.trim() ? phone.trim() : null,
+      role: typeof role === "string" ? role.trim().toLowerCase() : "staff",
       passwordHash,
       createdAt: now,
       updatedAt: now,
@@ -160,46 +163,50 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.put('/:employeeId', async (req, res, next) => {
+router.put("/:employeeId", async (req, res, next) => {
   try {
     const employeeId = ensureObjectId(req.params.employeeId);
     if (!employeeId) {
-      res.status(400).json({ success: false, message: 'Invalid employee id.' });
+      res.status(400).json({ success: false, message: "Invalid employee id." });
       return;
     }
 
     const { name, email, phone, role, password } = req.body ?? {};
     const updates = {};
 
-    if (typeof name === 'string' && name.trim()) {
+    if (typeof name === "string" && name.trim()) {
       updates.name = name.trim();
     }
 
-    if (typeof email === 'string' && email.trim()) {
+    if (typeof email === "string" && email.trim()) {
       updates.email = email.trim();
       updates.emailLower = normalizeEmail(email);
     }
 
-    if (typeof phone === 'string') {
+    if (typeof phone === "string") {
       updates.phone = phone.trim() || null;
     }
 
-    if (typeof role === 'string' && role.trim()) {
+    if (typeof role === "string" && role.trim()) {
       updates.role = role.trim().toLowerCase();
     }
 
-    if (typeof password === 'string' && password) {
+    if (typeof password === "string" && password) {
       if (password.length < 6) {
-        res
-          .status(400)
-          .json({ success: false, message: 'Password must be at least 6 characters.' });
+        res.status(400).json({
+          success: false,
+          message: "Password must be at least 6 characters.",
+        });
         return;
       }
       updates.passwordHash = await bcrypt.hash(password, 10);
     }
 
     if (Object.keys(updates).length === 0) {
-      res.status(400).json({ success: false, message: 'No valid fields provided to update.' });
+      res.status(400).json({
+        success: false,
+        message: "No valid fields provided to update.",
+      });
       return;
     }
 
@@ -214,7 +221,7 @@ router.put('/:employeeId', async (req, res, next) => {
       if (existing) {
         res.status(409).json({
           success: false,
-          message: 'An employee with this email already exists.',
+          message: "An employee with this email already exists.",
         });
         return;
       }
@@ -225,13 +232,13 @@ router.put('/:employeeId', async (req, res, next) => {
     const updateResult = await collection.findOneAndUpdate(
       { _id: employeeId },
       { $set: updates },
-      { returnDocument: 'after' },
+      { returnDocument: "after" },
     );
 
     const employee = updateResult?.value ?? updateResult;
 
     if (!employee) {
-      res.status(404).json({ success: false, message: 'Employee not found.' });
+      res.status(404).json({ success: false, message: "Employee not found." });
       return;
     }
 
@@ -241,11 +248,11 @@ router.put('/:employeeId', async (req, res, next) => {
   }
 });
 
-router.delete('/:employeeId', async (req, res, next) => {
+router.delete("/:employeeId", async (req, res, next) => {
   try {
     const employeeId = ensureObjectId(req.params.employeeId);
     if (!employeeId) {
-      res.status(400).json({ success: false, message: 'Invalid employee id.' });
+      res.status(400).json({ success: false, message: "Invalid employee id." });
       return;
     }
 
@@ -253,7 +260,7 @@ router.delete('/:employeeId', async (req, res, next) => {
     const result = await collection.deleteOne({ _id: employeeId });
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ success: false, message: 'Employee not found.' });
+      res.status(404).json({ success: false, message: "Employee not found." });
       return;
     }
 

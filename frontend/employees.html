@@ -1,134 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employees - Grill &amp; Go</title>
-  <link rel="icon" type="image/png" href="images/HomePage_image.png">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/auth.js" defer></script>
-  <style>
-    .employees-container {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-
-    th,
-    td {
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-
-    th {
-      background: #f5f5f5;
-    }
-
-    .error {
-      color: #b00020;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar">
-    <a href="/" class="brand">
-      <img src="images/grill_and_go_logo.png" alt="Grill & Go Logo" class="logo">
-    </a>
-    <ol class="navlist">
-      <li class="navitem"><a href="/#Menu" class="navlink">Menu</a></li>
-      <li class="navitem"><a href="/customize.html" class="navlink">Customize</a></li>
-      <li class="navitem"><a href="/ReadyToOrder.html" class="navlink">Ready To Order</a></li>
-      <li class="navitem"><a href="/promotions.html" class="navlink">Promotions</a></li>
-    </ol>
-    <div class="signin-container">
-      <a href="/login" class="signin-btn">Sign In</a>
-    </div>
-  </nav>
-
-  <main class="employees-container">
-    <h1>Employees</h1>
-    <p>All records from the Grill &amp; Go Employees collection.</p>
-    <div id="status">Loading employees…</div>
-    <table id="employees-table" style="display: none;">
-      <thead>
-        <tr id="employees-header-row"></tr>
-      </thead>
-      <tbody id="employees-body"></tbody>
-    </table>
-  </main>
-
-  <footer>
-    <p class="footer">
-      2025 GrillAndGo website. All rights reserved.
-    </p>
-  </footer>
-
-  <script>
-    const statusEl = document.getElementById('status');
-    const tableEl = document.getElementById('employees-table');
-    const headerRow = document.getElementById('employees-header-row');
-    const bodyEl = document.getElementById('employees-body');
-
-    const renderTable = (employees) => {
-      if (!Array.isArray(employees) || employees.length === 0) {
-        statusEl.textContent = 'No employee records found.';
-        statusEl.classList.remove('error');
-        return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees - Grill &amp; Go</title>
+    <link rel="icon" type="image/png" href="images/HomePage_image.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/auth.js" defer></script>
+    <style>
+      .employees-container {
+        max-width: 960px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
 
-      const preferredOrder = ['id', 'name', 'email', 'role', 'department'];
-      const dynamicColumns = Object.keys(employees[0]);
-      const columns = preferredOrder.concat(dynamicColumns.filter((column) => !preferredOrder.includes(column)));
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
 
-      headerRow.innerHTML = '';
-      columns.forEach((column) => {
-        const th = document.createElement('th');
-        th.textContent = column;
-        headerRow.appendChild(th);
-      });
+      th,
+      td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
 
-      bodyEl.innerHTML = '';
-      employees.forEach((employee) => {
-        const tr = document.createElement('tr');
-        columns.forEach((column) => {
-          const td = document.createElement('td');
-          const value = employee[column];
-          td.textContent = typeof value === 'object' && value !== null ? JSON.stringify(value) : value ?? '';
-          tr.appendChild(td);
-        });
-        bodyEl.appendChild(tr);
-      });
+      th {
+        background: #f5f5f5;
+      }
 
-      statusEl.textContent = '';
-      tableEl.style.display = '';
-    };
+      .error {
+        color: #b00020;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/" class="brand">
+        <img
+          src="images/grill_and_go_logo.png"
+          alt="Grill & Go Logo"
+          class="logo"
+        />
+      </a>
+      <ol class="navlist">
+        <li class="navitem"><a href="/#Menu" class="navlink">Menu</a></li>
+        <li class="navitem">
+          <a href="/customize.html" class="navlink">Customize</a>
+        </li>
+        <li class="navitem">
+          <a href="/ReadyToOrder.html" class="navlink">Ready To Order</a>
+        </li>
+        <li class="navitem">
+          <a href="/promotions.html" class="navlink">Promotions</a>
+        </li>
+      </ol>
+      <div class="signin-container">
+        <a href="/login" class="signin-btn">Sign In</a>
+      </div>
+    </nav>
 
-    const loadEmployees = async () => {
-      try {
-        const response = await fetch('/api/employees');
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`);
+    <main class="employees-container">
+      <h1>Employees</h1>
+      <p>All records from the Grill &amp; Go Employees collection.</p>
+      <div id="status">Loading employees…</div>
+      <table id="employees-table" style="display: none">
+        <thead>
+          <tr id="employees-header-row"></tr>
+        </thead>
+        <tbody id="employees-body"></tbody>
+      </table>
+    </main>
+
+    <footer>
+      <p class="footer">2025 GrillAndGo website. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const statusEl = document.getElementById("status");
+      const tableEl = document.getElementById("employees-table");
+      const headerRow = document.getElementById("employees-header-row");
+      const bodyEl = document.getElementById("employees-body");
+
+      const renderTable = (employees) => {
+        if (!Array.isArray(employees) || employees.length === 0) {
+          statusEl.textContent = "No employee records found.";
+          statusEl.classList.remove("error");
+          return;
         }
-        const data = await response.json();
-        renderTable(data.employees);
-      } catch (error) {
-        console.error(error);
-        statusEl.textContent = 'Failed to load employees.';
-        statusEl.classList.add('error');
-      }
-    };
 
-    loadEmployees();
-  </script>
-</body>
+        const preferredOrder = ["id", "name", "email", "role", "department"];
+        const dynamicColumns = Object.keys(employees[0]);
+        const columns = preferredOrder.concat(
+          dynamicColumns.filter((column) => !preferredOrder.includes(column)),
+        );
+
+        headerRow.innerHTML = "";
+        columns.forEach((column) => {
+          const th = document.createElement("th");
+          th.textContent = column;
+          headerRow.appendChild(th);
+        });
+
+        bodyEl.innerHTML = "";
+        employees.forEach((employee) => {
+          const tr = document.createElement("tr");
+          columns.forEach((column) => {
+            const td = document.createElement("td");
+            const value = employee[column];
+            td.textContent =
+              typeof value === "object" && value !== null
+                ? JSON.stringify(value)
+                : (value ?? "");
+            tr.appendChild(td);
+          });
+          bodyEl.appendChild(tr);
+        });
+
+        statusEl.textContent = "";
+        tableEl.style.display = "";
+      };
+
+      const loadEmployees = async () => {
+        try {
+          const response = await fetch("/api/employees");
+          if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+          }
+          const data = await response.json();
+          renderTable(data.employees);
+        } catch (error) {
+          console.error(error);
+          statusEl.textContent = "Failed to load employees.";
+          statusEl.classList.add("error");
+        }
+      };
+
+      loadEmployees();
+    </script>
+  </body>
 </html>

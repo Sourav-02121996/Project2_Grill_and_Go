@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         type: type,
       };
 
-      addToCart(item);
+      window.addToCart(item);
     });
   });
 });
-

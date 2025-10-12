@@ -47,8 +47,7 @@
       if (nameInput) nameInput.value = employee.name ?? "";
       if (emailInput) emailInput.value = employee.email ?? "";
       if (phoneInput) phoneInput.value = employee.phone ?? "";
-      if (roleInput)
-        roleInput.value = (employee.role ?? "staff").toLowerCase();
+      if (roleInput) roleInput.value = (employee.role ?? "staff").toLowerCase();
       if (passwordInput) {
         passwordInput.placeholder = "Leave blank to keep current password";
         passwordInput.required = false;
@@ -89,7 +88,7 @@
   const parseJson = async (response) => {
     try {
       return await response.json();
-    } catch (error) {
+    } catch {
       return {};
     }
   };
@@ -250,9 +249,7 @@
   const confirmDelete = async (employee) => {
     if (
       !window.confirm(
-        `Are you sure you want to remove ${
-          employee.name ?? "this employee"
-        }?`,
+        `Are you sure you want to remove ${employee.name ?? "this employee"}?`,
       )
     ) {
       return;

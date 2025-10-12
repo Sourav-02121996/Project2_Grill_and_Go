@@ -1,3 +1,5 @@
+/* global Stripe */
+
 // Cart Management System
 
 // Get cart from localStorage
@@ -315,3 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.updateQuantity = updateQuantity;

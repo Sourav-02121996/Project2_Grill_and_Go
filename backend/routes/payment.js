@@ -119,6 +119,8 @@ router.post("/save-order", async (req, res) => {
       "total price": parseFloat(totals.total),
       status: "completed", // Paid orders are marked as completed
       createdAt: new Date(),
+      checkoutSessionId:
+        typeof sessionId === "string" && sessionId.trim() ? sessionId : null,
     };
 
     const result = await db.collection("Orders").insertOne(order);
