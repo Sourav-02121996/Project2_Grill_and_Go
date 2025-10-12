@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../css/employees.css" />
-    <script src="../js/auth.js" defer></script>
   </head>
   <body>
     <nav class="navbar">
@@ -30,9 +29,10 @@
         </li>
       </ol>
       <div class="signin-container">
-        <a href="../login.html" class="signin-btn">Sign In</a>
+        <a href="/login" class="signin-btn">Sign In</a>
       </div>
     </nav>
+    <script src="../js/auth.js"></script>
 
     <main class="container">
       <div class="page-header">
@@ -48,139 +48,24 @@
       <!-- Employee Stats -->
       <div class="employee-stats">
         <div class="stat-card">
-          <span class="stat-number">15</span>
+          <span class="stat-number" id="stat-total-employees">0</span>
           <span class="stat-label">Total Employees</span>
         </div>
         <div class="stat-card">
-          <span class="stat-number">3</span>
+          <span class="stat-number" id="stat-admin-count">0</span>
           <span class="stat-label">Admins</span>
         </div>
         <div class="stat-card">
-          <span class="stat-number">12</span>
+          <span class="stat-number" id="stat-staff-count">0</span>
           <span class="stat-label">Staff</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">8</span>
-          <span class="stat-label">On Duty</span>
         </div>
       </div>
 
       <!-- Employee List -->
       <div class="employee-list">
         <h2>Employee Directory</h2>
-
-        <!-- Employee Card 1 - Admin -->
-        <div class="employee-card">
-          <div class="employee-avatar">👨‍💼</div>
-          <div class="employee-info">
-            <h3>John Smith</h3>
-            <p class="employee-role admin-role">Admin</p>
-            <p class="employee-details">
-              <strong>Email:</strong> john.smith@grillandgo.com<br />
-              <strong>Phone:</strong> (555) 123-4567<br />
-              <strong>Joined:</strong> Jan 15, 2024
-            </p>
-          </div>
-          <div class="employee-actions">
-            <button class="btn-toggle-admin active" onclick="toggleAdmin(this)">
-              Remove Admin
-            </button>
-            <button class="btn-delete" onclick="deleteEmployee('John Smith')">
-              Delete
-            </button>
-          </div>
-        </div>
-
-        <!-- Employee Card 2 - Staff -->
-        <div class="employee-card">
-          <div class="employee-avatar">👩</div>
-          <div class="employee-info">
-            <h3>Sarah Johnson</h3>
-            <p class="employee-role staff-role">Staff</p>
-            <p class="employee-details">
-              <strong>Email:</strong> sarah.j@grillandgo.com<br />
-              <strong>Phone:</strong> (555) 234-5678<br />
-              <strong>Joined:</strong> Feb 20, 2024
-            </p>
-          </div>
-          <div class="employee-actions">
-            <button class="btn-toggle-admin" onclick="toggleAdmin(this)">
-              Make Admin
-            </button>
-            <button
-              class="btn-delete"
-              onclick="deleteEmployee('Sarah Johnson')"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-
-        <!-- Employee Card 3 - Staff -->
-        <div class="employee-card">
-          <div class="employee-avatar">👨</div>
-          <div class="employee-info">
-            <h3>Mike Davis</h3>
-            <p class="employee-role staff-role">Staff</p>
-            <p class="employee-details">
-              <strong>Email:</strong> mike.d@grillandgo.com<br />
-              <strong>Phone:</strong> (555) 345-6789<br />
-              <strong>Joined:</strong> Mar 10, 2024
-            </p>
-          </div>
-          <div class="employee-actions">
-            <button class="btn-toggle-admin" onclick="toggleAdmin(this)">
-              Make Admin
-            </button>
-            <button class="btn-delete" onclick="deleteEmployee('Mike Davis')">
-              Delete
-            </button>
-          </div>
-        </div>
-
-        <!-- Employee Card 4 - Admin -->
-        <div class="employee-card">
-          <div class="employee-avatar">👩‍💼</div>
-          <div class="employee-info">
-            <h3>Emily Wilson</h3>
-            <p class="employee-role admin-role">Admin</p>
-            <p class="employee-details">
-              <strong>Email:</strong> emily.w@grillandgo.com<br />
-              <strong>Phone:</strong> (555) 456-7890<br />
-              <strong>Joined:</strong> Jan 25, 2024
-            </p>
-          </div>
-          <div class="employee-actions">
-            <button class="btn-toggle-admin active" onclick="toggleAdmin(this)">
-              Remove Admin
-            </button>
-            <button class="btn-delete" onclick="deleteEmployee('Emily Wilson')">
-              Delete
-            </button>
-          </div>
-        </div>
-
-        <!-- Employee Card 5 - Staff -->
-        <div class="employee-card">
-          <div class="employee-avatar">👨</div>
-          <div class="employee-info">
-            <h3>Robert Brown</h3>
-            <p class="employee-role staff-role">Staff</p>
-            <p class="employee-details">
-              <strong>Email:</strong> robert.b@grillandgo.com<br />
-              <strong>Phone:</strong> (555) 567-8901<br />
-              <strong>Joined:</strong> Apr 5, 2024
-            </p>
-          </div>
-          <div class="employee-actions">
-            <button class="btn-toggle-admin" onclick="toggleAdmin(this)">
-              Make Admin
-            </button>
-            <button class="btn-delete" onclick="deleteEmployee('Robert Brown')">
-              Delete
-            </button>
-          </div>
-        </div>
+        <div id="employee-feedback" class="employee-feedback" role="alert"></div>
+        <div id="employee-list-items" class="employee-list-items"></div>
       </div>
     </main>
 
@@ -188,12 +73,13 @@
     <div id="addEmployeeModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>Add New Employee</h2>
+          <h2 id="employee-modal-title">Add New Employee</h2>
           <span class="close-modal" onclick="closeAddEmployeeModal()"
             >&times;</span
           >
         </div>
-        <form class="employee-form">
+        <form id="employee-form" class="employee-form" novalidate>
+          <input type="hidden" id="emp-id" />
           <div class="form-group">
             <label for="emp-name" class="form-label">Full Name</label>
             <input
@@ -201,7 +87,6 @@
               id="emp-name"
               class="form-input"
               placeholder="John Doe"
-              required
             />
           </div>
 
@@ -212,7 +97,6 @@
               id="emp-email"
               class="form-input"
               placeholder="john.doe@grillandgo.com"
-              required
             />
           </div>
 
@@ -223,7 +107,6 @@
               id="emp-phone"
               class="form-input"
               placeholder="(555) 123-4567"
-              required
             />
           </div>
 
@@ -244,9 +127,10 @@
               id="emp-password"
               class="form-input"
               placeholder="Set initial password"
-              required
             />
           </div>
+
+          <div id="employee-form-feedback" class="employee-feedback" role="alert"></div>
 
           <div class="modal-actions">
             <button
