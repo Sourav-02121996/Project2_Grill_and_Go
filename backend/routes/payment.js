@@ -3,7 +3,24 @@ import Stripe from "stripe";
 import { getDb } from "../db/mongoClient.js";
 
 const router = Router();
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+let stripeClient;
+
+const getStripeClient = () => {
+  if (stripeClient) {
+    return stripeClient;
+  }
+
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+
+  if (!secretKey) {
+    throw new Error(
+      "Stripe secret key is not configured. Set STRIPE_SECRET_KEY in your environment.",
+    );
+  }
+
+  stripeClient = new Stripe(secretKey);
+  return stripeClient;
+};
 
 // Create Stripe Checkout Session
 router.post("/create-checkout-session", async (req, res) => {
@@ -58,6 +75,7 @@ router.post("/create-checkout-session", async (req, res) => {
     });
 
     // Create Checkout Session
+    const stripe = getStripeClient();
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: lineItems,
@@ -76,6 +94,7 @@ router.post("/create-checkout-session", async (req, res) => {
 // Verify payment session and save order
 router.get("/verify-session/:sessionId", async (req, res) => {
   try {
+    const stripe = getStripeClient();
     const session = await stripe.checkout.sessions.retrieve(
       req.params.sessionId,
     );
