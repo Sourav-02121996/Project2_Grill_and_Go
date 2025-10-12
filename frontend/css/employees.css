@@ -95,6 +95,42 @@
   margin-bottom: 1.5rem;
 }
 
+.employee-feedback {
+  display: none;
+  margin-bottom: 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.employee-feedback.show {
+  display: block;
+}
+
+.employee-feedback.error {
+  background: rgba(192, 57, 43, 0.1);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  color: #a93226;
+}
+
+.employee-feedback.success {
+  background: rgba(46, 204, 113, 0.12);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  color: #1e8449;
+}
+
+.employee-list-items:empty::after {
+  content: "No employees found. Add your first team member to get started.";
+  display: block;
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed #d0d0d0;
+  border-radius: 12px;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
 .employee-card {
   background: white;
   border: 2px solid #e0e0e0;
@@ -162,6 +198,25 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.btn-edit {
+  background: #ffffff;
+  color: #333;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.btn-edit:hover {
+  border-color: #333;
+  color: #333;
+  background: #f5f5f5;
 }
 
 .btn-toggle-admin {
