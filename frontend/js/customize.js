@@ -75,10 +75,20 @@ function proceedToCheckout() {
     inputs.forEach((input) => (input.checked = false));
     updateSummary();
 
-    // Redirect to cart page
-    window.location.href = "cart.html";
+     // Check if user is signed in
+    const signedInCustomer = getSignedInCustomer();
+
+    if (!signedInCustomer) {
+      // If not signed in, redirect to login page
+      alert("Item added to cart! Please sign in to complete your order.");
+      window.location.href = "login.html";
+    } else {
+      // If signed in, redirect to cart page
+      window.location.href = "cart.html";
+    }
   }
 }
 
+// Expose functions to global scope for inline event handlers in HTML
 window.updateSummary = updateSummary;
 window.proceedToCheckout = proceedToCheckout;
