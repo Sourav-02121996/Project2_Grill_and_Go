@@ -12,14 +12,7 @@ Grill & Go is a full‑stack web application for a sandwich shop. The project pa
 ## Prerequisites
 - Node.js 18+ (project tested with Node 24)
 - npm 9+
-- MongoDB running in shared server (defaults to `mongodb+srv://souravspy_db_user:Sourav@1996@cluster0.fasb47g.mongodb.net/`)
-
-If your database runs elsewhere, set:
-
-```bash
-export MONGODB_URI="mongodb+srv://souravspy_db_user:Sourav@1996@cluster0.fasb47g.mongodb.net/"
-export MONGODB_DB="GrillAndGo"
-```
+- MongoDB running in shared server 
 
 These can also be placed in a `.env` file (dotenv is available if you decide to load it).
 
